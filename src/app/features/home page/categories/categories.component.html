@@ -1,0 +1,14 @@
+<article class="pt-6 pb-6">
+  <p-carousel
+    [value]="categories"
+    [numVisible]="2"
+    [numScroll]="1"
+    [circular]="true"
+    [responsiveOptions]="responsiveOptions"
+    [showIndicators]="false">
+
+    <ng-template let-category #item>
+        <app-category-card [category]="category" class=""></app-category-card>
+    </ng-template>
+  </p-carousel>
+</article>
