@@ -1,4 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: "Roboto", sans-serif;
+
+}
+
+.p-carousel-item-list  .p-carousel-item {
+  padding: 8px !important;
+}
+.p-carousel-content .p-button-text.p-button-secondary {
+  background-color: rgba(248, 43, 169, 1);
+  color: #fff;
+
+}
+.p-carousel-content .p-button-text.p-button-secondary:not(:disabled):hover {
+  background-color:  color-mix(in srgb, rgba(248, 43, 169, 1), black 5%);
+}
+.p-carousel-content-container .p-carousel-indicator-list {
+  display: none;
+}

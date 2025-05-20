@@ -1,0 +1,54 @@
+<a
+  class="card-product cursor-pointer rounded-[20px] transition-all hover:shadow-lg block"
+>
+  <div class="image bg-red-50 rounded-[20px] grid place-items-center relative">
+    <img [src]="item.image" alt="" />
+    @if(item.status == 'New'){
+    <span
+      class="bg-pink-500 text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
+      >New</span
+    >
+    } @else if (item.status == 'Out Of Stock') {
+    <span
+      class="bg-red-500 text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
+      >Out Of Stock</span
+    >
+    } @else if (item.status == 'Hot') {
+    <span
+      class="bg-cyan-500 text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
+      >Hot</span
+    >
+    } @else { }
+  </div>
+  <div class="card-product-body p-4">
+    <h5 class="text-blue-950 text-[17px] font-semibold mb-[9px] line-clamp-1" [title]="item.title">
+      {{ item.title }}
+    </h5>
+    <div class="flex">
+      <div class="grow">
+        <div class="rating">
+          <i
+            *ngFor="let star of [1, 2, 3, 4, 5]"
+            class="fa-regular fa-star text-amber-500"
+            [ngClass]="{ 'fa-solid  ': star <= item.rating }"
+          ></i>
+        </div>
+        <div class="price font-medium text-base">
+          <span class="new-price text-pink-500 me-1.5"
+            >{{ item.newPrice | currency : "USD" }}
+          </span>
+          <span class="text-slate-300" *ngIf="item.oldPrice"
+            ><del>{{ item.oldPrice | currency : "USD" }}</del></span
+          >
+        </div>
+      </div>
+      <div class="shrink-0">
+        <button
+          class="bg-violet-500 text-white rounded-full grid place-items-center w-[42px] h-[42px] hover:bg-violet-600 hover:shadow-lg"
+        >
+          <i class="fa-solid fa-bag-shopping fa-fw"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</a>
