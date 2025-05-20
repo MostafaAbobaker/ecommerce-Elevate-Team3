@@ -1,5 +1,5 @@
-<a
-  class="card-product cursor-pointer rounded-[20px] transition-all hover:shadow-lg block"
+<div
+  class="card-product  rounded-[20px] transition-all hover:shadow-lg group "
 >
   <div class="image bg-red-50 rounded-[20px] grid place-items-center relative">
     <img [src]="item.image" alt="" />
@@ -19,6 +19,10 @@
       >Hot</span
     >
     } @else { }
+    <div class="overlay absolute inset-0 bg-pink-500/60   flex  justify-center items-center gap-4 rounded-[20px] z-10 opacity-0 group-hover:opacity-100 transition-all">
+      <a type="button" class=" cursor-pointer bg-pink-500 text-white rounded-full p-2 w-[40px] h-[40px] grid place-items-center "><i class="fa-regular fa-eye"></i></a>
+      <button type="button" class="bg-pink-500 text-white rounded-full p-2 w-[40px] h-[40px]"><i class="fa-regular fa-heart"></i></button>
+    </div>
   </div>
   <div class="card-product-body p-4">
     <h5 class="text-blue-950 text-[17px] font-semibold mb-[9px] line-clamp-1" [title]="item.title">
@@ -51,4 +55,4 @@
       </div>
     </div>
   </div>
-</a>
+</div>
