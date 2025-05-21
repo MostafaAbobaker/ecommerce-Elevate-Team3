@@ -6,10 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { TrustedByComponent } from "../../../features/pages/trusted-by/trusted-by.component";
 import { BestSellerComponent } from "../../../features/pages/best-seller/best-seller.component";
 import { GalleryComponent } from "../../../features/pages/gallery/gallery.component";
+import { AboutComponent } from "../../../features/pages/about/about.component";
 
 @Component({
   selector: 'app-home-layout',
-  imports: [NavbarComponent, FooterComponent, DatePickerModule, FormsModule, TrustedByComponent, BestSellerComponent, GalleryComponent],
+  imports: [NavbarComponent, FooterComponent, DatePickerModule, FormsModule, TrustedByComponent, BestSellerComponent, GalleryComponent, AboutComponent],
   templateUrl: './home-layout.component.html',
   styleUrl: './home-layout.component.css'
 })
