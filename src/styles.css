@@ -2,3 +2,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.owl-theme .owl-nav {
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+}
+
+.owl-theme .owl-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 40%;
+}
+
+.owl-theme .owl-nav [class*=owl-] {
+    border-radius: 50%;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    background-color: #F82BA9;
+}
+
+.owl-theme .owl-dots .owl-dot.active span {
+    background-color: #F82BA9;
+    width: 30px;
+}
