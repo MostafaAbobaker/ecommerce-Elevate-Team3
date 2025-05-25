@@ -1,15 +1,18 @@
-<nav class="navbar px-4">
+<nav class="navbar px-4 border md:border-0 border-gray-200">
   <div class="max-w-screen-xl mx-auto">
     <div class="container mx-auto flex items-center justify-between">
       <a routerLink="/" class="branding shrink-0">
         <img src="../../../../../assets/imgs/logo.svg" alt="" class="w-[86px] h-[86px]">
       </a>
-      <ul class="hidden md:flex  items-center">
-        <li><a routerLink="" class="px-6 py-2">Home</a></li>
-        <li><a routerLink="" class="px-6 py-2">All Category</a></li>
-        <li><a routerLink="" class="px-6 py-2">About</a></li>
-        <li><a routerLink="" class="px-6 py-2">Contact</a></li>
-      </ul>
+      <div class=" md:block  md:relative" [class]="isMenuOpen? 'block fixed top-[88px] start-0 h-dvh w-full bg-black/75 z-10':'hidden'" >
+
+        <ul class="  flex md:flex-row flex-col items-center bg-white gap-4 py-4">
+          <li><a routerLink="" class="px-6 py-2 text-pink-500 font-medium  transition-all">Home</a></li>
+          <li><a routerLink="" class="px-6 py-2 font-medium hover:text-pink-500 transition-all">All Category</a></li>
+          <li><a routerLink="" class="px-6 py-2 font-medium hover:text-pink-500 transition-all">About</a></li>
+          <li><a routerLink="" class="px-6 py-2 font-medium hover:text-pink-500 transition-all">Contact</a></li>
+        </ul>
+      </div>
       <ul class=" flex  items-center">
         <li><button class=" py-2 px-2.5 "><i class="fa-solid fa-magnifying-glass text-pink-500 text-xl"></i></button>
         </li>
@@ -30,7 +33,7 @@
           <li><button class=" py-2 px-2.5 relative"><i class="fa-regular fa-user text-pink-500 text-xl"></i>
 
             </button></li>
-          <li><button class=" py-2 px-2.5 relative"><i class="fa-solid fa-bars text-pink-500 text-xl"></i>
+          <li><button class=" py-2 px-2.5 relative md:hidden" (click)="toggleMenu()"><i class="fa-solid fa-bars text-pink-500 text-xl"></i>
 
             </button></li>
 

@@ -4,12 +4,16 @@ import { ItemProductComponent } from '../../../shared/components/ui/item-product
 import { CarouselModule } from 'primeng/carousel';
 import { BestSellerService } from '../../services/best-seller.service';
 import { IProduct } from '../../interfaces/iproduct';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-best-seller',
-  imports: [CommonModule, ItemProductComponent, CarouselModule],
+  imports: [CommonModule, ItemProductComponent, CarouselModule, ToastModule],
   templateUrl: './best-seller.component.html',
-  styleUrl: './best-seller.component.css'
+  styleUrl: './best-seller.component.css',
+  providers: [MessageService]
+
 })
 export class BestSellerComponent implements OnInit{
 
@@ -101,7 +105,7 @@ export class BestSellerComponent implements OnInit{
     },
   ] */
 
-  constructor(private _bestSellerService:BestSellerService) { }
+  constructor(private _bestSellerService:BestSellerService , private messageService: MessageService) { }
    ngOnInit(): void {
     this.setResponsiveOptions();
     this.getBestSellers();
@@ -135,11 +139,11 @@ export class BestSellerComponent implements OnInit{
   getBestSellers() {
     this._bestSellerService.getBestSellers().subscribe({
       next: (response) => {
-        console.log(response);
         this.productsList = response.bestSeller as IProduct[];
       },
       error: (err) => {
-        console.error(err);
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+
       }
     });
   }
