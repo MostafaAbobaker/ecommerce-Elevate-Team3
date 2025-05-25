@@ -1,1 +1,60 @@
 
+<section class="about-section py-10 px-4">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12   gap-4">
+        <div class="lg:col-span-5  py-[24px] ps-[27px]">
+          <div class="grid grid-cols-5  gap-2">
+            <div class="image row-span-2 col-span-3 rounded-tl-[50px] rounded-bl-[120px] rounded-r-[120px] relative isolate h-[350px]
+            before:absolute before:border-4 before:border-pink-500 before:w-[90%] before:h-[105%] before:-left-4 before:-top-4 before:-z-10 before:rotate-[4deg] before:rounded-tl-[50px] before:rounded-bl-[120px] before:rounded-r-[120px]">
+              <img src="../../../../assets/imgs/about/1.png" alt="" class=" w-full h-full rounded-tl-[50px] rounded-bl-[120px] rounded-r-[120px] object-cover">
+            </div>
+            <div class="col-span-2 grid gap-2">
+              <div class="image min-w-[125px] w-full h-[125px] md:h-[193px] rounded-full">
+                <img src="../../../../assets/imgs/about/2.png" alt="" class="w-full h-full rounded-full object-cover">
+              </div>
+              <div class="image min-w-[125px] w-full  rounded-r-[100px] rounded-l-[50px] h-[150px]">
+                <img src="../../../../assets/imgs/about/3.png" alt="" class="w-full h-full rounded-r-[100px] rounded-l-[50px] object-cover">
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-span-1"></div>
+        <div class=" lg:col-span-6">
+
+          <h6 class="text-pink-500 text-[17px] font-bold mb-7 uppercase tracking-widest">About Us</h6>
+          <h3 class="text-blue-950 text-xl md:text-3xl text-balance font-bold mb-2 capitalize">We Provide Best And Quality  <span class="text-pink-500">Gifts Box </span> Product For You</h3>
+          <p class="text-gray-500 font-normal mb-6">Recusandae tempora aut laborum molestias veniam. A commodi sequi accusantium ullam cupiditate. Neque quidem qui et autem dolor dicta necessitatibus ut ad.</p>
+          <button class="bg-pink-500 text-white mb-6 rounded-[10px] py-2.5 px-5 hover:bg-pink-600 hover:shadow-lg transition-all">Discover More  <i class="fa-solid fa-arrow-right-long ms-[5px]"></i></button>
+          <ul class="flex flex-wrap gap-5">
+            @for(item of aboutInfo; track item; let i = $index) {
+               <li class="flex items-center md:w-2/5" >
+              <i class="fa-solid fa-circle-check text-violet-500 mr-2 fa-2x"></i>
+              <span class="text-xs font-medium">{{item}}</span>
+            </li>
+            }
+
+            <!-- <li class="flex items-center w-2/5">
+              <i class="fa-solid fa-circle-check text-violet-500 mr-2 fa-2x"></i>
+              <span class="text-xs font-medium">Affordable Modern Design</span>
+            </li>
+            <li class="flex items-center w-2/5">
+              <i class="fa-solid fa-circle-check text-violet-500 mr-2 fa-2x"></i>
+              <span class="text-xs font-medium">Competitive Price & Easy To Shop</span>
+            </li>
+            <li class="flex items-center w-2/5">
+              <i class="fa-solid fa-circle-check text-violet-500 mr-2 fa-2x"></i>
+              <span class="text-xs font-medium">We Made Awesome Products</span>
+            </li> -->
+          </ul>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

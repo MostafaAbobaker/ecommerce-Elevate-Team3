@@ -9,10 +9,20 @@
         ">Let's Check Our Photo Gallery</h2>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-12  items-center gap-6">
-        <div class="image lg:col-span-4 h-[411px]">
-          <img src="../../../../assets/imgs/gallery/1.png" alt="" class="rounded-[40px] w-full h-full object-cover">
-        </div>
-        <div class="image lg:col-span-4 h-[411px]">
+        @for(image of galleryImages; track image; let i = $index) {
+
+          @if(i === 3) {
+             <div class="image lg:col-span-8 h-[411px]">
+              <img src="../../../../assets/imgs/gallery/{{image}}" alt="" class="rounded-[40px] w-full h-full object-cover">
+            </div>
+          } @else {
+            <div class="image lg:col-span-4 h-[411px]">
+              <img src="../../../../assets/imgs/gallery/{{image}}" alt="" class="rounded-[40px] w-full h-full object-cover">
+            </div>
+
+          }
+        }
+       <!--  <div class="image lg:col-span-4 h-[411px]">
           <img src="../../../../assets/imgs/gallery/2.png" alt="" class="rounded-[40px] w-full h-full object-cover">
         </div>
         <div class="image lg:col-span-4 h-[411px]">
@@ -23,7 +33,7 @@
         </div>
         <div class="image lg:col-span-4 h-[411px]">
           <img src="../../../../assets/imgs/gallery/5.png" alt="" class="rounded-[40px] w-full h-full object-cover">
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

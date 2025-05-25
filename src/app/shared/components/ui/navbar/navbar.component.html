@@ -1,25 +1,41 @@
-<nav class="navbar">
-    <div class="max-w-screen-xl mx-auto">
-      <div class="container mx-auto flex items-center justify-between">
-        <a routerLink="/" class="branding ">
-          <img src="../../../../../assets/imgs/logo.svg" alt="" class="w-[86px] h-[86px]">
-        </a>
-        <ul class="hidden md:flex  items-center">
-          <li><a routerLink="" class="px-6 py-2">Home</a></li>
-          <li><a routerLink="" class="px-6 py-2">All Category</a></li>
-          <li><a routerLink="" class="px-6 py-2">About</a></li>
-          <li><a routerLink="" class="px-6 py-2">Contact</a></li>
-        </ul>
-        <ul class=" flex gap-4 items-center">
-          <li><button class=" py-2 px-2.5 "><i class="fa-solid fa-magnifying-glass text-pink-500 text-xl"></i></button></li>
-          <li><button class=" bg-pink-500 text-white rounded-circle text-white py-2 px-5 rounded-full text-base font-medium">login</button></li>
+<nav class="navbar px-4">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="container mx-auto flex items-center justify-between">
+      <a routerLink="/" class="branding shrink-0">
+        <img src="../../../../../assets/imgs/logo.svg" alt="" class="w-[86px] h-[86px]">
+      </a>
+      <ul class="hidden md:flex  items-center">
+        <li><a routerLink="" class="px-6 py-2">Home</a></li>
+        <li><a routerLink="" class="px-6 py-2">All Category</a></li>
+        <li><a routerLink="" class="px-6 py-2">About</a></li>
+        <li><a routerLink="" class="px-6 py-2">Contact</a></li>
+      </ul>
+      <ul class=" flex  items-center">
+        <li><button class=" py-2 px-2.5 "><i class="fa-solid fa-magnifying-glass text-pink-500 text-xl"></i></button>
+        </li>
+        @if(!isLoggedIn) {
+          <li><button
+              class=" bg-pink-500 text-white rounded-circle text-white py-2 px-5 rounded-full text-base font-medium">login</button>
+          </li>
+
+        } @else {
           <li><button class=" py-2 px-2.5 relative"><i class="fa-regular fa-heart text-pink-500 text-xl"></i>
-          <span class="absolute top-0 right-0 bg-pink-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">2</span>
-        </button></li>
+              <span
+                class="absolute top-0 right-0 bg-pink-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">2</span>
+            </button></li>
           <li><button class=" py-2 px-2.5 relative"><i class="fa-solid fa-bag-shopping text-pink-500 text-xl"></i>
-          <span class="absolute top-0 right-0 bg-pink-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">5</span>
-        </button></li>
-        </ul>
-        </div>
-        </div>
+              <span
+                class="absolute top-0 right-0 bg-pink-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">5</span>
+            </button></li>
+          <li><button class=" py-2 px-2.5 relative"><i class="fa-regular fa-user text-pink-500 text-xl"></i>
+
+            </button></li>
+          <li><button class=" py-2 px-2.5 relative"><i class="fa-solid fa-bars text-pink-500 text-xl"></i>
+
+            </button></li>
+
+        }
+      </ul>
+    </div>
+  </div>
 </nav>
