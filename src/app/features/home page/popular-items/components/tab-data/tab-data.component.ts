@@ -51,7 +51,12 @@ export class TabDataComponent implements OnInit, OnDestroy{
       },
       {
         breakpoint: '1400px',
-        numVisible: this.categories.length,
+        numVisible: 10,
+        numScroll: 1
+      },
+      {
+        breakpoint: '1200px',
+        numVisible: 9,
         numScroll: 1
       },
       {
