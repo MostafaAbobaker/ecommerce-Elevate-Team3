@@ -32,7 +32,7 @@ export class CategoriesComponent implements OnInit, OnDestroy{
       {
         breakpoint: '2500px',
         numVisible: this.categories.length,
-        numScroll: 1
+        numScroll: 2
       },
       {
         breakpoint: '2000px',
@@ -78,6 +78,8 @@ export class CategoriesComponent implements OnInit, OnDestroy{
       next: (data: any): void => {
         this.categories = data.categories;
         this.categories = this.categories.slice(0, 8);
+        console.log('=> ',data);
+
       }
     })
   }
