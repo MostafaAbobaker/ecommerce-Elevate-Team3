@@ -1,16 +1,6 @@
 import { Component } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-
-interface ISpecialGift {
-  image: string,
-  title: string
-}
-interface ISpecial {
-  image: string,
-  name: string,
-  description: string,
-  btn: string
-}
+import { ISpecial, ISpecialGift } from '../../interfaces/special-gift';
 
 @Component({
   selector: 'app-special-gifts',
