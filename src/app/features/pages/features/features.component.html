@@ -1,12 +1,10 @@
-<div class="flex-none lg:flex lg:justify-between lg:gap-8 bg-[#FEEDF7] rounded-2xl my-5 p-10">
+<div class="md:flex md:justify-between bg-[#FEEDF7] rounded-2xl my-5 p-5">
     @for (item of Features; track $index) {
-    <div class="flex items-center">
-        <div class="flex justify-between items-center">
-            <img [src]="item.image" [alt]="item.name" class="w-[25%]">
-            <div>
-                <h2 class="font-bold">{{item.name}}</h2>
-                <p class="text-[#757F95]">{{item.description}}</p>
-            </div>
+    <div class="text-center my-5 md:flex md:justify-between">
+        <img [src]="item.image" [alt]="item.name" class="w-[25%] inline-block">
+        <div>
+            <h2 class="font-bold">{{item.name}}</h2>
+            <p class="text-[#757F95]">{{item.description}}</p>
         </div>
     </div>
     }

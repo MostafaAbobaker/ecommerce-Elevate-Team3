@@ -1,21 +1,22 @@
 <section>
-    <div class="flex-none lg:flex my-5">
-        <div class="lg:w-3/12 relative flex items-end">
-            <img src="i../../../../assets/imgs/Special-gifts/SpecialGift-1.png"
-                class="h-[400px] object-cover rounded-2xl" alt="grocery-banner">
-            <div class="absolute p-3">
-                <h2 class="font-bold text-[#F82BA9] uppercase">Start $10.99</h2>
-                <p class="text-[#160E4B] font-bold my-3 text-2xl">Special Gifts Box For Your Love</p>
+    <div class="md:flex my-5">
+        <div class="w-full my-3 md:m-0 md:w-1/4 relative flex items-end">
+            <img src="../../../../assets/imgs/Special-gifts/SpecialGift-1.png"
+                class="md:h-[400px] w-full md:w-72 object-cover rounded-2xl" alt="grocery-banner">
+            <div class="absolute top-[40%] md:top-[50%]  ps-5 w-[70%] md:w-full">
+                <p class="text-[#F82BA9] uppercase tracking-[.3em]">Start $10.99</p>
+                <h2 class="text-[#160E4B] font-bold my-5 md:my-3 text-3xl md:text-2xl">Special Gifts Box For Your Love
+                </h2>
                 <button class="bg-[#F82BA9] text-white px-3 py-1 rounded-2xl mb-3">Shop Now <i
                         class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
-        <div class="lg:w-9/12">
+        <div class="w-full md:w-3/4">
             <owl-carousel-o [options]="customOptions">
                 @for (img of SpecialGift; track $index) {
                 <ng-template carouselSlide class="relative">
                     <img [src]="img.image" class="h-[400px] object-cover rounded-2xl" [alt]="img.title">
-                    <div class="absolute top-10 left-10 z-10 w-[35%]">
+                    <div class="absolute top-10 left-10 z-10 md:w-[35%]">
                         <h2 class="font-bold text-[#F82BA9] uppercase mt-3">Best Gift Shop</h2>
                         <p class="text-[#160E4B] font-bold my-5 text-4xl">Choose Perfect
                             <span class="text-[#F82BA9]">Gifts</span> From Us
@@ -32,12 +33,12 @@
         </div>
     </div>
 
-    <div class="flex-none lg:flex lg:justify-between lg:gap-8 my-5">
+    <div class="md:flex md:justify-between md:gap-8 my-5">
         @for (item of Special; track $index) {
-        <div class="flex items-center">
-            <div class="flex items-center text-end relative">
+        <div class="flex items-center justify-center my-3">
+            <div class="flex justify-center items-center text-center md:text-end relative">
                 <img [src]="item.image" [alt]="item.name" class="rounded-2xl">
-                <div class="absolute left-[40%] p-3">
+                <div class="absolute w-52 md:left-[40%] p-3">
                     <h2 class="font-bold text-[#F82BA9]">{{item.name}}</h2>
                     <p class="text-[#160E4B] font-bold my-3">{{item.description}}</p>
                     <button class="bg-[#F82BA9] text-white px-3 py-1 rounded-2xl">{{item.btn}}</button>
