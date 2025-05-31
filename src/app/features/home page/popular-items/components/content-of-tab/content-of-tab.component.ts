@@ -2,13 +2,13 @@ import {Component, computed, effect, inject, OnDestroy, OnInit, Signal} from '@a
 import {ValueOfTapService} from '../../service/value-of-tabs/value-of-tap.service';
 import { TabsModule } from 'primeng/tabs';
 import {PopularItemsService} from '../../service/popular-API/popular-items.service';
-import {MainCardComponent} from '../../../../../shared/components/ui/main-card/main-card.component';
 import {PopularItems} from '../../model/popular-items';
 import {Subscription} from 'rxjs';
+import { ItemProductComponent } from "../../../../../shared/components/ui/item-product/item-product.component";
 
 @Component({
   selector: 'app-content-of-tab',
-  imports: [TabsModule, MainCardComponent],
+  imports: [TabsModule, ItemProductComponent],
   templateUrl: './content-of-tab.component.html',
   styleUrl: './content-of-tab.component.css'
 })
@@ -39,6 +39,7 @@ export class ContentOfTabComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.getPopularItems();
+    // this.valueOfTapService.valueOfTap.set('All');
   }
 
   getPopularItems (): void {

@@ -2,7 +2,8 @@
     <p-tabpanel [value]="valueOfTap()" class="m-auto">
       <article class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         @for(item of popularItems; track item.id){
-          <app-main-card [popularItem]="item"></app-main-card>
+          <!-- <app-main-card [popularItem]="item"></app-main-card> -->
+          <app-item-product [popularItem]="item"></app-item-product>
         } @empty {
           <div class="flex justify-center items-center min-h-[200px] col-span-full">
             <p class="text-pink-600/25 text-2xl">No Items</p>

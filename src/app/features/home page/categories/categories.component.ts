@@ -78,7 +78,7 @@ export class CategoriesComponent implements OnInit, OnDestroy{
       next: (data: any): void => {
         this.categories = data.categories;
         this.categories = this.categories.slice(0, 8);
-        console.log('=> ',data);
+       /*  console.log('=> ',data); */
 
       }
     })
