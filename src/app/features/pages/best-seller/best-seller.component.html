@@ -19,7 +19,7 @@
           <!-- Start Slider -->
            <p-carousel [value]="productsList" [numVisible]="3" [numScroll]="1" [circular]="false" [responsiveOptions]="responsiveOptions" >
               <ng-template let-product #item>
-                  <app-item-product [item]="product"></app-item-product>
+                  <app-item-product [popularItem]="product"></app-item-product>
               </ng-template>
           </p-carousel>
           <!-- End Slider -->

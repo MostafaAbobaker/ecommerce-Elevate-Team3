@@ -1,0 +1,18 @@
+<section class="popular-items-section py-10 px-4">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="container mx-auto">
+      <div
+        class="pb-8 pt-20 grid grid-cols-1 lg:grid-cols-12 justify-between items-center gap-4"
+      >
+        <!-- Title -->
+        <app-section-title [title]="'Popular Items'" class="lg:col-span-4"></app-section-title>
+        <!-- Tabs -->
+        <app-tab-data class="lg:col-span-8"></app-tab-data>
+      </div>
+      <section class="m-auto">
+        <!-- Content -->
+        <app-content-of-tab></app-content-of-tab>
+      </section>
+    </div>
+  </div>
+</section>

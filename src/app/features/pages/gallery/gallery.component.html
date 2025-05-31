@@ -3,10 +3,12 @@
     <div class="container mx-auto">
       <div class="title mb-10 text-center">
         <h6 class="text-center text-pink-500 uppercase text-[17px] font-bold mb-2 tracking-widest">Our Gallery</h6>
-        <h2 class="text-center text-blue-950 capitalize text-3xl font-bold inline-table relative mx-auto isolate
+        <app-section-title [title]="title"></app-section-title>
+
+        <!-- <h2 class="text-center text-blue-950 capitalize text-3xl font-bold inline-table relative mx-auto isolate
             before:w-3/4 before:h-[17px] before:bg-red-100 before:absolute before:start-0 before:-z-10 before:bottom-0 before:rounded-r-full
             after:w-1/4 after:h-0.5 after:bg-red-500 after:absolute after:start-0 after:bottom-0
-        ">Let's Check Our Photo Gallery</h2>
+        "></h2> -->
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-12  items-center gap-6">
         @for(image of galleryImages; track image; let i = $index) {

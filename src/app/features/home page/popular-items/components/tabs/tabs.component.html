@@ -1,0 +1,8 @@
+<p-tabs [value]="category.name" class="">
+  <p-tablist class="">
+    @let valOfTab = category.name;
+    @let categoryID  = category._id;
+    <p-tab [value]="category.name" (click)="valueEmit(valOfTab, categoryID)" class="text-sm font-semibold">{{ category.name }}</p-tab>
+  </p-tablist>
+</p-tabs>
+

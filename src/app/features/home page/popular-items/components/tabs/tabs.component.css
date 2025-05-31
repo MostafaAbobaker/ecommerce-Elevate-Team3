@@ -1,0 +1,30 @@
+.p-tab-active {
+  border-color: #F82BA9 !important;
+  color: #F82BA9;
+  padding: 0.5rem 1rem;
+}
+
+::ng-deep .p-tab.p-highlight {
+  color: #F82BA9 !important;
+  border-color: #F82BA9 !important;
+}
+
+::ng-deep .p-tab-active {
+  color: #F82BA9 !important;
+  /* border-bottom: 3px solid #F82BA9 !important;*/
+}
+#pn_id_36 .p-carousel-item {
+  flex: 0 auto !important;
+
+}
+/*
+  ::ng-deep .p-tab {
+    color: black !important;
+    border-color: transparent !important;
+  }
+
+
+  .p-tab:active{
+    color: #F82BA9;
+  }
+*/
