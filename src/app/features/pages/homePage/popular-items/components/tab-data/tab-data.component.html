@@ -13,8 +13,11 @@
   <p-tabs >
     <p-tablist class="">
       @for(category of categories ; track category._id) {
+        @if(category.productsCount > 0 ){
 
-      <p-tab [value]="category.name"  class="text-sm font-semibold">{{ category.name }}</p-tab>
+          <p-tab [value]="category.name"  class="text-sm font-semibold">{{ category.name }}</p-tab>
+        }
+
     }
     </p-tablist>
 
