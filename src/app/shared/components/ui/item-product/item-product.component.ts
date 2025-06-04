@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PopularItems } from '../../../../features/home page/popular-items/model/popular-items';
+import { PopularItems } from '../../../../features/pages/homePage/popular-items/model/popular-items';
 
 @Component({
   selector: 'app-item-product',
