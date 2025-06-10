@@ -5,7 +5,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ItemProductComponent } from '../../../../shared/components/ui/item-product/item-product.component';
 import { IProduct } from '../../../interfaces/iproduct';
-import { BestSellerService } from '../../../services/best-seller.service';
+import { BestSellerService } from './services/best-seller.service';
 
 @Component({
   selector: 'app-best-seller',

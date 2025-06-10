@@ -7,13 +7,14 @@ import { TrustedByComponent } from '../../../features/pages/homePage/trusted-by/
 import { GalleryComponent } from '../../../features/pages/homePage/gallery/gallery.component';
 import { AboutComponent } from '../../../features/pages/homePage/about/about.component';
 import { BestSellerComponent } from '../../../features/pages/homePage/best-seller/best-seller.component';
+import { TestPopularItemsComponent } from "../../../features/pages/homePage/test-popular-items/test-popular-items.component";
 
 @Component({
   selector: 'app-home-layout',
   imports: [NavbarComponent, FooterComponent,
-            CategoriesComponent, PopularItemsComponent ,
-            TrustedByComponent, BestSellerComponent,
-            GalleryComponent, AboutComponent],
+    CategoriesComponent, PopularItemsComponent,
+    TrustedByComponent, BestSellerComponent,
+    GalleryComponent, AboutComponent, TestPopularItemsComponent],
   templateUrl: './home-layout.component.html',
   styleUrl: './home-layout.component.css'
 
