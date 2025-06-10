@@ -22,7 +22,9 @@ export class TestPopularItemsComponent {
     ngOnInit() {
 
         this.getCategories()
-        this.activeTap = this.categories[0]._id
+        if(this.categories) {
+          this.activeTap = this.categories[0]!._id
+        }
         this.getPopularItems(this.activeTap)
     }
 

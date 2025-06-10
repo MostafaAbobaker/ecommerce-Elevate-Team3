@@ -1,12 +1,12 @@
 <section class="test-popular-items-section py-10 px-4">
   <div class="max-w-screen-xl mx-auto">
     <div class="container mx-auto">
-        <div class="header flex flex-wrap justify-between flex-row items-center">
+        <div class="header flex flex-wrap justify-between flex-row items-center gap-8">
         <div class="title">
           <app-section-title [title]="'Most Popular'"></app-section-title>
         </div>
-        <div class="taps">
-          <ul class="flex gap-2 border-bottom">
+        <div class="taps ">
+          <ul class="flex flex-wrap gap-2 border-bottom">
             @for(tap of categories; track tap._id) {
               <li><a class="p-2 capitalize text-base font-medium cursor-pointer hover:text-secondary transition-all"
                   [class.text-primary]="activeTap == tap._id"
@@ -18,7 +18,7 @@
       <div class="tabs-body">
         <div class="flex flex-wrap    mt-20 md:mt-8  ">
           @for(product of productsItems;track product.id) {
-            <div class="w-3/12 px-3 mb-6">
+            <div class="2xl:w-3/12 xl:w-4/12 md:w-6/12 sm:w-6/12 w-full px-3 mb-6">
               <app-item-product [popularItem]="product"></app-item-product>
             </div>
           }@empty {
