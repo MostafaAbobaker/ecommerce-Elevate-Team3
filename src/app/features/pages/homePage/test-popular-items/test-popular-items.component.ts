@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { SectionTitleComponent } from "../../../../shared/components/ui/section-title/section-title.component";
 import { TabsModule } from 'primeng/tabs';
 import { TestPopularIremService } from './service/test-popular-irem.service';
@@ -12,26 +12,32 @@ import { PopularItems } from '../popular-items/model/popular-items';
   templateUrl: './test-popular-items.component.html',
   styleUrl: './test-popular-items.component.css'
 })
-export class TestPopularItemsComponent {
+export class TestPopularItemsComponent implements AfterViewInit{
   categories:Categories []= [] ;
   activeTap:string = '0'
   productsItems :PopularItems[] = []
   constructor(private _testPopularItemService:TestPopularIremService) {
 
   }
+  ngAfterViewInit(): void {
+    this.getPopularItems(this.activeTap)
+  }
     ngOnInit() {
 
         this.getCategories()
-        if(this.categories) {
-          this.activeTap = this.categories[0]!._id
-        }
-        this.getPopularItems(this.activeTap)
+
+
     }
 
     getCategories() {
       this._testPopularItemService.getCategories().subscribe({
         next:(res)=> {
-          this.categories = res.categories
+          this.categories = res.categories;
+          if (this.categories.length > 0) {
+            this.activeTap = this.categories[0]._id;
+            this.getPopularItems(this.activeTap);
+          }
+
         },error:(err)=>{
           console.log(err);
         }
@@ -41,7 +47,6 @@ export class TestPopularItemsComponent {
       this.activeTap = id;
       this._testPopularItemService.getPopularItems(id).subscribe({
         next:(res)=> {
-          console.log(res);
           this.productsItems = res.products;
         },error:(err)=>{
           console.log(err);
