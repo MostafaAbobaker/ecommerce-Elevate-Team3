@@ -4,7 +4,7 @@
     <!-- Badge New, Out Of Stock ,Hot-->
     <!-- @if(popularItem.slug == 'New'){
     <span
-      class="bg-pink-500 text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
+      class="bg-primary text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
       >New</span>
     } @else if (popularItem.slug == 'Out Of Stock') {
     <span
@@ -19,13 +19,13 @@
     }  -->
 
     <!-- Over Lay -->
-    <div class="overlay absolute inset-0 bg-pink-500/60 flex justify-center items-center gap-4 rounded-[20px] z-10 opacity-0 group-hover:opacity-100 transition-all">
+    <div class="overlay absolute inset-0 bg-primary/60 dark:bg-secondary-light/60 flex justify-center items-center gap-4 rounded-[20px] z-10 opacity-0 group-hover:opacity-100 transition-all">
        <!-- Detail Eye Icon -->
       <a type="button"
-        class="cursor-pointer bg-pink-500 text-white rounded-full p-2 w-[40px] h-[40px] grid place-items-center"><i
+        class="cursor-pointer bg-primary text-white rounded-full p-2 w-[40px] h-[40px] grid place-items-center dark:bg-white dark:text-dark-shopping"><i
           class="fa-regular fa-eye"></i></a>
       <!-- Favorite Heart Icon -->
-      <button type="button" class="bg-pink-500 text-white rounded-full p-2 w-[40px] h-[40px]">
+      <button type="button" class="bg-primary text-white rounded-full p-2 w-[40px] h-[40px] dark:bg-white dark:text-dark-shopping">
         <i class="fa-regular fa-heart"></i>
       </button>
     </div>
@@ -33,7 +33,7 @@
    <!-- Content -->
   <div class="card-product-body p-4">
     <!-- Title -->
-    <h5 class="text-blue-950 text-[17px] font-semibold mb-[9px] line-clamp-1" [title]="popularItem.title">
+    <h5 class="text-primary text-[17px] font-semibold mb-[9px] line-clamp-1 dark:text-darkMode-secondary" [title]="popularItem.title">
       {{ popularItem.title }}
     </h5>
     <div class="flex">
@@ -46,10 +46,10 @@
         </div>
         <!-- Price -->
         <div class="price font-medium text-base">
-          <span class="new-price text-pink-500 me-1.5">{{ popularItem.price | currency : "USD" }}
+          <span class="new-price text-primary me-1.5 dark:text-darkMode-secondary">{{ popularItem.price | currency : "USD" }}
           </span>
           @if(popularItem.priceAfterDiscount) {
-          <span class="text-slate-300">
+          <span class="text-slate-300 dark:text-zinc-500">
             <del>{{
               popularItem.priceAfterDiscount | currency : "USD"
               }}</del></span>
@@ -59,7 +59,7 @@
       <!-- Add to Cart -->
       <div class="shrink-0">
         <button
-          class="bg-violet-500 text-white rounded-full grid place-items-center w-[42px] h-[42px] hover:bg-violet-600 hover:shadow-lg">
+          class="bg-primary text-white rounded-full grid place-items-center w-[42px] dark:bg-dark-shopping h-[42px] dark:hover:bg-primary-dark  hover:bg-primary-dark hover:shadow-lg">
           <i class="fa-solid fa-bag-shopping fa-fw"></i>
         </button>
       </div>

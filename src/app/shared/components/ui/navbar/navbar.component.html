@@ -1,44 +1,70 @@
-<nav class="navbar px-4 border md:border-0 border-gray-200">
+<nav class="navbar  bg-primary-dark dark:bg-darkMode-secondary">
   <div class="max-w-screen-xl mx-auto">
-    <div class="container mx-auto flex items-center justify-between">
-      <a routerLink="/" class="branding shrink-0">
+    <div class="container mx-auto flex items-center justify-center">
+      <!-- <a routerLink="/" class="branding shrink-0">
         <img src="../../../../../assets/imgs/logo.svg" alt="" class="w-[86px] h-[86px]">
-      </a>
+      </a> -->
       <div class=" md:block  md:relative" [class]="isMenuOpen? 'block fixed top-[88px] start-0 h-dvh w-full bg-black/75 z-10':'hidden'" >
 
-        <ul class="  flex md:flex-row flex-col items-center bg-white gap-4 py-4">
-          <li><a routerLink="" class="px-6 py-2 text-pink-500 font-medium  transition-all">Home</a></li>
-          <li><a routerLink="" class="px-6 py-2 font-medium hover:text-pink-500 transition-all">All Category</a></li>
-          <li><a routerLink="" class="px-6 py-2 font-medium hover:text-pink-500 transition-all">About</a></li>
-          <li><a routerLink="" class="px-6 py-2 font-medium hover:text-pink-500 transition-all">Contact</a></li>
+        <ul class="  flex md:flex-row flex-col items-center justify-center gap-4 ">
+          <li>
+
+            <a routerLink="" class="p-2.5 font-medium  transition-all  text-secondary dark:text-primary-dark dark:border-primary-dark border-b-2 border-secondary block"  >
+              <i class="fa-solid fa-house fa-fw  me-2"></i>
+              {{ 'navbar.home' | translate }}
+            </a>
+        </li>
+
+          <li><a routerLink="" class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
+            <i class="fa-solid fa-gift fa-fw me-2"></i>
+            {{ 'navbar.products' | translate }}</a></li>
+          <li><a routerLink="" class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
+            <i class="fa-solid fa-clipboard-list fa-fw me-2"></i>
+            {{ 'navbar.categories' | translate }}</a></li>
+          <li><a routerLink="" class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
+            <i class="fa-solid fa-cake-candles fa-fw me-2"></i>
+            {{ 'navbar.occasions' | translate }}</a></li>
+          <li><a routerLink="" class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
+            <i class="fas fa-headset  fa-fw me-2"></i>
+            {{ 'navbar.contact' | translate }}</a></li>
+          <li><a routerLink="" class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
+            <i class="fas fa-info-circle fa-fw me-2"></i>
+            {{ 'navbar.about' | translate }}</a></li>
         </ul>
       </div>
-      <ul class=" flex  items-center">
-        <li><button class=" py-2 px-2.5 "><i class="fa-solid fa-magnifying-glass text-pink-500 text-xl"></i></button>
+      <!-- <ul class=" flex  items-center">
+        <li><button class=" py-2 px-2.5 "><i class="fa-solid fa-magnifying-glass text-primary text-xl"></i></button>
         </li>
         @if(!isLoggedIn) {
           <li><button
-              class=" bg-pink-500 text-white rounded-circle text-white py-2 px-5 rounded-full text-base font-medium">login</button>
+              class=" bg-primary text-white rounded-circle text-white py-2 px-5 rounded-full text-base font-medium">login</button>
           </li>
 
         } @else {
-          <li><button class=" py-2 px-2.5 relative"><i class="fa-regular fa-heart text-pink-500 text-xl"></i>
+          <li>
+            <button class=" py-2 px-2.5 relative"><i class="fa-regular fa-heart text-primary text-xl"></i>
               <span
-                class="absolute top-0 right-0 bg-pink-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">2</span>
-            </button></li>
-          <li><button class=" py-2 px-2.5 relative"><i class="fa-solid fa-bag-shopping text-pink-500 text-xl"></i>
+                class="absolute top-0 right-0 bg-primary text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">2</span>
+            </button>
+          </li>
+          <li><button class=" py-2 px-2.5 relative"><i class="fa-solid fa-bag-shopping text-primary text-xl"></i>
               <span
-                class="absolute top-0 right-0 bg-pink-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">5</span>
+                class="absolute top-0 right-0 bg-primary text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">5</span>
             </button></li>
-          <li><button class=" py-2 px-2.5 relative"><i class="fa-regular fa-user text-pink-500 text-xl"></i>
+          <li><button class=" py-2 px-2.5 relative"><i class="fa-regular fa-user text-primary text-xl"></i>
 
             </button></li>
-          <li><button class=" py-2 px-2.5 relative md:hidden" (click)="toggleMenu()"><i class="fa-solid fa-bars text-pink-500 text-xl"></i>
+          <li><button class=" py-2 px-2.5 relative md:hidden" (click)="toggleMenu()"><i class="fa-solid fa-bars text-primary text-xl"></i>
 
             </button></li>
 
         }
-      </ul>
+      </ul> -->
     </div>
   </div>
 </nav>
+
+<div class="view-mobile bg-white fixed bottom-0 start-0">
+
+
+</div>
