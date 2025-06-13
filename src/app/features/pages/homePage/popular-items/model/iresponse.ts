@@ -1,7 +1,9 @@
+import { IItemProduct } from "../../../../../shared/components/ui/item-product/model/iitem-product"
+
 export interface IResponse {
    message: string
   metadata: Metadata
-  products: any[]
+  products: IItemProduct[]
 }
 
 interface Metadata {
