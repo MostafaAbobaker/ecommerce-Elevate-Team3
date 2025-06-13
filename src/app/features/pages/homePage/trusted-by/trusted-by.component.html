@@ -1,0 +1,38 @@
+<section class="trusted-section py-20 px-4">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="container mx-auto">
+      <div class="trusted-content bg-red-50 rounded-[20px] py-10 px-6">
+        <div class="title text-center mb-10">
+          <h2
+            class="text-primary-dark text-xl md:text-3xl text-center font-bold inline-table relative py-2.5 before:absolute before:top-full before:start-0 before:w-4/12 before:h-[2px] before:bg-primary"
+          >
+            Trusted by over <span class="text-secondary-light">4.5k+</span> companies
+          </h2>
+        </div>
+
+        <div
+          class="grid grid-cols-text1 2xl:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 gap-6 mt-20 md:mt-8 justify-center items-center text-center"
+        >
+          @for(image of trustedImages; track image) {
+          <img
+            src="../../../../assets/imgs/trusted/{{ image }}"
+            alt=""
+            class="text-center mx-auto"
+          />
+
+          }
+          <!--             <img src="../../../../assets/imgs/trusted/image40.svg" alt="" class="text-center mx-auto">
+
+            <img src="../../../../assets/imgs/trusted/image41.svg" alt="" class="text-center mx-auto">
+
+            <img src="../../../../assets/imgs/trusted/image38.svg" alt="" class="text-center mx-auto">
+
+            <img src="../../../../assets/imgs/trusted/image39.svg" alt="" class="text-center mx-auto">
+
+            <img src="../../../../assets/imgs/trusted/image37.svg" alt="" class="text-center mx-auto">
+ -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
