@@ -1,4 +1,4 @@
-export interface PopularItems {
+export interface IItemProduct {
   rateAvg: number
   rateCount: number
   _id: string

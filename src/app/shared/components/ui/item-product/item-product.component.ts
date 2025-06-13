@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PopularItems } from '../../../../features/pages/homePage/popular-items/model/popular-items';
+import { IItemProduct } from './model/iitem-product';
 
 @Component({
   selector: 'app-item-product',
@@ -11,5 +11,5 @@ import { PopularItems } from '../../../../features/pages/homePage/popular-items/
 export class ItemProductComponent {
 
   // @Input() item: IProduct = {} as IProduct;
-  @Input() popularItem: PopularItems = {} as PopularItems;
+  @Input() popularItem: IItemProduct = {} as IItemProduct;
 }
