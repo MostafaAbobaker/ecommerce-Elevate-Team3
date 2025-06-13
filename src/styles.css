@@ -1,26 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap'); */
 
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-    font-family: "Roboto", sans-serif;
+
+:root {
+        --primary: #A6252A;
+        --primary-light: #FBEAEA;
+        --primary-dark: #741C21;
+        --secondary: #FF668B;
+        --secondary-dark: #71717A;
+        --secondary-light: #E65073;
+        --shopping: #8C52FF;
 }
+
+html[dir="ltr"] body {
+  font-family: "Roboto", sans-serif;
+}
+
+html[dir="rtl"]  body{
+  /* font-family: "Zain", sans-serif; */
+  font-family: "Cairo", sans-serif;
+}
+
 
 .p-carousel-item-list  .p-carousel-item {
   padding: 8px !important;
 }
 .p-carousel-content .p-button-text.p-button-secondary {
-  background-color: rgba(248, 43, 169, 1);
+  background-color: var(--primary);
   color: #fff;
 
 }
 .p-carousel-content .p-button-text.p-button-secondary:not(:disabled):hover {
-  background-color:  color-mix(in srgb, rgba(248, 43, 169, 1), black 5%);
+  background-color:  color-mix(in srgb, var(--primary), black 5%);
 }
 .p-carousel-content-container .p-carousel-indicator-list {
   display: none;
+}
+
+.p-tablist-content .p-tab-active {
+      background: #fff;
+      border-color: var(--primary);
+      color: var(--primary);
+}
+.p-tablist-content .p-tablist-active-bar {
+      background: var(--primary);
+}
+
+html[dir="rtl"]  .fa-arrow-right-long {
+  transform: scale(-1);
 }
