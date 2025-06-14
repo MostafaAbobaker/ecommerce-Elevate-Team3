@@ -1,11 +1,12 @@
-<section class="categories-section py-10	px-4	">
+<section class="categories-section py-10	px-4 bg-white	dark:bg-zinc-800 dark:text-white ">
   <div class="max-w-screen-xl mx-auto">
     <div class="container mx-auto">
        <p-carousel
     [value]="categories"
       [numVisible]="5" [numScroll]="1"
     [responsiveOptions]="responsiveOptions"
-    [showIndicators]="false">
+    [showIndicators]="false"
+     class="dark:bg-zinc-700">
 
     <ng-template let-category #item>
         <app-category-card [category]="category" class=""></app-category-card>

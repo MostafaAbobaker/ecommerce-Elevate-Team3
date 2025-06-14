@@ -9,12 +9,16 @@
 
 :root {
         --primary: #A6252A;
+        --darkMode-primary: #D75458;
+
         --primary-light: #FBEAEA;
         --primary-dark: #741C21;
         --secondary: #FF668B;
+        --darkMode-secondary: #FFC2D0;
         --secondary-dark: #71717A;
         --secondary-light: #E65073;
         --shopping: #8C52FF;
+        --dark-shopping: #CD2E33;
 }
 body {
     font-family: "Roboto", sans-serif;
@@ -23,6 +27,9 @@ body {
 .p-carousel-item-list  .p-carousel-item {
   padding: 8px !important;
 }
+.dark .p-carousel-content .p-button-text.p-button-secondary {
+    background-color: var(--dark-shopping);
+}
 .p-carousel-content .p-button-text.p-button-secondary {
   background-color: var(--primary);
   color: #fff;
@@ -30,6 +37,9 @@ body {
 }
 .p-carousel-content .p-button-text.p-button-secondary:not(:disabled):hover {
   background-color:  color-mix(in srgb, var(--primary), black 5%);
+}
+.dark .p-carousel-content .p-button-text.p-button-secondary:not(:disabled):hover {
+  background-color:  color-mix(in srgb, var(--dark-shopping), black 5%);
 }
 .p-carousel-content-container .p-carousel-indicator-list {
   display: none;

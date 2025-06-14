@@ -17,9 +17,9 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 
 })
-export class TestPopularItemsComponent implements AfterViewInit, OnDestroy {
+export class TestPopularItemsComponent implements  OnDestroy {
   categories: Categories[] = [];
-  activeTap: string = '0';
+  activeTap!: string ;
   productsItems: IItemProduct[] = [];
   private getAllCategoriesService!: Subscription;
   private getPopularItemsService!: Subscription;
@@ -29,21 +29,16 @@ export class TestPopularItemsComponent implements AfterViewInit, OnDestroy {
     private _categoriesService: CategoriesService,
     private messageService: MessageService
   ) {}
-  ngOnDestroy(): void {
-    this.getAllCategoriesService.unsubscribe();
-    this.getPopularItemsService.unsubscribe();
-  }
-  ngAfterViewInit(): void {
+
+  /* ngAfterViewInit(): void {
     this.getPopularItems(this.activeTap);
-  }
+  } */
   ngOnInit() {
     this.getCategories();
   }
 
   getCategories() {
-    this.getAllCategoriesService = this._categoriesService
-      .getAllCategories()
-      .subscribe({
+    this.getAllCategoriesService = this._categoriesService.getAllCategories().subscribe({
         next: (res) => {
           this.categories = res.categories;
           if (this.categories.length > 0) {
@@ -53,7 +48,6 @@ export class TestPopularItemsComponent implements AfterViewInit, OnDestroy {
         },
         error: (err) => {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
-
         },
       });
   }
@@ -66,9 +60,13 @@ export class TestPopularItemsComponent implements AfterViewInit, OnDestroy {
           this.productsItems = res.products;
         },
         error: (err) => {
-                    this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
 
         },
       });
+  }
+  ngOnDestroy(): void {
+    this.getAllCategoriesService.unsubscribe();
+    this.getPopularItemsService.unsubscribe();
   }
 }
