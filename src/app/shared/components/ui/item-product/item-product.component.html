@@ -1,0 +1,68 @@
+<div class="card-product rounded-[20px] transition-all hover:shadow-lg group">
+  <div class="image bg-red-50 rounded-[20px] grid place-items-center relative">
+    <img [src]="popularItem.imgCover" alt="" class="rounded-[20px] h-[270px] w-full object-cover" />
+    <!-- Badge New, Out Of Stock ,Hot-->
+    <!-- @if(popularItem.slug == 'New'){
+    <span
+      class="bg-primary text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
+      >New</span>
+    } @else if (popularItem.slug == 'Out Of Stock') {
+    <span
+      class="bg-red-500 text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
+      >Out Of Stock</span
+    >
+    } @else if (popularItem.slug == 'Hot') {
+    <span
+      class="bg-cyan-500 text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
+      >Hot</span
+    >
+    }  -->
+
+    <!-- Over Lay -->
+    <div class="overlay absolute inset-0 bg-primary/60 dark:bg-secondary-light/60 flex justify-center items-center gap-4 rounded-[20px] z-10 opacity-0 group-hover:opacity-100 transition-all">
+       <!-- Detail Eye Icon -->
+      <a type="button"
+        class="cursor-pointer bg-primary text-white rounded-full p-2 w-[40px] h-[40px] grid place-items-center dark:bg-white dark:text-dark-shopping"><i
+          class="fa-regular fa-eye"></i></a>
+      <!-- Favorite Heart Icon -->
+      <button type="button" class="bg-primary text-white rounded-full p-2 w-[40px] h-[40px] dark:bg-white dark:text-dark-shopping">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </div>
+  </div>
+   <!-- Content -->
+  <div class="card-product-body p-4">
+    <!-- Title -->
+    <h5 class="text-primary text-[17px] font-semibold mb-[9px] line-clamp-1 dark:text-darkMode-secondary" [title]="popularItem.title">
+      {{ popularItem.title }}
+    </h5>
+    <div class="flex">
+      <div class="grow">
+        <!-- Rating -->
+        <div class="rating">
+          @for(star of [1, 2, 3, 4, 5]; track star) {
+          <i class="fa-regular fa-star text-amber-500" [ngClass]="{ 'fa-solid  ': star <= popularItem.rateAvg }"></i>
+          }
+        </div>
+        <!-- Price -->
+        <div class="price font-medium text-base">
+          <span class="new-price text-primary me-1.5 dark:text-darkMode-secondary">{{ popularItem.price | currency : "USD" }}
+          </span>
+          @if(popularItem.priceAfterDiscount) {
+          <span class="text-slate-300 dark:text-zinc-500">
+            <del>{{
+              popularItem.priceAfterDiscount | currency : "USD"
+              }}</del></span>
+          }
+        </div>
+      </div>
+      <!-- Add to Cart -->
+      <div class="shrink-0">
+        <button
+          class="bg-primary text-white rounded-full grid place-items-center w-[42px] dark:bg-dark-shopping h-[42px] dark:hover:bg-primary-dark  hover:bg-primary-dark hover:shadow-lg">
+          <i class="fa-solid fa-bag-shopping fa-fw"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

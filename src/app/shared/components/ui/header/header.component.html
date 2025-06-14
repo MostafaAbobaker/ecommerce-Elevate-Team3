@@ -1,0 +1,49 @@
+<header class="header px-4 bg-white dark:bg-zinc-800 dark:text-white">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="container mx-auto flex items-center justify-between">
+      <a routerLink="/" class="branding shrink-0">
+        <img src="../../../../../assets/imgs/logo.svg" alt="" class="w-[86px] h-[86px]">
+      </a>
+      <div class="search grow relative  mx-4">
+        <input type="search" name="" id="" class="border border-slate-300 bg-white rounded-xl py-3.5 w-full ps-[42px] pe-4 dark:bg-zinc-700 dark:border-zinc-600  focus:outline-none " placeholder="What awesome gift are you looking for?..">
+        <i class="fa-solid fa-magnifying-glass absolute top-2/4 -translate-y-2/4 text-gray-400 start-4"></i>
+      </div>
+      <div class="hidden md:block">
+        <ul class="flex items-center">
+          <li>
+            <a  class="py-2 px-4  text-base dark:text-white border-e dark:border-zinc-600 py-3.5 me-2.5 text-slate-700"><i class="fa-regular fa-user fa-fw"></i> login</a>
+          </li>
+          <li>
+            <button class=" py-2 px-2 relative dark:text-white text-slate-700"><i class="fa-regular fa-heart text-xl fa-fw"></i>
+              <span
+                class="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">2</span>
+            </button>
+          </li>
+          <li><button class=" py-2 px-2 relative dark:text-white text-slate-700"><i class="fa-solid fa-bag-shopping text-xl fa-fw"></i>
+              <span
+                class="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">5</span>
+            </button></li>
+          <li ><button class=" py-2 px-2  relative dark:text-white  text-slate-700"><i class="fa-regular fa-bell text-xl fa-fw"></i>
+             <span
+                class="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">5</span>
+
+            </button></li>
+              <li >
+                @if(darkMode) {
+                  <button class=" py-2 px-2.5  relative dark:text-white  text-slate-700" (click)="setTheme('light')"><i class="fa-solid fa-sun fa-fw"></i></button>
+
+                } @else {
+
+                  <button class=" py-2 px-2.5  relative dark:text-white  text-slate-700" (click)="setTheme('dark')"><i class="fa-solid fa-moon fa-fw"></i></button>
+                }
+              </li>
+            <li>
+            <a  class="py-2 px-4  text-slate-700 dark:text-white text-base border-s dark:border-zinc-600 py-3.5 ms-2.5"> العربية</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</header>
+

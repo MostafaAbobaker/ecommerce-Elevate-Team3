@@ -1,0 +1,12 @@
+<div class="w-[217px] h-[122px] rounded-3xl p-4 bg-primary-light dark:bg-zinc-700">
+  <div class="  flex justify-around items-center h-full ">
+    <!-- bg-background-rose invert -->
+    <div class="p-4 bg-primary w-20 h-20 rounded-full dark:bg-darkMode-secondary">
+      <img [src]="category.image" alt="Category Image" class="text-white w-12 h-12 invert brightness-0">
+    </div>
+    <div>
+      <h3 class="text-primary-dark font-medium	dark:text-darkMode-secondary  text-lg capitalize">{{ category.name.slice(0, 6) }}</h3>
+      <h4 class="text-secondary-dark text-l dark:text-zinc-300">{{category.productsCount}} Item</h4>
+    </div>
+  </div>
+</div>

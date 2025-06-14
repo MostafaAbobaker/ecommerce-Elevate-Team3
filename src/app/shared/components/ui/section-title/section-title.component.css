@@ -1,0 +1,23 @@
+/* .section-title:before {
+  content: "";
+  position: absolute;
+  width: 45px;
+  height: 20px;
+  bottom: -7px;
+  left: 0;
+  z-index: 1;
+  border-bottom: 2px solid #F82BA9;
+}
+
+.section-title:after {
+  content: "";
+  background-color: #FEEDF7;
+  position: absolute;
+  width: 120px;
+  height: 20px;
+  bottom: -7px;
+  left: 0;
+  z-index: -1;
+  border-radius: 0 10px 10px 0;
+}
+ */
