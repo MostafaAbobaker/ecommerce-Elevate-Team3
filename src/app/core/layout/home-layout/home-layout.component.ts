@@ -3,8 +3,8 @@ import { NavbarComponent } from '../../../shared/components/ui/navbar/navbar.com
 import { FooterComponent } from "../../../shared/components/ui/footer/footer.component";
 import { DatePickerModule } from 'primeng/datepicker';
 import { FormsModule } from '@angular/forms';
-import { SpecialGiftsComponent } from "../../../features/pages/special-gifts/special-gifts.component";
-import { FeaturesComponent } from "../../../features/pages/features/features.component";
+import { SpecialGiftsComponent } from "../../../features/pages/homePage/special-gifts/special-gifts.component";
+import { FeaturesComponent } from "../../../features/pages/homePage/features/features.component";
 import { CategoriesComponent } from '../../../features/pages/homePage/categories/categories.component';
 import { TrustedByComponent } from '../../../features/pages/homePage/trusted-by/trusted-by.component';
 import { GalleryComponent } from '../../../features/pages/homePage/gallery/gallery.component';
