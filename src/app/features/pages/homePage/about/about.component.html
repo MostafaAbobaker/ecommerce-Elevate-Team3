@@ -1,20 +1,22 @@
-
-<section class="about-section py-10 px-4">
+<section class="about-section py-10 px-4 dark:bg-zinc-800 dark:text-white bg-white">
   <div class="max-w-screen-xl mx-auto">
     <div class="container mx-auto">
       <div class="flex flex-wrap    gap-4">
         <div class="md:w-full lg:w-6/12 xl:w-5/12  py-[24px] ps-[27px]">
           <div class="flex  gap-2">
-            <div class="shrink-0 image row-span-2 col-span-3 rounded-tl-[50px] rounded-bl-[120px] rounded-r-[120px] relative isolate h-[220px] lg:h-[350px] w-[200px] lg:w-[300px]
-            before:absolute before:border-4 before:border-pink-500 before:w-[90%] before:h-[105%] before:-left-4 before:-top-4 before:-z-10 before:rotate-[4deg] before:rounded-tl-[50px] before:rounded-bl-[120px] before:rounded-r-[120px]">
-              <img src="../../../../assets/imgs/about/1.png" alt="" class=" w-full h-full rounded-tl-[50px] rounded-bl-[120px] rounded-r-[120px] object-cover">
+            <div
+              class="shrink-0 image row-span-2 col-span-3 rounded-tl-[50px] rounded-bl-[120px] rounded-r-[120px] relative isolate h-[220px] lg:h-[350px] w-[200px] lg:w-[300px]
+            before:absolute before:border-4 before:border-pink-500 dark:before:border-darkMode-secondary before:w-[90%] before:h-[105%] before:-left-4 before:-top-4 before:-z-10 before:rotate-[4deg] before:rounded-tl-[50px] before:rounded-bl-[120px] before:rounded-r-[120px]">
+              <img src="../../../../assets/imgs/about/1.png" alt=""
+                class=" w-full h-full rounded-tl-[50px] rounded-bl-[120px] rounded-r-[120px] object-cover">
             </div>
             <div class="shrink-0  ">
               <div class="image w-[125px] lg:w-[200px] h-[125px]  lg:h-[200px]  rounded-full mb-[20px]">
                 <img src="../../../../assets/imgs/about/2.png" alt="" class="w-full h-full rounded-full object-cover">
               </div>
               <div class="image w-[125px] lg:w-[200px]  h-[90px]  lg:h-[150px]   rounded-r-[100px] rounded-l-[50px] ">
-                <img src="../../../../assets/imgs/about/3.png" alt="" class="w-full h-full rounded-r-[100px] rounded-l-[50px] object-cover">
+                <img src="../../../../assets/imgs/about/3.png" alt=""
+                  class="w-full h-full rounded-r-[100px] rounded-l-[50px] object-cover">
               </div>
 
             </div>
@@ -22,15 +24,22 @@
         </div>
         <!-- <div class="xl:col-span-1"></div> -->
         <div class="md:w-full lg:w-5/12 xl:w-6/12 lg:ps-[40px] xl:ps-[80px]">
+          <h6 class="text-secondary text-[17px] font-bold mb-7 uppercase tracking-widest dark:text-darkMode-primary">
+            {{'about-us.title.about-us' | translate}}</h6>
+          <h3
+            class="text-primary-dark text-xl md:text-3xl text-balance font-bold mb-2 capitalize dark:text-darkMode-secondary">
+            {{'about-us.title.we-provide' | translate}}  <span
+              class="text-secondary-light dark:text-darkMode-primary">{{'about-us.title.gifts-box' | translate}} </span>
+            {{'about-us.title.product-for' | translate}}</h3>
+          <p class="text-gray-500 font-normal mb-6 dark:text-zinc-400">{{'about-us.description' | translate}}</p>
+          <button
+            class="bg-primary text-white mb-6 rounded-[10px] py-2.5 px-5 hover:bg-primary-dark hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary">{{'about-us.discover-more'
+            | translate}}  <i class="fa-solid fa-arrow-right-long ms-[5px]"></i></button>
 
-          <h6 class="text-secondary text-[17px] font-bold mb-7 uppercase tracking-widest">{{'about-us.title.about-us' | translate}}</h6>
-          <h3 class="text-primary-dark text-xl md:text-3xl text-balance font-bold mb-2 capitalize">{{'about-us.title.we-provide' | translate}}  <span class="text-secondary-light">{{'about-us.title.gifts-box' | translate}} </span> {{'about-us.title.product-for' | translate}}</h3>
-          <p class="text-gray-500 font-normal mb-6">{{'about-us.description' | translate}}</p>
-          <button class="bg-primary text-white mb-6 rounded-[10px] py-2.5 px-5 hover:bg-primary-dark hover:shadow-lg transition-all">{{'about-us.discover-more' | translate}}  <i class="fa-solid fa-arrow-right-long ms-[5px]"></i></button>
           <ul class="flex flex-wrap gap-5">
             @for(item of aboutInfo; track item; let i = $index) {
-               <li class="flex items-center md:w-2/5" >
-              <i class="fa-solid fa-check text-primary mr-2 fa-2x"></i>
+            <li class="flex items-center md:w-2/5">
+              <i class="fa-solid fa-check text-primary mr-2 fa-2x dark:text-darkMode-secondary"></i>
               <span class="text-xs font-medium">{{item}}</span>
             </li>
             }
