@@ -6,10 +6,11 @@ import { MessageService } from 'primeng/api';
 import { ItemProductComponent } from '../../../../shared/components/ui/item-product/item-product.component';
 import { IProduct } from '../../../interfaces/iproduct';
 import { BestSellerService } from './services/best-seller.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-best-seller',
-  imports: [CommonModule, ItemProductComponent, CarouselModule, ToastModule],
+  imports: [CommonModule, ItemProductComponent, CarouselModule, ToastModule, TranslatePipe],
   templateUrl: './best-seller.component.html',
   styleUrl: './best-seller.component.css',
   providers: [MessageService]
