@@ -1,0 +1,24 @@
+{
+  "noFound": "No Data Found",
+  "header":{
+    "login":"Login",
+    "hello":"Hello",
+    "searchInput":"What awesome gift are you looking for?"
+  },
+  "navbar":{
+    "home":"Home",
+    "products":"Products",
+    "categories":"Categories",
+    "occasions":"Occasions",
+    "contact":"Contact",
+    "about":"About"
+  },
+  "bestSeller":{
+    "smallTitle":"Premium Gifts",
+    "mainTitle":"Pest Seller gifts and products",
+    "btnText":"Explore gifts"
+  },
+  "mostPopular":{
+    "title":"Most Popular "
+  }
+}

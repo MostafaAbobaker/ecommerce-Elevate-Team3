@@ -4,6 +4,11 @@ module.exports = {
   darkMode:'class',
   theme: {
     extend: {
+      fontFamily:{
+        // 'fontAr':['Zain', 'sans-serif'],
+        'fontAr':['Cairo', 'sans-serif'],
+        'fontEn':['Roboto', 'sans-serif'],
+      },
       colors: {
         /* 'primary-heading-pink-color': '#F82BA9',
         'primary-heading-black-color': '#160E4B',

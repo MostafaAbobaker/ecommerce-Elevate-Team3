@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap'); */
 
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -19,11 +20,17 @@
         --secondary-light: #E65073;
         --shopping: #8C52FF;
         --dark-shopping: #CD2E33;
+        --fontAr:"Zain", sans-serif;
+        --fontEn:"Roboto", sans-serif;
 }
-body {
+html[dir="ltr"] body {
     font-family: "Roboto", sans-serif;
 }
+html[dir="rtl"]  body{
+  /* font-family: "Zain", sans-serif; */
+  font-family: "Cairo", sans-serif;
 
+}
 .p-carousel-item-list  .p-carousel-item {
   padding: 8px !important;
 }
@@ -52,4 +59,9 @@ body {
 }
 .p-tablist-content .p-tablist-active-bar {
       background: var(--primary);
+}
+
+
+html[dir="rtl"]  .fa-arrow-right-long {
+  transform: scale(-1);
 }

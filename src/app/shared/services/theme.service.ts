@@ -10,7 +10,7 @@ export class ThemeService {
 
 
 
- constructor() {
+constructor() {
   if (typeof window !== 'undefined' && window.localStorage) {
     const savedTheme = localStorage.getItem(this.THEME_KEY);
     if (savedTheme) {

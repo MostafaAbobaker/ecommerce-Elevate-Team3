@@ -8,10 +8,11 @@ import { popularItemService } from './service/popular-item.service';
 import { Subscription } from 'rxjs';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-popular-items',
-  imports: [SectionTitleComponent, ItemProductComponent,ToastModule],
+  imports: [SectionTitleComponent, ItemProductComponent,ToastModule,TranslatePipe,TranslateModule],
   templateUrl: './popular-items.component.html',
   styleUrl: './popular-items.component.css',
   providers: [MessageService]
