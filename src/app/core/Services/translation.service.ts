@@ -55,13 +55,15 @@ export class TranslationService {
 
   // Change the direction of the application based on the language
   changeDirection(lang: string): void {
-    if(lang == 'ar') {
-      document.documentElement.setAttribute('dir', 'rtl');
-      // document.documentElement.dir = 'ltr';
-      // document.documentElement.lang = 'ltr';
+    if(typeof window !== 'undefined'){
+      if(lang == 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        // document.documentElement.dir = 'ltr';
+        // document.documentElement.lang = 'ltr';
 
-    }else {
-      document.documentElement.setAttribute('dir', 'ltr');
+      }else {
+        document.documentElement.setAttribute('dir', 'ltr');
+      }
     }
   }
 }
