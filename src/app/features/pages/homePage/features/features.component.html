@@ -1,16 +1,20 @@
-<section class="bg-white py-1 px-4 dark:bg-zinc-800 dark:text-white">
-    <div
-        class="md:flex md:justify-between bg-[#FEEDF7] rounded-2xl my-5 p-5 dark:bg-zinc-700 dark:text-white dark:shadow-md">
-        @for (item of Features; track $index) {
-        <div class="md:flex md:justify-around items-center gap-2">
-            <div class="p-4 bg-primary w-15 h-15 rounded-full dark:bg-darkMode-secondary">
-                <img [src]="item.image" [alt]="item.name" class="text-white w-8 h-8 invert brightness-0">
-            </div>
-            <div>
-                <h2 class="dark:font-bold dark:text-darkMode-secondary">{{item.name}}</h2>
-                <p class="text-[#757F95] dark:text-zinc-300">{{item.description}}</p>
+<section class="special-gifts-section py-5 bg-white	px-4	dark:bg-zinc-800 dark:text-white">
+    <div class="max-w-screen-xl mx-auto">
+        <div class="container mx-auto">
+            <div
+                class="md:flex md:justify-between bg-primary-light rounded-2xl p-5 dark:bg-zinc-700 dark:text-white dark:shadow-md">
+                @for (item of Features; track $index) {
+                <div class="md:flex md:justify-around items-center gap-2">
+                    <div class="p-4 bg-primary w-15 h-15 rounded-full dark:bg-darkMode-secondary">
+                        <img [src]="item.image" [alt]="item.name" class="text-white w-8 h-8 invert brightness-0">
+                    </div>
+                    <div>
+                        <h2 class="text-primary-dark font-medium dark:text-darkMode-secondary text-lg capitalize">{{item.name}}</h2>
+                        <p class="text-secondary-dark text-l dark:text-zinc-300">{{item.description}}</p>
+                    </div>
+                </div>
+                }
             </div>
         </div>
-        }
     </div>
 </section>

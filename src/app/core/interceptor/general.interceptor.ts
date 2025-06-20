@@ -1,20 +1,41 @@
-import { HttpInterceptorFn, HttpRequest } from '@angular/common/http';
+import { HttpInterceptorFn } from '@angular/common/http';
+import { LoadingService } from '../services/loading.service';
+import { inject } from '@angular/core';
+import { finalize } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
-export const generalInterceptor: HttpInterceptorFn = (req, next) => {
-  // Call Environment base URL
-  const baseUrl: string = environment.apiUrl;
+export const globalInterceptor: HttpInterceptorFn = (req, next) => {
+  const loadingService = inject(LoadingService);
+  const baseUrl = environment.apiUrl;
 
+  // Show loader
+  loadingService.show();
 
-  // Inject base URL In Request
-  const modifiedReq: HttpRequest <unknown> = req.clone({
-    url: `${baseUrl}${req.url}`,
-    /** *
-      setHeaders:{
-        // Set the language header from localStorage or default to 'en'
-        // language: localStorage.getItem('lng') || 'en',
+  // Get token from localStorage
+  // const token = localStorage.getItem('userToken');
+  const token = typeof window !== 'undefined' ? window.localStorage.getItem('userToken') : null;
+
+  // Clone the request and add token if it exists
+  if (token) {
+
+    req = req.clone({
+      url: `${baseUrl}${req.url}`,
+      setHeaders: {
+        Authorization: `Bearer ${token}`
       }
-    * **/
-  });
-  return next(modifiedReq);
+    });
+  } else {
+
+    req = req.clone({
+      url: `${baseUrl}${req.url}`,
+    });
+  }
+
+  // Process the request and handle the loader
+  return next(req).pipe(
+    finalize(() => {
+      // Hide loader after request completes (success or error)
+      loadingService.hide();
+    })
+  );
 };
