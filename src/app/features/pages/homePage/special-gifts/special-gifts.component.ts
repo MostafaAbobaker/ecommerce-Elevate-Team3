@@ -17,7 +17,7 @@ export class SpecialGiftsComponent {
     pullDrag: false,
     dots: true,
     navSpeed: 500,
-    navText: ['<img src="../../../../assets/imgs/Special-gifts/left.png" class="w-[10px]" />', '<img src="../../../../assets/imgs/Special-gifts/right.png" class="w-[10px]" />'],
+    navText: ['<img src="assets/imgs/Special-gifts/chevron-left.png" class="w-[20px]" />', '<img src="assets/imgs/Special-gifts/chevron-right.png" class="w-[20px]" />'],
     responsive: {
       0: {
         items: 1
@@ -29,21 +29,17 @@ export class SpecialGiftsComponent {
   // SpecialGift
   SpecialGift: ISpecialGift[] = [
     {
-      image: '../../../../assets/imgs/Special-gifts/SpecialGift(1).jpg',
+      image: '../../../../assets/imgs/Special-gifts/SpecialGift(1).png',
       title: 'SpecialGift(1)'
     },
     {
-      image: '../../../../assets/imgs/Special-gifts/SpecialGift(2).jpg',
+      image: '../../../../assets/imgs/Special-gifts/SpecialGift(2).png',
       title: 'SpecialGift(2)'
     },
     {
-      image: '../../../../assets/imgs/Special-gifts/SpecialGift(3).jpg',
+      image: '../../../../assets/imgs/Special-gifts/SpecialGift(3).png',
       title: 'SpecialGift(3)'
     },
-    {
-      image: '../../../../assets/imgs/Special-gifts/SpecialGift(4).jpg',
-      title: 'SpecialGift(4)'
-    }
   ]
 
 
@@ -51,21 +47,18 @@ export class SpecialGiftsComponent {
   Special: ISpecial[] = [
     {
       image: '../../../../assets/imgs/Special-gifts/special-gift-1.png',
-      name: 'Gifts Box',
-      description: 'Awesome Gifts Box Collectons',
-      btn: 'Shop Now'
+      name: 'Celebrate Her Forever with a Gift She’ll Always Remember',
+      btn: 'Wedding'
     },
     {
       image: '../../../../assets/imgs/Special-gifts/special-gift-2.png',
-      name: 'Occasion Gifts',
-      description: 'Best Occasion Gifts Collections',
-      btn: 'Discover Now'
+      name: 'Honor the Beginning of a Beautiful Journey Together',
+      btn: 'Engagement'
     },
     {
       image: '../../../../assets/imgs/Special-gifts/special-gift-3.png',
-      name: 'Occasion Gifts',
-      description: 'Combo Sets Gift Box Up To 50% Off',
-      btn: 'Discover Now'
+      name: 'Mark Every Year of Love with a Meaningful Surprise',
+      btn: 'Anniversary'
     }
   ]
 

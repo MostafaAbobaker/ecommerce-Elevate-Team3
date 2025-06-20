@@ -5,6 +5,5 @@ export interface ISpecialGift {
 export interface ISpecial {
     image: string,
     name: string,
-    description: string,
     btn: string
 }

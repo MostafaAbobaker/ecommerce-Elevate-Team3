@@ -1,13 +1,13 @@
-<section class="px-4">
+<section class="py-1 bg-white	px-4	dark:bg-zinc-800 dark:text-white">
     <div class="md:flex my-5">
         <div class="w-full my-3 md:m-0 md:w-1/4 relative flex items-end">
             <img src="../../../../assets/imgs/Special-gifts/SpecialGift-1.png"
-                class="md:h-[400px] w-full md:w-72 object-cover rounded-2xl" alt="grocery-banner">
+                class="md:h-[400px] w-full md:w-72 object-cover dark:bg-gray-100 dark:opacity-70 rounded-2xl"
+                alt="grocery-banner">
             <div class="absolute top-[40%] md:top-[50%]  ps-5 w-[70%] md:w-full">
-                <p class="text-[#F82BA9] uppercase tracking-[.3em]">Start $10.99</p>
-                <h2 class="text-[#160E4B] font-bold my-5 md:my-3 text-3xl md:text-2xl">Special Gifts Box For Your Love
-                </h2>
-                <button class="bg-[#F82BA9] text-white px-3 py-1 rounded-2xl mb-3">Shop Now <i
+                <p class="bg-[#FBEAEA] text-[#741C21] rounded-2xl w-48 text-center">Staring from 10.99 EGP</p>
+                <h3 class="text-white md:my-3 text-[26px]">Special Gifts For The People You Love</h3>
+                <button class="bg-[#FBEAEA] text-[#741C21] p-3 w-32 rounded-2xl">Shop Now <i
                         class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
@@ -15,33 +15,27 @@
             <owl-carousel-o [options]="customOptions">
                 @for (img of SpecialGift; track $index) {
                 <ng-template carouselSlide class="relative">
-                    <img [src]="img.image" class="h-[400px] object-cover rounded-2xl" [alt]="img.title">
-                    <div class="absolute top-10 left-10 z-10 md:w-[35%]">
-                        <h2 class="font-bold text-[#F82BA9] uppercase mt-3">Best Gift Shop</h2>
-                        <p class="text-[#160E4B] font-bold my-5 text-4xl">Choose Perfect
-                            <span class="text-[#F82BA9]">Gifts</span> From Us
-                        </p>
-                        <p class="text-[#160E4B]">Culpa ducimus nesciunt aliquam non rerum esse recusandae omnis. Rerum
-                            optio dolores et.</p>
-                        <button class="bg-[#F82BA9] text-white px-3 py-1 rounded-2xl mt-10">Shop Now <i
-                                class="fa-solid fa-arrow-right"></i></button>
+                    <img [src]="img.image" class="h-[400px] object-cover dark:bg-gray-100 dark:opacity-70 rounded-2xl"
+                        [alt]="img.title">
+                    <div class="absolute bottom-10 left-10 z-10 md:w-[35%]">
+                        <h2 class="mt-3 text-2xl text-white">Say It with Flowers</h2>
+                        <p class="text-white mt-3">Elegant gifts for every special moment. </p>
+                        <button class="bg-[#FBEAEA] text-[#741C21] p-3 w-32 rounded-2xl mt-5">I’m buying!</button>
                     </div>
                 </ng-template>
                 }
             </owl-carousel-o>
-
         </div>
     </div>
 
     <div class="md:flex md:justify-between md:gap-8 my-5">
         @for (item of Special; track $index) {
         <div class="flex items-center justify-center my-3">
-            <div class="flex justify-center items-center text-center md:text-end relative">
+            <div class="flex justify-center relative">
                 <img [src]="item.image" [alt]="item.name" class="rounded-2xl">
-                <div class="absolute w-52 md:left-[40%] p-3">
-                    <h2 class="font-bold text-[#F82BA9]">{{item.name}}</h2>
-                    <p class="text-[#160E4B] font-bold my-3">{{item.description}}</p>
-                    <button class="bg-[#F82BA9] text-white px-3 py-1 rounded-2xl">{{item.btn}}</button>
+                <div class="absolute md:left-5 md:bottom-0 p-3">
+                    <button class="bg-[#FBEAEA] text-[#741C21] w-32 rounded-2xl my-2">{{item.btn}}</button>
+                    <h2 class="text-white w-64">{{item.name}}</h2>
                 </div>
             </div>
         </div>

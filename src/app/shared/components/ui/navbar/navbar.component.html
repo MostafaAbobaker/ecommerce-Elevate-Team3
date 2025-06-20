@@ -4,32 +4,39 @@
       <!-- <a routerLink="/" class="branding shrink-0">
         <img src="../../../../../assets/imgs/logo.svg" alt="" class="w-[86px] h-[86px]">
       </a> -->
-      <div class=" md:block  md:relative" [class]="isMenuOpen? 'block fixed top-[88px] start-0 h-dvh w-full bg-black/75 z-10':'hidden'" >
+      <div class=" md:block  md:relative"
+        [class]="isMenuOpen? 'block fixed top-[88px] start-0 h-dvh w-full bg-black/75 z-10':'hidden'">
 
         <ul class="  flex md:flex-row flex-col items-center justify-center gap-4 ">
           <li>
 
-            <a routerLink="" class="p-2.5 font-medium  transition-all  text-secondary dark:text-primary-dark dark:border-primary-dark border-b-2 border-secondary block"  >
+            <a routerLink=""
+              class="p-2.5 font-medium  transition-all  text-secondary dark:text-primary-dark dark:border-primary-dark border-b-2 border-secondary block">
               <i class="fa-solid fa-house fa-fw  me-2"></i>
-              Home
+              {{'home'| translate}}
             </a>
-        </li>
+          </li>
 
-          <li><a routerLink="" class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
-            <i class="fa-solid fa-gift fa-fw me-2"></i>
-            Products</a></li>
-          <li><a routerLink="" class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
-            <i class="fa-solid fa-clipboard-list fa-fw me-2"></i>
-            Categories</a></li>
-          <li><a routerLink="" class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
-            <i class="fa-solid fa-cake-candles fa-fw me-2"></i>
-            Occasions</a></li>
-          <li><a routerLink="" class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
-            <i class="fas fa-headset  fa-fw me-2"></i>
-            Contact</a></li>
-          <li><a routerLink="" class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
-            <i class="fas fa-info-circle fa-fw me-2"></i>
-            About</a></li>
+          <li><a routerLink=""
+              class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
+              <i class="fa-solid fa-gift fa-fw me-2"></i>
+              Products</a></li>
+          <li><a routerLink=""
+              class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
+              <i class="fa-solid fa-clipboard-list fa-fw me-2"></i>
+              Categories</a></li>
+          <li><a routerLink=""
+              class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
+              <i class="fa-solid fa-cake-candles fa-fw me-2"></i>
+              Occasions</a></li>
+          <li><a routerLink=""
+              class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
+              <i class="fas fa-headset  fa-fw me-2"></i>
+              Contact</a></li>
+          <li><a routerLink=""
+              class="p-2.5 font-medium dark:text-zinc-800 dark:hover:text-primary-dark transition-all text-white block hover:text-secondary">
+              <i class="fas fa-info-circle fa-fw me-2"></i>
+              About</a></li>
         </ul>
       </div>
       <!-- <ul class=" flex  items-center">

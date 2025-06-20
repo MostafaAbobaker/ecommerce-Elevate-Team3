@@ -63,14 +63,14 @@ body {
 
 .owl-theme .owl-nav {
   position: absolute;
-  bottom: 30px;
-  right: 50px;
+  bottom: 20px;
+  right: 20px;
 }
 
 .owl-theme .owl-dots {
   position: absolute;
-  bottom: 10px;
-  left: 40%;
+  top: 20px;
+  right: 20px;
 }
 
 .owl-theme .owl-nav [class*=owl-] {
@@ -81,10 +81,10 @@ body {
 }
 
 .owl-theme .owl-dots .owl-dot span {
-  background-color: #F82BA9;
+  background-color: #fff;
 }
 
 .owl-theme .owl-dots .owl-dot.active span {
-  background-color: #F82BA9;
+  background-color: var(--primary);
   width: 30px;
 }
