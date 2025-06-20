@@ -1,3 +1,66 @@
 {
-    "home":"Home"
+  "header": {
+    "login": "Login",
+    "language": "English",
+    "placeholder-input-header": "What awesome gift are you looking for?.."
+  },
+  "navbar": {
+    "home": "Home",
+    "products": "Products",
+    "categories": "Categories",
+    "occasions": "Occasions",
+    "contact": "Contact",
+    "about": "About"
+  },
+  "bestsellers":{
+    "title": {
+      "premium-gifts": "Premium Gifts",
+      "best": "Best",
+      "seller": "Seller",
+      "gifts": "Gifts",
+      "and-products": "and products"
+    },
+    "description": "Discover our hand-picked selection of premium gifts and best-selling products perfect for every occasion. From elegant accessories to thoughtful surprises, our collection is crafted to impress.",
+    "explore-more": "Explore More"
+  },
+  "section-title" : {
+    "most-popular": "Most Popular",
+    "our-gallery": "Our Gallery"
+  },
+  "notFound": {
+    "title": "No Data Found !"
+  },
+  "about-us": {
+    "title": {
+      "about-us": "About Us",
+      "we-provide" : "We Provide Best And Quality",
+      "gifts-box": "Gifts Box",
+      "product-for": "Product For You"
+    },
+    "description": "Discover our hand-picked selection of premium gifts and best-selling products perfect for every occasion. From elegant accessories to thoughtful surprises, our collection is crafted to impress.",
+    "discover-more": "Discover More"
+  },
+  "trusted-by": {
+    "trusted": "Trusted by over",
+    "companies": "Companies"
+  },
+  "footer": {
+    "links": {
+      "about-us": "About Us",
+      "store-location": "Store Location",
+      "contact": "Contact",
+      "delivery": "Delivery",
+      "policy": "Policy",
+      "FAQS": "FAQS"
+    },
+    "title": {
+      "get": "Get",
+      "discount": "Off Discount Coupon",
+      "subscribe": "By Subscribe Our Newsletter"
+    },
+    "subscribe": {
+      "placeholder-input": "Enter Your Email",
+      "subscribe-button": "Subscribe"
+    }
+  }
 }

@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslationService} from '../../../../core/Services/translation.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [
+    TranslatePipe
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit {
-  darkMode!: boolean
+export class HeaderComponent implements OnInit{
+  private readonly translationService: TranslationService = inject(TranslationService);
+
+  // Dark Mode Toggle
+  darkMode!:boolean;
+  isOpen: boolean = false;
 
   language = localStorage.getItem('lang')!;
   constructor(private _themeService: ThemeService, private translate: TranslateService) {
@@ -38,5 +45,15 @@ export class HeaderComponent implements OnInit {
   setTheme(name: string) {
     this._themeService.setTheme(name);
     this.darkMode = !this.darkMode;
+  }
+
+  dropDownLang(): void{
+    this.isOpen = !this.isOpen;
+  }
+
+  changeLanguage(lang: string): void{
+    this.translationService.changeLang(lang);
+    this.isOpen = !this.isOpen;
+    console.log(`Language changed to: ${lang}`);
   }
 }

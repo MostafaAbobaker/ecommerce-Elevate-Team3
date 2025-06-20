@@ -88,3 +88,7 @@ body {
   background-color: var(--primary);
   width: 30px;
 }
+
+html[dir="rtl"]  .fa-arrow-right-long {
+  transform: scale(-1);
+}

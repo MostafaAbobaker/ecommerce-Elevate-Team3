@@ -1,0 +1,451 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ecommerce-elevate-team5 documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ecommerce-elevate-team5 documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MainCardComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/ui/main-card/main-card.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-main-card</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CardModule</code>
+                            <code>ButtonModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./main-card.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./main-card.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#popularItem" >popularItem</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="popularItem"></a>
+                        <b>popularItem</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>PopularItems</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{} as PopularItems</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/shared/components/ui/main-card/main-card.component.ts:14</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, Input} from &#x27;@angular/core&#x27;;
+import { CardModule } from &#x27;primeng/card&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import {PopularItems} from &#x27;../../../../features/home page/popular-items/model/popular-items&#x27;;
+
+@Component({
+  selector: &#x27;app-main-card&#x27;,
+  imports: [CardModule, ButtonModule],
+  templateUrl: &#x27;./main-card.component.html&#x27;,
+  styleUrl: &#x27;./main-card.component.css&#x27;
+})
+export class MainCardComponent {
+
+  @Input() popularItem: PopularItems &#x3D; {} as PopularItems;
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!--
+&lt;div class&#x3D;&quot;cursor-pointer overflow-hidden group w-72&quot;&gt;
+  &lt;div class&#x3D;&quot;bg-background-pink rounded-2xl relative h-60 items-center justify-center flex&quot;&gt;
+    &lt;img [src]&#x3D;&quot;popularItem.imgCover&quot; alt&#x3D;&quot;Image Card&quot; class&#x3D;&quot;rounded-2xl w-52 h-52 object-cover m-auto&quot;/&gt;
+
+    &lt;!-- Over Lay --&gt;
+    &lt;div class&#x3D;&quot;bg-background-rose/70 rounded-2xl absolute inset-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-in-out&quot;&gt;
+      &lt;div class&#x3D;&quot;absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-12 icon&quot;&gt;
+        &lt;!-- Eye Icon --&gt;
+        &lt;button class&#x3D;&quot;relative bg-background-rose p-2 rounded-full&quot;&gt;
+          &lt;!-- Big Circle --&gt;
+          &lt;svg width&#x3D;&quot;30&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 30 24&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+            &lt;path d&#x3D;&quot;M11.0001 2.04676C12.2935 1.63583 13.643 1.42891 15.0001 1.43342C20.5761 1.43342 24.3707 4.76676 26.6334 7.70542C27.7667 9.18009 28.3334 9.91476 28.3334 12.1001C28.3334 14.2868 27.7667 15.0214 26.6334 16.4948C24.3707 19.4334 20.5761 22.7668 15.0001 22.7668C9.42408 22.7668 5.62941 19.4334 3.36675 16.4948C2.23341 15.0228 1.66675 14.2854 1.66675 12.1001C1.66675 9.91342 2.23341 9.17876 3.36675 7.70542C4.05808 6.80252 4.82774 5.96237 5.66675 5.19476&quot; stroke&#x3D;&quot;white&quot; stroke-width&#x3D;&quot;2&quot; stroke-linecap&#x3D;&quot;round&quot;/&gt;
+          &lt;/svg&gt;
+          &lt;!-- Small Circle --&gt;
+          &lt;div class&#x3D;&quot;absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2&quot;&gt;
+            &lt;svg width&#x3D;&quot;10&quot; height&#x3D;&quot;11&quot; viewBox&#x3D;&quot;0 0 10 11&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+              &lt;path d&#x3D;&quot;M9 5.1001C9 6.16096 8.57857 7.17838 7.82843 7.92853C7.07828 8.67867 6.06087 9.1001 5 9.1001C3.93913 9.1001 2.92172 8.67867 2.17157 7.92853C1.42143 7.17838 1 6.16096 1 5.1001C1 4.03923 1.42143 3.02182 2.17157 2.27167C2.92172 1.52152 3.93913 1.1001 5 1.1001C6.06087 1.1001 7.07828 1.52152 7.82843 2.27167C8.57857 3.02182 9 4.03923 9 5.1001Z&quot; stroke&#x3D;&quot;white&quot; stroke-width&#x3D;&quot;2&quot;/&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+        &lt;/button&gt;
+        &lt;!-- Heart Icon --&gt;
+        &lt;button class&#x3D;&quot;bg-background-rose p-2 rounded-full icon&quot;&gt;
+          &lt;svg width&#x3D;&quot;26&quot; height&#x3D;&quot;22&quot; viewBox&#x3D;&quot;0 0 26 22&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+            &lt;path d&#x3D;&quot;M22.4682 12.6378L14.9256 20.1818C14.4255 20.6817 13.7473 20.9625 13.0402 20.9625C12.3331 20.9625 11.655 20.6817 11.1549 20.1818L3.61223 12.6391C2.98872 12.021 2.49343 11.2859 2.1548 10.4759C1.81617 9.6659 1.64085 8.79699 1.63893 7.91906C1.63701 7.04112 1.80851 6.17146 2.1436 5.35998C2.47868 4.54851 2.97074 3.81121 3.59154 3.19041C4.21233 2.56962 4.94963 2.07756 5.76111 1.74247C6.57258 1.40739 7.44225 1.23589 8.32018 1.23781C9.19811 1.23973 10.067 1.41504 10.877 1.75368C11.687 2.09231 12.4222 2.5876 13.0402 3.2111C14.2957 1.98693 15.9828 1.30666 17.7363 1.31764C19.4897 1.32863 21.1682 2.02999 22.4082 3.2698C23.6482 4.50961 24.3498 6.18803 24.361 7.94147C24.3723 9.69491 23.6922 11.3822 22.4682 12.6378Z&quot; stroke&#x3D;&quot;white&quot; stroke-width&#x3D;&quot;2&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot;/&gt;
+          &lt;/svg&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;!--  &lt;/div&gt;
+  &lt;!-- Content --&gt;
+  &lt;div class&#x3D;&quot;flex items-center justify-between p-4&quot;&gt;
+    &lt;!-- Left Content --&gt;
+    &lt;div class&#x3D;&quot;flex flex-col gap-2.5&quot;&gt;
+      &lt;h2 class&#x3D;&quot;text-lg font-semibold line-clamp-1&quot;&gt;{{ popularItem.title }}&lt;/h2&gt;
+      &lt;!-- Rating --&gt;
+      &lt;div class&#x3D;&quot;flex items-center gap-1 text-[#FBA707]&quot;&gt;
+        &lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i&gt;
+        &lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i&gt;
+        &lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i&gt;
+        &lt;i class&#x3D;&quot;fa-regular fa-star&quot;&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;!-- Price --&gt;
+      &lt;div class&#x3D;&quot;flex items-center gap-1.5&quot;&gt;
+        &lt;span class&#x3D;&quot;text-[#F05454]&quot;&gt;${{ popularItem.priceAfterDiscount }}&lt;/span&gt;
+        &lt;span class&#x3D;&quot;text-[#DEE2E6] line-through&quot;&gt;${{ popularItem.price }}&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Right Content --&gt;
+    &lt;!-- Buy Button --&gt;
+    &lt;div class&#x3D;&quot;flex gap-4 mt-4&quot;&gt;
+      &lt;button class&#x3D;&quot;p-3 rounded-full bg-background-purple&quot;&gt;
+        &lt;svg width&#x3D;&quot;17&quot; height&#x3D;&quot;18&quot; viewBox&#x3D;&quot;0 0 17 18&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+          &lt;path d&#x3D;&quot;M6.125 3.9375V5.625H10.625V3.9375C10.6016 3.30469 10.3789 2.77734 9.95703 2.35547C9.53516 1.93359 9.00781 1.71094 8.375 1.6875C7.74219 1.71094 7.21484 1.93359 6.79297 2.35547C6.37109 2.77734 6.14844 3.30469 6.125 3.9375ZM4.4375 7.3125H2.1875V14.625C2.21094 15.0938 2.375 15.4922 2.67969 15.8203C3.00781 16.125 3.40625 16.2891 3.875 16.3125H12.875C13.3438 16.2891 13.7422 16.125 14.0703 15.8203C14.375 15.4922 14.5391 15.0938 14.5625 14.625V7.3125H12.3125V9.28125C12.2656 9.79688 11.9844 10.0781 11.4688 10.125C10.9531 10.0781 10.6719 9.79688 10.625 9.28125V7.3125H6.125V9.28125C6.07812 9.79688 5.79688 10.0781 5.28125 10.125C4.76562 10.0781 4.48438 9.79688 4.4375 9.28125V7.3125ZM4.4375 5.625V3.9375C4.46094 2.8125 4.84766 1.88672 5.59766 1.16016C6.32422 0.410156 7.25 0.0234375 8.375 0C9.5 0.0234375 10.4258 0.410156 11.1523 1.16016C11.9023 1.88672 12.2891 2.8125 12.3125 3.9375V5.625H14.5625C15.0312 5.64844 15.4297 5.8125 15.7578 6.11719C16.0625 6.44531 16.2266 6.84375 16.25 7.3125V14.625C16.2266 15.5859 15.8984 16.3828 15.2656 17.0156C14.6328 17.6484 13.8359 17.9766 12.875 18H3.875C2.91406 17.9766 2.11719 17.6484 1.48438 17.0156C0.851562 16.3828 0.523438 15.5859 0.5 14.625V7.3125C0.523438 6.84375 0.6875 6.44531 0.992188 6.11719C1.32031 5.8125 1.71875 5.64844 2.1875 5.625H4.4375Z&quot; fill&#x3D;&quot;white&quot;/&gt;
+        &lt;/svg&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;!--  &lt;/div&gt;--&gt;
+--&gt;
+ --&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!--<div class="cursor-pointer overflow-hidden group w-72">  <div class="bg-background-pink rounded-2xl relative h-60 items-center justify-center flex">    <img [src]="popularItem.imgCover" alt="Image Card" class="rounded-2xl w-52 h-52 object-cover m-auto"/>    <!-- Over Lay -->    <div class="bg-background-rose/70 rounded-2xl absolute inset-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 ease-in-out">      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-12 icon">        <!-- Eye Icon -->        <button class="relative bg-background-rose p-2 rounded-full">          <!-- Big Circle -->          <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">            <path d="M11.0001 2.04676C12.2935 1.63583 13.643 1.42891 15.0001 1.43342C20.5761 1.43342 24.3707 4.76676 26.6334 7.70542C27.7667 9.18009 28.3334 9.91476 28.3334 12.1001C28.3334 14.2868 27.7667 15.0214 26.6334 16.4948C24.3707 19.4334 20.5761 22.7668 15.0001 22.7668C9.42408 22.7668 5.62941 19.4334 3.36675 16.4948C2.23341 15.0228 1.66675 14.2854 1.66675 12.1001C1.66675 9.91342 2.23341 9.17876 3.36675 7.70542C4.05808 6.80252 4.82774 5.96237 5.66675 5.19476" stroke="white" stroke-width="2" stroke-linecap="round"/>          </svg>          <!-- Small Circle -->          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">            <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">              <path d="M9 5.1001C9 6.16096 8.57857 7.17838 7.82843 7.92853C7.07828 8.67867 6.06087 9.1001 5 9.1001C3.93913 9.1001 2.92172 8.67867 2.17157 7.92853C1.42143 7.17838 1 6.16096 1 5.1001C1 4.03923 1.42143 3.02182 2.17157 2.27167C2.92172 1.52152 3.93913 1.1001 5 1.1001C6.06087 1.1001 7.07828 1.52152 7.82843 2.27167C8.57857 3.02182 9 4.03923 9 5.1001Z" stroke="white" stroke-width="2"/>            </svg>          </div>        </button>        <!-- Heart Icon -->        <button class="bg-background-rose p-2 rounded-full icon">          <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">            <path d="M22.4682 12.6378L14.9256 20.1818C14.4255 20.6817 13.7473 20.9625 13.0402 20.9625C12.3331 20.9625 11.655 20.6817 11.1549 20.1818L3.61223 12.6391C2.98872 12.021 2.49343 11.2859 2.1548 10.4759C1.81617 9.6659 1.64085 8.79699 1.63893 7.91906C1.63701 7.04112 1.80851 6.17146 2.1436 5.35998C2.47868 4.54851 2.97074 3.81121 3.59154 3.19041C4.21233 2.56962 4.94963 2.07756 5.76111 1.74247C6.57258 1.40739 7.44225 1.23589 8.32018 1.23781C9.19811 1.23973 10.067 1.41504 10.877 1.75368C11.687 2.09231 12.4222 2.5876 13.0402 3.2111C14.2957 1.98693 15.9828 1.30666 17.7363 1.31764C19.4897 1.32863 21.1682 2.02999 22.4082 3.2698C23.6482 4.50961 24.3498 6.18803 24.361 7.94147C24.3723 9.69491 23.6922 11.3822 22.4682 12.6378Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>          </svg>        </button>      </div>    </div>  <!--  </div>  <!-- Content -->  <div class="flex items-center justify-between p-4">    <!-- Left Content -->    <div class="flex flex-col gap-2.5">      <h2 class="text-lg font-semibold line-clamp-1">{{ popularItem.title }}</h2>      <!-- Rating -->      <div class="flex items-center gap-1 text-[#FBA707]">        <i class="fa-solid fa-star"></i>        <i class="fa-solid fa-star"></i>        <i class="fa-solid fa-star"></i>        <i class="fa-regular fa-star"></i>      </div>      <!-- Price -->      <div class="flex items-center gap-1.5">        <span class="text-[#F05454]">${{ popularItem.priceAfterDiscount }}</span>        <span class="text-[#DEE2E6] line-through">${{ popularItem.price }}</span>      </div>    </div>    <!-- Right Content -->    <!-- Buy Button -->    <div class="flex gap-4 mt-4">      <button class="p-3 rounded-full bg-background-purple">        <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">          <path d="M6.125 3.9375V5.625H10.625V3.9375C10.6016 3.30469 10.3789 2.77734 9.95703 2.35547C9.53516 1.93359 9.00781 1.71094 8.375 1.6875C7.74219 1.71094 7.21484 1.93359 6.79297 2.35547C6.37109 2.77734 6.14844 3.30469 6.125 3.9375ZM4.4375 7.3125H2.1875V14.625C2.21094 15.0938 2.375 15.4922 2.67969 15.8203C3.00781 16.125 3.40625 16.2891 3.875 16.3125H12.875C13.3438 16.2891 13.7422 16.125 14.0703 15.8203C14.375 15.4922 14.5391 15.0938 14.5625 14.625V7.3125H12.3125V9.28125C12.2656 9.79688 11.9844 10.0781 11.4688 10.125C10.9531 10.0781 10.6719 9.79688 10.625 9.28125V7.3125H6.125V9.28125C6.07812 9.79688 5.79688 10.0781 5.28125 10.125C4.76562 10.0781 4.48438 9.79688 4.4375 9.28125V7.3125ZM4.4375 5.625V3.9375C4.46094 2.8125 4.84766 1.88672 5.59766 1.16016C6.32422 0.410156 7.25 0.0234375 8.375 0C9.5 0.0234375 10.4258 0.410156 11.1523 1.16016C11.9023 1.88672 12.2891 2.8125 12.3125 3.9375V5.625H14.5625C15.0312 5.64844 15.4297 5.8125 15.7578 6.11719C16.0625 6.44531 16.2266 6.84375 16.25 7.3125V14.625C16.2266 15.5859 15.8984 16.3828 15.2656 17.0156C14.6328 17.6484 13.8359 17.9766 12.875 18H3.875C2.91406 17.9766 2.11719 17.6484 1.48438 17.0156C0.851562 16.3828 0.523438 15.5859 0.5 14.625V7.3125C0.523438 6.84375 0.6875 6.44531 0.992188 6.11719C1.32031 5.8125 1.71875 5.64844 2.1875 5.625H4.4375Z" fill="white"/>        </svg>      </button>    </div>  </div><!--  </div>-->--> --></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BestSellerComponent', 'selector': 'app-best-seller'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CategoryCardComponent', 'selector': 'app-category-card'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GalleryComponent', 'selector': 'app-gallery'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeLayoutComponent', 'selector': 'app-home-layout'},{'name': 'ItemProductComponent', 'selector': 'app-item-product'},{'name': 'LoaderComponent', 'selector': 'app-loader'},{'name': 'MainCardComponent', 'selector': 'app-main-card'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'SectionTitleComponent', 'selector': 'app-section-title'},{'name': 'TestPopularItemsComponent', 'selector': 'app-popular-items'},{'name': 'TrustedByComponent', 'selector': 'app-trusted-by'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'MainCardComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MainCardComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
