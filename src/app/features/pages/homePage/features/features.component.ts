@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 interface IFeatures {
-  image: string,
+  icon: string,
   name: string,
   description: string
 }
@@ -14,27 +14,30 @@ interface IFeatures {
 })
 export class FeaturesComponent {
 
+  currentLang = localStorage.getItem('lang')
+
   Features: IFeatures[] = [
     {
-      image: '../../../../assets/imgs/Features/features-1.png',
+      icon: 'fa-solid fa-wallet fa-2x',
       name: 'Free Delivery',
       description: 'Orders Over $120'
     },
     {
-      image: '../../../../assets/imgs/Features/features-2.png',
+      icon: 'fa-solid fa-rotate fa-2x',
       name: 'Get Refund',
       description: 'Within 30 Days Returns'
     },
     {
-      image: '../../../../assets/imgs/Features/features-3.png',
+      icon: 'fa-solid fa-headset fa-2x',
       name: 'Safe Payment',
       description: '100% Secure Payment'
     },
     {
-      image: '../../../../assets/imgs/Features/features-4.png',
+      icon: 'fa-solid fa-truck fa-2x',
       name: '24/7 Support',
       description: 'Feel Free To Call Us'
     },
   ]
 
 }
+

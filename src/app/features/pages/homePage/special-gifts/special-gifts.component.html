@@ -6,11 +6,16 @@
                     <img src="../../../../assets/imgs/Special-gifts/SpecialGift-1.png"
                         class="md:h-[400px] w-full md:w-72 object-cover dark:bg-gray-100 dark:opacity-70 rounded-2xl"
                         alt="grocery-banner">
-                    <div class="absolute top-[40%] md:top-[50%]  ps-5 w-[70%] md:w-full">
-                        <p class="bg-[#FBEAEA] text-[#741C21] rounded-2xl w-48 text-center">Staring from 10.99 EGP</p>
-                        <h3 class="text-white md:my-3 text-[26px]">Special Gifts For The People You Love</h3>
-                        <button class="bg-[#FBEAEA] text-[#741C21] p-3 w-32 rounded-2xl">Shop Now <i
-                                class="fa-solid fa-arrow-right"></i></button>
+                    <div [dir]="currentLang =='en' ? 'ltr' : 'rtl'"
+                        class="absolute top-[40%] md:top-[50%] ps-5 w-[70%] md:w-full">
+                        <div [class]="textDir === 'ltr'?'p-5':''">
+                            <p class="bg-[#FBEAEA] text-[#741C21] rounded-2xl w-48 text-center">Staring from 10.99 EGP
+                            </p>
+                            <h3 class="text-white md:my-3 text-[26px]">Special Gifts For The People You Love</h3>
+                            <button class="bg-[#FBEAEA] text-[#741C21] p-3 w-32 rounded-2xl">Shop Now
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="w-full md:w-3/4">
@@ -20,7 +25,8 @@
                             <img [src]="img.image"
                                 class="h-[400px] object-cover dark:bg-gray-100 dark:opacity-70 rounded-2xl"
                                 [alt]="img.title">
-                            <div class="absolute bottom-10 left-10 z-10 md:w-[35%]">
+                            <div class="absolute bottom-10 left-10 z-10 md:w-[35%]" [dir]="currentLang =='en' ? 'ltr' : 'rtl'">
+                                <div [class]="textDir === 'ltr'?'p-5':''"></div>
                                 <h2 class="mt-3 text-2xl text-white">Say It with Flowers</h2>
                                 <p class="text-white mt-3">Elegant gifts for every special moment. </p>
                                 <button class="bg-[#FBEAEA] text-[#741C21] p-3 w-32 rounded-2xl mt-5">I’m
@@ -37,7 +43,7 @@
                 <div class="flex items-center justify-center my-3">
                     <div class="flex justify-center relative">
                         <img [src]="item.image" [alt]="item.name" class="rounded-2xl">
-                        <div class="absolute md:left-5 md:bottom-0 p-3">
+                        <div class="absolute  md:bottom-0 p-3" [class]="textDir === 'ltr'?'md:left-5':'md:right-5'">
                             <button class="bg-[#FBEAEA] text-[#741C21] w-32 rounded-2xl my-2">{{item.btn}}</button>
                             <h2 class="text-white w-64">{{item.name}}</h2>
                         </div>

@@ -9,15 +9,20 @@ import { ISpecial, ISpecialGift } from '../../../interfaces/special-gift';
   styleUrl: './special-gifts.component.css'
 })
 export class SpecialGiftsComponent {
+
+  currentLang = localStorage.getItem('lang');
+  textDir = 'ltr';
+
   // Special Gift
   customOptions: OwlOptions = {
     loop: true,
+    rtl: true,
     mouseDrag: true,
     touchDrag: false,
     pullDrag: false,
     dots: true,
     navSpeed: 500,
-    navText: ['<img src="assets/imgs/Special-gifts/chevron-left.png" class="w-[20px]" />', '<img src="assets/imgs/Special-gifts/chevron-right.png" class="w-[20px]" />'],
+    navText: ['<img src="assets/imgs/Special-gifts/chevron-right.png" class="w-[20px]" />', '<img src="assets/imgs/Special-gifts/chevron-left.png" class="w-[20px]" />'],
     responsive: {
       0: {
         items: 1
