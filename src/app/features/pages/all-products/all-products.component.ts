@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FilterComponent } from './filter/filter.component';
-import { ProductsComponent } from "./products/products.component";
+import { ProductsComponent } from './products/products.component';
 
 @Component({
   selector: 'app-all-products',

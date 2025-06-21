@@ -1,10 +1,9 @@
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import {isPlatformBrowser} from '@angular/common';
-
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TranslationService {
   // Default Language
@@ -12,10 +11,9 @@ export class TranslationService {
 
   constructor(
     private translateService: TranslateService,
-    @Inject(PLATFORM_ID) private platformId: Object) {
-
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     if (isPlatformBrowser(this.platformId)) {
-
       // Get Language from Local Storage
       const savedLang: string | null = localStorage.getItem('lng');
 
@@ -23,16 +21,15 @@ export class TranslationService {
       if (savedLang) {
         this.defaultLang = savedLang;
       }
+      // Set the default language
+      this.translateService.setDefaultLang(this.defaultLang);
+
+      // Use the default language
+      this.translateService.use(this.defaultLang);
+
+      // Change the direction based on the default language
+      this.changeDirection(this.defaultLang);
     }
-
-    // Set the default language
-    this.translateService.setDefaultLang(this.defaultLang);
-
-    // Use the default language
-    this.translateService.use(this.defaultLang);
-
-    // Change the direction based on the default language
-    this.changeDirection(this.defaultLang);
   }
 
   /**
@@ -40,7 +37,6 @@ export class TranslationService {
    * @param lang - The language code to switch to
    */
   changeLang(lang: string): void {
-
     // Use language
     this.translateService.use(lang);
 
@@ -55,13 +51,15 @@ export class TranslationService {
 
   // Change the direction of the application based on the language
   changeDirection(lang: string): void {
-    if(lang == 'ar') {
-      document.documentElement.setAttribute('dir', 'rtl');
-      // document.documentElement.dir = 'ltr';
-      // document.documentElement.lang = 'ltr';
-
-    }else {
-      document.documentElement.setAttribute('dir', 'ltr');
+    // typeof window !== 'undefined'
+    if (isPlatformBrowser(this.platformId)) {
+      if (lang == 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        // document.documentElement.dir = 'ltr';
+        // document.documentElement.lang = 'ltr';
+      } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+      }
     }
   }
 }
