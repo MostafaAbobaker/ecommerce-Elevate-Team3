@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { ISpecial, ISpecialGift } from '../../../interfaces/special-gift';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-special-gifts',
-  imports: [CarouselModule],
+  imports: [CarouselModule, TranslateModule],
   templateUrl: './special-gifts.component.html',
   styleUrl: './special-gifts.component.css'
 })
@@ -52,18 +53,18 @@ export class SpecialGiftsComponent {
   Special: ISpecial[] = [
     {
       image: '../../../../assets/imgs/Special-gifts/special-gift-1.png',
-      name: 'Celebrate Her Forever with a Gift She’ll Always Remember',
-      btn: 'Wedding'
+      name: 'special-gifts.meaningful-surprise',
+      btn: 'special-gifts.Anniversary'
     },
     {
       image: '../../../../assets/imgs/Special-gifts/special-gift-2.png',
-      name: 'Honor the Beginning of a Beautiful Journey Together',
-      btn: 'Engagement'
+      name: 'special-gifts.beginning',
+      btn: 'special-gifts.engagement'
     },
     {
       image: '../../../../assets/imgs/Special-gifts/special-gift-3.png',
-      name: 'Mark Every Year of Love with a Meaningful Surprise',
-      btn: 'Anniversary'
+      name: 'special-gifts.remember',
+      btn: 'special-gifts.wedding'
     }
   ]
 

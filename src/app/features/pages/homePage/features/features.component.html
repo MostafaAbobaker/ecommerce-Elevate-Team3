@@ -6,14 +6,14 @@
                 @for (item of Features; track $index) {
                 <div class="md:flex md:justify-around items-center gap-2">
                     <div class="p-4 bg-primary w-15 h-15 rounded-full dark:bg-darkMode-secondary">
-                        <!-- <img [src]="item.icon" [alt]="item.name" class="text-white w-8 h-8 invert brightness-0"> -->
-                         <span class="text-white w-8 h-8 invert brightness-0">
+                        <span class="text-white w-8 h-8 invert brightness-0">
                             <i [class]="item.icon"></i>
-                         </span>
+                        </span>
                     </div>
                     <div>
-                        <h2 class="text-primary-dark font-medium dark:text-darkMode-secondary text-lg capitalize">{{item.name}}</h2>
-                        <p class="text-secondary-dark text-l dark:text-zinc-300">{{item.description}}</p>
+                        <h2 class="text-primary-dark font-medium dark:text-darkMode-secondary text-lg capitalize">
+                            {{item.name|translate}}</h2>
+                        <p class="text-secondary-dark text-l dark:text-zinc-300">{{item.description|translate}}</p>
                     </div>
                 </div>
                 }
@@ -21,4 +21,3 @@
         </div>
     </div>
 </section>
-
