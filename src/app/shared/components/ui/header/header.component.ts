@@ -1,12 +1,8 @@
 import {Component, inject, OnInit} from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import {TranslationService} from '../../../../core/Services/translation.service';
-<<<<<<< HEAD
-import {TranslatePipe} from '@ngx-translate/core';
-import { RouterLink } from '@angular/router';
-=======
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
->>>>>>> master
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
