@@ -1,40 +1,44 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface IFeatures {
-  image: string,
+  icon: string,
   name: string,
   description: string
 }
 
 @Component({
   selector: 'app-features',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './features.component.html',
   styleUrl: './features.component.css'
 })
 export class FeaturesComponent {
 
+  currentLang = localStorage.getItem('lang')
+
   Features: IFeatures[] = [
     {
-      image: '../../../../assets/imgs/Features/Background.png',
-      name: 'Free Delivery',
-      description: 'Orders Over $120'
+      icon: 'fa-solid fa-wallet fa-2x',
+      name: 'features.free-delivery',
+      description: 'features.orders-over'
     },
     {
-      image: '../../../../assets/imgs/Features/Background (1).png',
-      name: 'Get Refund',
-      description: 'Within 30 Days Returns'
+      icon: 'fa-solid fa-rotate fa-2x',
+      name: 'features.get refund',
+      description: 'features.days'
     },
     {
-      image: '../../../../assets/imgs/Features/Background (2).png',
-      name: 'Safe Payment',
-      description: '100% Secure Payment'
+      icon: 'fa-solid fa-headset fa-2x',
+      name: 'features.safe-payment',
+      description: 'features.secure-Payment'
     },
     {
-      image: '../../../../assets/imgs/Features/Background (3).png',
-      name: '24/7 Support',
-      description: 'Feel Free To Call Us'
+      icon: 'fa-solid fa-truck fa-2x',
+      name: 'features.support',
+      description: 'features.feel-free'
     },
   ]
 
 }
+

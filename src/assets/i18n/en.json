@@ -12,7 +12,7 @@
     "contact": "Contact",
     "about": "About"
   },
-  "bestsellers":{
+  "bestsellers": {
     "title": {
       "premium-gifts": "Premium Gifts",
       "best": "Best",
@@ -23,7 +23,7 @@
     "description": "Discover our hand-picked selection of premium gifts and best-selling products perfect for every occasion. From elegant accessories to thoughtful surprises, our collection is crafted to impress.",
     "explore-more": "Explore More"
   },
-  "section-title" : {
+  "section-title": {
     "most-popular": "Most Popular",
     "our-gallery": "Our Gallery"
   },
@@ -33,7 +33,7 @@
   "about-us": {
     "title": {
       "about-us": "About Us",
-      "we-provide" : "We Provide Best And Quality",
+      "we-provide": "We Provide Best And Quality",
       "gifts-box": "Gifts Box",
       "product-for": "Product For You"
     },
@@ -43,6 +43,30 @@
   "trusted-by": {
     "trusted": "Trusted by over",
     "companies": "Companies"
+  },
+  "features": {
+    "free-delivery": "Free Delivery",
+    "orders-over": "Orders-Over $120",
+    "get refund": "Get Refund",
+    "days": "Within 30 Days Returns",
+    "safe-payment": "Safe Payment",
+    "secure-Payment": "100% Secure Payment",
+    "support": "24/7 Support",
+    "feel-free": "Feel-Free To Call Us"
+  },
+  "special-gifts": {
+    "starting": "Staring from 10.99 EGP",
+    "people": "Special Gifts For The People You Love",
+    "shop-now": "Shop Now",
+    "say-flowers": "Say It with Flowers",
+    "elegant-gift": "Elegant gifts for every special moment.",
+    "buying": "I’m buying !",
+    "Anniversary": "Anniversary",
+    "meaningful-surprise": "Mark Every Year of Love with a Meaningful Surprise",
+    "engagement": "Engagement",
+    "beginning": "Honor the Beginning of a Beautiful Journey Together",
+    "wedding": "Wedding",
+    "remember": "Celebrate Her Forever with a Gift She’ll Always Remember"
   },
   "footer": {
     "links": {
