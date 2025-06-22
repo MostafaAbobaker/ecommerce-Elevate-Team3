@@ -23,16 +23,15 @@ export class TranslationService {
       if (savedLang) {
         this.defaultLang = savedLang;
       }
+      // Set the default language
+      this.translateService.setDefaultLang(this.defaultLang);
+
+      // Use the default language
+      this.translateService.use(this.defaultLang);
+
+      // Change the direction based on the default language
+      this.changeDirection(this.defaultLang);
     }
-
-    // Set the default language
-    this.translateService.setDefaultLang(this.defaultLang);
-
-    // Use the default language
-    this.translateService.use(this.defaultLang);
-
-    // Change the direction based on the default language
-    this.changeDirection(this.defaultLang);
   }
 
   /**
@@ -55,13 +54,16 @@ export class TranslationService {
 
   // Change the direction of the application based on the language
   changeDirection(lang: string): void {
-    if(lang == 'ar') {
-      document.documentElement.setAttribute('dir', 'rtl');
-      // document.documentElement.dir = 'ltr';
-      // document.documentElement.lang = 'ltr';
+    // typeof window !== 'undefined'
+    if(isPlatformBrowser(this.platformId)){
+      if(lang == 'ar') {
+        document.documentElement.setAttribute('dir', 'rtl');
+        // document.documentElement.dir = 'ltr';
+        // document.documentElement.lang = 'ltr';
 
-    }else {
-      document.documentElement.setAttribute('dir', 'ltr');
+      }else {
+        document.documentElement.setAttribute('dir', 'ltr');
+      }
     }
   }
 }
