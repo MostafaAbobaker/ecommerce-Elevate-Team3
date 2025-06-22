@@ -7,8 +7,7 @@ import { HeaderComponent } from '../../../shared/components/ui/header/header.com
 
 @Component({
   selector: 'app-home-layout',
-  imports: [NavbarComponent, FooterComponent, RouterModule, HeaderComponent
-      ],
+  imports: [NavbarComponent, FooterComponent, RouterModule, HeaderComponent],
   templateUrl: './home-layout.component.html',
   styleUrl: './home-layout.component.css'
 

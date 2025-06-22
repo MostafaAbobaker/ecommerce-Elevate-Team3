@@ -10,7 +10,14 @@ import { AboutComponent } from '../about/about.component';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CategoriesComponent,SpecialGiftsComponent,FeaturesComponent,TrustedByComponent,BestSellerComponent,TestPopularItemsComponent,GalleryComponent,AboutComponent],
+  imports: [CategoriesComponent,
+            SpecialGiftsComponent,
+            FeaturesComponent,
+            TrustedByComponent,
+            BestSellerComponent,
+            TestPopularItemsComponent,
+            GalleryComponent,
+            AboutComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
