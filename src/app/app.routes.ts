@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeLayoutComponent } from './core/layout/home-layout/home-layout.component';
+import { HomePageComponent } from './features/pages/homePage/home-page/home-page.component';
+import { AllProductsComponent } from './features/pages/all-products/all-products.component';
 
 export const routes: Routes = [
     {path:'', component:HomeLayoutComponent , children:[
