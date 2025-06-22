@@ -1,8 +1,12 @@
 import {Component, inject, OnInit} from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import {TranslationService} from '../../../../core/Services/translation.service';
+<<<<<<< HEAD
 import {TranslatePipe} from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
+=======
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+>>>>>>> master
 
 @Component({
   selector: 'app-header',
@@ -20,9 +24,22 @@ export class HeaderComponent implements OnInit{
   darkMode!:boolean;
   isOpen: boolean = false;
 
-  constructor(private _themeService:ThemeService){}
+  language = localStorage.getItem('lang')!;
+  constructor(private _themeService: ThemeService, private translate: TranslateService) {
+    if (localStorage.getItem('lang') == null) {
+      this.useLanguage('en')
+    }
+    this.useLanguage(this.language)
+  }
+  useLanguage(lang: string): void {
+    //  this.translate.addLangs(['ar', 'en']);
+    this.translate.setDefaultLang('en');
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang)
+  }
+
   ngOnInit(): void {
-    if(this.getCurrentTheme() == 'light' ) {
+    if (this.getCurrentTheme() == 'light') {
       this.darkMode = false;
     } else {
       this.darkMode = true;
@@ -31,7 +48,7 @@ export class HeaderComponent implements OnInit{
   getCurrentTheme(): string {
     return this._themeService.getTheme();
   }
-  setTheme(name:string) {
+  setTheme(name: string) {
     this._themeService.setTheme(name);
     this.darkMode = !this.darkMode;
   }

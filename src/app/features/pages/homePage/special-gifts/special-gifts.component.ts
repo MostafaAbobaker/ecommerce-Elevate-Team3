@@ -1,23 +1,29 @@
 import { Component } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { ISpecial, ISpecialGift } from '../../../interfaces/special-gift';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-special-gifts',
-  imports: [CarouselModule],
+  imports: [CarouselModule, TranslateModule],
   templateUrl: './special-gifts.component.html',
   styleUrl: './special-gifts.component.css'
 })
 export class SpecialGiftsComponent {
+
+  currentLang = localStorage.getItem('lang');
+  textDir = 'ltr';
+
   // Special Gift
   customOptions: OwlOptions = {
     loop: true,
+    rtl: true,
     mouseDrag: true,
     touchDrag: false,
     pullDrag: false,
     dots: true,
     navSpeed: 500,
-    navText: ['<img src="../../../../assets/imgs/Special-gifts/left.png" class="w-[10px]" />', '<img src="../../../../assets/imgs/Special-gifts/right.png" class="w-[10px]" />'],
+    navText: ['<img src="assets/imgs/Special-gifts/chevron-right.png" class="w-[20px]" />', '<img src="assets/imgs/Special-gifts/chevron-left.png" class="w-[20px]" />'],
     responsive: {
       0: {
         items: 1
@@ -29,21 +35,17 @@ export class SpecialGiftsComponent {
   // SpecialGift
   SpecialGift: ISpecialGift[] = [
     {
-      image: '../../../../assets/imgs/Special-gifts/SpecialGift(1).jpg',
+      image: '../../../../assets/imgs/Special-gifts/SpecialGift(1).png',
       title: 'SpecialGift(1)'
     },
     {
-      image: '../../../../assets/imgs/Special-gifts/SpecialGift(2).jpg',
+      image: '../../../../assets/imgs/Special-gifts/SpecialGift(2).png',
       title: 'SpecialGift(2)'
     },
     {
-      image: '../../../../assets/imgs/Special-gifts/SpecialGift(3).jpg',
+      image: '../../../../assets/imgs/Special-gifts/SpecialGift(3).png',
       title: 'SpecialGift(3)'
     },
-    {
-      image: '../../../../assets/imgs/Special-gifts/SpecialGift(4).jpg',
-      title: 'SpecialGift(4)'
-    }
   ]
 
 
@@ -51,21 +53,18 @@ export class SpecialGiftsComponent {
   Special: ISpecial[] = [
     {
       image: '../../../../assets/imgs/Special-gifts/special-gift-1.png',
-      name: 'Gifts Box',
-      description: 'Awesome Gifts Box Collectons',
-      btn: 'Shop Now'
+      name: 'special-gifts.meaningful-surprise',
+      btn: 'special-gifts.Anniversary'
     },
     {
       image: '../../../../assets/imgs/Special-gifts/special-gift-2.png',
-      name: 'Occasion Gifts',
-      description: 'Best Occasion Gifts Collections',
-      btn: 'Discover Now'
+      name: 'special-gifts.beginning',
+      btn: 'special-gifts.engagement'
     },
     {
       image: '../../../../assets/imgs/Special-gifts/special-gift-3.png',
-      name: 'Occasion Gifts',
-      description: 'Combo Sets Gift Box Up To 50% Off',
-      btn: 'Discover Now'
+      name: 'special-gifts.remember',
+      btn: 'special-gifts.wedding'
     }
   ]
 
