@@ -3,6 +3,7 @@ import { ThemeService } from '../../../services/theme.service';
 import {TranslationService} from '../../../../core/Services/translation.service';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
+import { LocalStorageService } from '../../../services/local-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -20,9 +21,11 @@ export class HeaderComponent implements OnInit{
   darkMode!:boolean;
   isOpen: boolean = false;
 
-  language = localStorage.getItem('lang')!;
-  constructor(private _themeService: ThemeService, private translate: TranslateService) {
-    if (localStorage.getItem('lang') == null) {
+  language : string | null;
+
+  constructor(private _themeService: ThemeService, private translate: TranslateService, private _localStorageService: LocalStorageService) {
+    this.language = this._localStorageService.getItem('lang')!;
+    if (this.language  == null) {
       this.useLanguage('en')
     }
     this.useLanguage(this.language)
@@ -31,7 +34,8 @@ export class HeaderComponent implements OnInit{
     //  this.translate.addLangs(['ar', 'en']);
     this.translate.setDefaultLang('en');
     this.translate.use(lang);
-    localStorage.setItem('lang', lang)
+    this._localStorageService.setItem('lang', lang);
+    // localStorage.setItem('lang', lang)
   }
 
   ngOnInit(): void {

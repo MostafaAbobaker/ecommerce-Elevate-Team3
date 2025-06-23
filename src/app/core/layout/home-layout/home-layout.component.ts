@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../../shared/components/ui/navbar/navbar.component';
 import { FooterComponent } from "../../../shared/components/ui/footer/footer.component";
-import {  RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../../shared/components/ui/header/header.component';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
