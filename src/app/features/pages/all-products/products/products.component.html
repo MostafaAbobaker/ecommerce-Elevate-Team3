@@ -1,0 +1,7 @@
+<section class="product-section grid grid-cols-1 lg:grid-cols-3 gap-6">
+  @for(product of products; track $index) {
+    <app-item-product [popularItem]="product"></app-item-product>
+  } @empty {
+    <app-not-found></app-not-found>
+  }
+</section>

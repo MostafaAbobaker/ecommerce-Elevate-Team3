@@ -11,8 +11,8 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class SpecialGiftsComponent {
 
-  currentLang = localStorage.getItem('lang');
-  textDir = 'ltr';
+  constructor(){}
+
 
   // Special Gift
   customOptions: OwlOptions = {

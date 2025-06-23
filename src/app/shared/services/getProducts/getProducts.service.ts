@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IResponse } from '../model/iresponse';
+import { IResponse } from '../../../features/pages/homePage/popular-items/model/iresponse';
 
 @Injectable({
   providedIn: 'root'
 })
-export class popularItemService {
+export class getProductsService {
 
   constructor(private _http:HttpClient) { }
 
