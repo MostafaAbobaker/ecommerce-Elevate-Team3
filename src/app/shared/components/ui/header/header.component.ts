@@ -1,15 +1,12 @@
 import {Component, inject, OnInit} from '@angular/core';
 import { ThemeService } from '../../../services/theme.service';
 import {TranslationService} from '../../../../core/Services/translation.service';
-import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import { RouterLink } from '@angular/router';
-import { LocalStorageService } from '../../../services/local-storage.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   imports: [
-    TranslatePipe,
-    RouterLink
+    TranslatePipe
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
@@ -21,25 +18,9 @@ export class HeaderComponent implements OnInit{
   darkMode!:boolean;
   isOpen: boolean = false;
 
-  language : string | null;
-
-  constructor(private _themeService: ThemeService, private translate: TranslateService, private _localStorageService: LocalStorageService) {
-    this.language = this._localStorageService.getItem('lang')!;
-    if (this.language  == null) {
-      this.useLanguage('en')
-    }
-    this.useLanguage(this.language)
-  }
-  useLanguage(lang: string): void {
-    //  this.translate.addLangs(['ar', 'en']);
-    this.translate.setDefaultLang('en');
-    this.translate.use(lang);
-    this._localStorageService.setItem('lang', lang);
-    // localStorage.setItem('lang', lang)
-  }
-
+  constructor(private _themeService:ThemeService){}
   ngOnInit(): void {
-    if (this.getCurrentTheme() == 'light') {
+    if(this.getCurrentTheme() == 'light' ) {
       this.darkMode = false;
     } else {
       this.darkMode = true;
@@ -48,7 +29,7 @@ export class HeaderComponent implements OnInit{
   getCurrentTheme(): string {
     return this._themeService.getTheme();
   }
-  setTheme(name: string) {
+  setTheme(name:string) {
     this._themeService.setTheme(name);
     this.darkMode = !this.darkMode;
   }
