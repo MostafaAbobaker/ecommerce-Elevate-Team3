@@ -15,7 +15,6 @@ interface IFeatures {
 })
 export class FeaturesComponent {
 
-  currentLang = localStorage.getItem('lang')
 
   Features: IFeatures[] = [
     {

@@ -22,9 +22,8 @@
               <app-item-product [popularItem]="product"></app-item-product>
             </div>
           }@empty {
-            <div class="text-center flex flex-col items-center justify-center mx-auto">
-              <img src="../../../../../assets/imgs/no-data.png" alt="" width="200px" height="200px" class="text-center">
-              <h1 class="text-center my-6 text-4xl font-bold text-primary"> {{ 'notFound.title' | translate }}</h1>
+            <div class="m-auto">
+              <app-not-found></app-not-found>
             </div>
           }
         </div>
