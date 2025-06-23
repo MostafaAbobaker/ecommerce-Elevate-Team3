@@ -1,0 +1,53 @@
+<aside class="aside-filer">
+  <!-- Start Brands -->
+  <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
+    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
+      Brands
+    </h4>
+    <ul class="space-y-2">
+      <li>
+        <label class="flex items-center text-zinc-500 gap-2 cursor-pointer" for="brands1 ">
+          <input type="checkbox"
+            class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px]"
+            id="brands1" />
+            <div class="flex justify-between w-full text-sm">
+              <div class="">Tovola</div>
+              <div class="">(8)</div>
+            </div>
+
+        </label>
+      </li>
+
+
+    </ul>
+  </section>
+  <!-- End Brands -->
+  <!-- Start Ratings -->
+  <section class="ratings p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow">
+    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
+      Ratings
+    </h4>
+    <ul class="space-y-2">
+      @for(rating of [5,4,3,2,1]; track rating; let i = $index ){
+      <li>
+        <label class="flex items-center gap-2 cursor-pointer" for="rating + {{ i }}">
+          <input type="checkbox" [value]="rating"
+            class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px]"
+            id="rating + {{ i }}" />
+          <span>
+            @for(star of [].constructor(rating); track star) {
+            <i class="fa-solid fa-star text-primary"></i>
+
+            } @for(star of [].constructor(5-rating); track star){
+            <i class="fa-regular fa-star text-primary"></i>
+
+            }
+          </span>
+        </label>
+      </li>
+
+      }
+    </ul>
+  </section>
+  <!-- End Ratings -->
+</aside>

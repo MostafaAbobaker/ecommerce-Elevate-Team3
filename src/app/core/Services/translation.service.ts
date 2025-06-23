@@ -1,10 +1,9 @@
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import {isPlatformBrowser} from '@angular/common';
-
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TranslationService {
   // Default Language
@@ -12,10 +11,9 @@ export class TranslationService {
 
   constructor(
     private translateService: TranslateService,
-    @Inject(PLATFORM_ID) private platformId: Object) {
-
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     if (isPlatformBrowser(this.platformId)) {
-
       // Get Language from Local Storage
       const savedLang: string | null = localStorage.getItem('lng');
 
@@ -39,7 +37,6 @@ export class TranslationService {
    * @param lang - The language code to switch to
    */
   changeLang(lang: string): void {
-
     // Use language
     this.translateService.use(lang);
 

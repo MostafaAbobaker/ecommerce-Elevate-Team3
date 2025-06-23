@@ -1,7 +1,7 @@
 <header class="header px-4 bg-white dark:bg-zinc-800 dark:text-white">
   <div class="max-w-screen-xl mx-auto">
     <div class="container mx-auto flex items-center justify-between">
-      <a routerLink="/" class="branding shrink-0">
+      <a routerLink="/" class="branding shrink-0 block">
         <img src="../../../../../assets/imgs/logo.svg" alt="" class="w-[86px] h-[86px]">
       </a>
       <div class="search grow relative  mx-4">
@@ -44,7 +44,7 @@
             <li>
               <!-- Drop Down List Of Language -->
               <div class="relative inline-block text-left">
-                <button (click)="dropDownLang()" type="button" class="inline-flex justify-center items-center gap-2 w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-white border-e dark:border-zinc-600">
+                <button (click)="dropDownLang()" type="button" class="inline-flex justify-center items-center gap-2 w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-white border-s dark:border-zinc-600">
                   {{ 'header.language' | translate }}
                   <i class="fa-solid fa-angle-down"></i>
                 </button>
