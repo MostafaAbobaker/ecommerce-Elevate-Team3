@@ -1,3 +1,15 @@
 <section class="product-section">
+    <div class="flex flex-wrap mt-20 md:mt-8">
+          @for(product of productList;track product.id) {
+            <div class="2xl:w-3/12 xl:w-4/12 md:w-6/12 sm:w-6/12 w-full px-3 mb-6">
+              <app-item-product [popularItem]="product"></app-item-product>
+            </div>
+          }@empty {
+            <div class="text-center flex flex-col items-center justify-center mx-auto">
+              <img src="../../../../../assets/imgs/no-data.png" alt="" width="200px" height="200px" class="text-center">
+              <h1 class="text-center my-6 text-4xl font-bold text-primary"> {{ 'notFound.title' | translate }}</h1>
+            </div>
+          }
+        </div>
 
 </section>
