@@ -1,3 +1,26 @@
 <section class="product-section">
 
+
+  <div class="flex justify-end items-center mb-6">
+    <p-dropdown
+      [options]="sortOptions"
+      [(ngModel)]="selectedSort"
+      placeholder="Sort by..."
+      (onChange)="onSortChange($event.value)"
+      optionLabel="label"
+      optionValue="value"
+      class="custom-dropdown w-60 dark:bg-zinc-700"
+    >
+    </p-dropdown>
+  </div>
+
+  <!-- Products Grid -->
+
+  <div class="flex flex-wrap mt-20 md:mt-8">
+    @for(product of productsItems;track product.id) {
+    <div class="2xl:w-3/12 xl:w-4/12 md:w-6/12 sm:w-6/12 w-full px-3 mb-6">
+      <app-item-product [popularItem]="product"></app-item-product>
+    </div>
+    }
+  </div>
 </section>

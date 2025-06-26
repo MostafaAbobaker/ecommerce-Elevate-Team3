@@ -92,3 +92,87 @@ body {
 html[dir="rtl"]  .fa-arrow-right-long {
   transform: scale(-1);
 }
+
+
+/* =============================== */
+/* ✅ Light Mode Styles */
+/* =============================== */
+.p-select {
+  background-color: #fff !important;
+  color: var(--primary) !important;
+}
+
+.p-select:not(.p-disabled).p-focus {
+  border-color: var(--primary) !important;
+}
+
+.p-select-overlay {
+  background-color: #fff !important;
+}
+
+.p-select-option {
+  color: var(--primary) !important;
+  background-color: #fff !important;
+  border-color: var(--primary) !important;
+}
+
+.p-select-label {
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.p-select-option:hover {
+  border-color: var(--primary) !important;
+  background-color: var(--primary-light) !important;
+}
+
+.p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {
+  background-color: var(--primary-light) !important;
+}
+
+.p-select-option.p-select-option-selected.p-focus {
+  background-color: var(--primary) !important;
+  color: #fff !important;
+}
+
+
+/* =============================== */
+/* 🌙 Dark Mode Styles (.dark class) */
+/* =============================== */
+.dark .p-select {
+  background-color: var(--primary-dark) !important;
+  color: #fff !important;
+}
+
+.dark .p-select:not(.p-disabled).p-focus {
+  border-color: #fff !important;
+}
+
+.dark .p-select-overlay {
+  background-color: var(--primary-dark) !important;
+}
+
+.dark .p-select-option {
+  color: #fff !important;
+  background-color: var(--primary-dark) !important;
+  border-color: #fff !important;
+}
+
+.dark .p-select-label {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+.dark .p-select-option:hover {
+  border-color: var(--darkMode-secondary) !important;
+  background-color: var(--secondary-dark) !important;
+}
+
+.dark .p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus {
+  background-color: var(--secondary-dark) !important;
+}
+
+.dark .p-select-option.p-select-option-selected.p-focus {
+  background-color: #fff !important;
+  color: var(--secondary-dark) !important;
+}
