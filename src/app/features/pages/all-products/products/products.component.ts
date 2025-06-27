@@ -7,6 +7,7 @@ import { ProductsService } from './services/products.service';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown'; // ✅ PrimeNG Dropdown
 import { FormsModule } from '@angular/forms';
+import { SortOption } from './sort-option.enum';
 
 @Component({
   selector: 'app-products',
@@ -19,15 +20,15 @@ export class ProductsComponent implements OnDestroy, OnInit {
   productsItems: IItemProduct[] = [];
   private getProducts!: Subscription;
 
-  // PrimeNG Dropdown
   sortOptions = [
-    { label: 'Price: Low to High', value: 'priceAsc' },
-    { label: 'Price: High to Low', value: 'priceDesc' },
-    { label: 'Name: A to Z', value: 'nameAsc' },
-    { label: 'Name: Z to A', value: 'nameDesc' },
+    { label: 'Price: Low to High', value: SortOption.PriceAsc },
+    { label: 'Price: High to Low', value: SortOption.PriceDesc },
+    { label: 'Name: A to Z', value: SortOption.NameAsc },
+    { label: 'Name: Z to A', value: SortOption.NameDesc },
   ];
 
-  selectedSort: string = '';
+  selectedSort: SortOption | '' = '';
+
   limit: number = 10;
   constructor(
     private _productsService: ProductsService,
@@ -55,18 +56,18 @@ export class ProductsComponent implements OnDestroy, OnInit {
   }
 
 
-  onSortChange(sortValue: string): void {
+  onSortChange(sortValue: SortOption): void {
     switch (sortValue) {
-      case 'priceAsc':
+      case SortOption.PriceAsc:
         this.productsItems.sort((a, b) => a.price - b.price);
         break;
-      case 'priceDesc':
+      case SortOption.PriceDesc:
         this.productsItems.sort((a, b) => b.price - a.price);
         break;
-      case 'nameAsc':
+      case SortOption.NameAsc:
         this.productsItems.sort((a, b) => a.title.localeCompare(b.title));
         break;
-      case 'nameDesc':
+      case SortOption.NameDesc:
         this.productsItems.sort((a, b) => b.title.localeCompare(a.title));
         break;
     }
