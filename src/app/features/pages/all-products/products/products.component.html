@@ -1,14 +1,8 @@
 <section class="product-section">
   <div class="flex justify-end items-center mb-6">
-    <p-dropdown
-      [options]="sortOptions"
-      [(ngModel)]="selectedSort"
-      placeholder="Sort by..."
-      (onChange)="onSortChange($event.value)"
-      optionLabel="label"
-      optionValue="value"
-      class="custom-dropdown w-60 dark:bg-zinc-700"
-    >
+    <p-dropdown [options]="sortOptions" [(ngModel)]="selectedSort" placeholder="Sort by..."
+      (onChange)="onSortChange($event.value)" optionLabel="label" optionValue="value"
+      class="custom-dropdown w-60 dark:bg-zinc-700">
     </p-dropdown>
   </div>
 
@@ -21,17 +15,16 @@
     </div>
     }@empty {
     <div class="text-center flex flex-col items-center justify-center mx-auto">
-      <img
-        src="../../../../../assets/imgs/no-data.png"
-        alt=""
-        width="200px"
-        height="200px"
-        class="text-center"
-      />
+      <img src="../../../../../assets/imgs/no-data.png" alt="" width="200px" height="200px" class="text-center" />
       <h1 class="text-center my-6 text-4xl font-bold text-primary">
         {{ "notFound.title" | translate }}
       </h1>
     </div>
     }
+  </div>
+  <!-- PrimeNG Pagination -->
+  <div class="card flex justify-center">
+    <p-paginator (onPageChange)="onPageChange($event)" [rows]="products.metadata.limit"
+      [totalRecords]="products.metadata.totalItems" [rowsPerPageOptions]="[6,12,18,24]" />
   </div>
 </section>
