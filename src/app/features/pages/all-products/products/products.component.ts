@@ -1,48 +1,90 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ItemProductComponent } from "../../../../shared/components/ui/item-product/item-product.component";
+import { ItemProductComponent } from '../../../../shared/components/ui/item-product/item-product.component';
 import { IItemProduct } from '../../../../shared/components/ui/item-product/model/iitem-product';
-import { TranslateModule } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { ProductsService } from '../../homePage/popular-items/service/products.service';
 import { MessageService } from 'primeng/api';
+import { ProductsService } from './services/products.service';
+import { CommonModule } from '@angular/common';
+import { DropdownModule } from 'primeng/dropdown'; // ✅ PrimeNG Dropdown
+import { FormsModule } from '@angular/forms';
+import { SortOption } from './sort-option.enum';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products',
-  imports: [ItemProductComponent, TranslateModule],
+  imports: [CommonModule, DropdownModule, FormsModule, ItemProductComponent,TranslatePipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
-  providers: [MessageService]
+  providers: [MessageService],
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnDestroy, OnInit {
+  productsItems: IItemProduct[] = [];
+  private getProducts!: Subscription;
 
-  productList: IItemProduct[] = [];
-  private getProductsService!: Subscription
 
+  sortOptions = [
+    { label: 'Price: Low to High', value: SortOption.PriceAsc },
+    { label: 'Price: High to Low', value: SortOption.PriceDesc },
+    { label: 'Name: A to Z', value: SortOption.NameAsc },
+    { label: 'Name: Z to A', value: SortOption.NameDesc },
+  ];
+
+  selectedSort: SortOption | '' = '';
+
+  limit: number = 10;
   constructor(
     private _productsService: ProductsService,
     private messageService: MessageService
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-    this.getAllProducts()
+  ngOnInit() {
+    this.getAllProducts(this.limit);
   }
 
-  getAllProducts() {
-    this.getProductsService = this._productsService.getAllCategories().subscribe({
+  getAllProducts(limit: number) {
+    this.getProducts = this._productsService.getAllProducts(limit).subscribe({
       next: (res) => {
-        this.productList = res.products;
-        console.log(res);
-
+        this.productsItems = res.products;
+        console.log(this.productsItems);
       },
       error: (err) => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
-
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: err.message,
+        });
       },
     });
   }
-  ngOnDestroy(): void {
-    this.getProductsService.unsubscribe();
+
+
+  onSortChange(sortValue: SortOption): void {
+    switch (sortValue) {
+      case SortOption.PriceAsc:
+        this.productsItems.sort((a, b) => a.price - b.price);
+        break;
+      case SortOption.PriceDesc:
+        this.productsItems.sort((a, b) => b.price - a.price);
+        break;
+      case SortOption.NameAsc:
+        this.productsItems.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case SortOption.NameDesc:
+        this.productsItems.sort((a, b) => b.title.localeCompare(a.title));
+        break;
+    }
+
+    // Force detection if needed
+    this.productsItems = this.productsItems.map((p) => ({ ...p }));
+    console.log(
+      'Sorted Products:',
+      this.productsItems.map((p) => p.price)
+    );
   }
 
-
+  ngOnDestroy(): void {
+    if (this.getProducts) {
+      this.getProducts.unsubscribe();
+    }
+  }
 }
