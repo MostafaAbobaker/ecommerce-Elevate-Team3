@@ -5,12 +5,13 @@
 
         <div class="lg:col-span-3 p-4 lg:p-0">
           <!-- Filter -->
-          <app-filter></app-filter>
+          <!-- <app-test-filter></app-test-filter> -->
+          <app-filter (filterObjectChange)="onFilterChange($event)"></app-filter>
         </div>
 
         <div class="lg:col-span-9">
           <!-- Product -->
-          <app-products></app-products>
+          <app-products [productList]="allProducts"></app-products>
         </div>
 
       </div>

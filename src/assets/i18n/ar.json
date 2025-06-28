@@ -86,5 +86,17 @@
       "placeholder-input": "أدخل بريدك الإلكتروني",
       "subscribe-button": "اشترك"
     }
+  },
+  "AllProducts": {
+    "SearchFilter": "بحث",
+    "Categories": "الاقسام",
+    "Brands": "الماركة",
+    "priceRating": "تقييم السعر",
+    "Ratings": "التقييمات",
+    "totalProducts": "إجمالي المنتجات",
+    "sortBy": "ترتيب حسب",
+    "Recommended": "الأكثر رواجاً",
+    "HighLow": "السعر: من الأعلى إلى الأقل",
+    "LowHigh": "السعر: من الأقل إلى الأعلى"
   }
 }

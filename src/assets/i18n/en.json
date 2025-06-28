@@ -86,5 +86,17 @@
       "placeholder-input": "Enter Your Email",
       "subscribe-button": "Subscribe"
     }
+  },
+  "AllProducts": {
+    "SearchFilter": "Search",
+    "Categories": "Categories",
+    "Brands": "Brands",
+    "priceRating": "Price Rating",
+    "Ratings": "Ratings",
+    "totalProducts": "Total Products",
+    "sortBy": "Sort By",
+    "Recommended": "Recommended",
+    "HighLow": "Price: High to Low",
+    "LowHigh": "Price: Low to High"
   }
 }

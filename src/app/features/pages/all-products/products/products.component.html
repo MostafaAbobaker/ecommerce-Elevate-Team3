@@ -1,15 +1,40 @@
 <section class="product-section">
+    <div class="filter flex justify-between items-center flex-wrap mb-3">
+      <h4 class="">{{productList.length}}  {{'AllProducts.totalProducts' | translate}}</h4>
+      <div class="dropdown group relative z-10" >
+          <button class="btn btn-secondary dropdown-toggle border p-3 flex" type="button" >
+            <i class="fa-solid fa-arrow-right-arrow-left rotate-90 me-3"></i>
+            {{'AllProducts.sortBy' | translate}} : {{stateSorting }}
+            <svg class="ms-4 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+      </svg>
+          </button>
+          <ul #dropdownMenu class="dropdown-menu hidden group-hover:block absolute z-10 bg-white shadow-lg -mt-[5px] w-full p-3">
+            <li><a class="dropdown-item p-2 block hover:bg-gray-50" (click)="sortProducts('recommended')"> {{'AllProducts.Recommended' | translate}}</a></li>
+            <li><a class="dropdown-item p-2 block hover:bg-gray-50" (click)="sortProducts('highLow')">{{'AllProducts.HighLow' | translate}}</a></li>
+            <li><a class="dropdown-item p-2 block hover:bg-gray-50" (click)="sortProducts('lowHigh')">{{'AllProducts.LowHigh' | translate}}</a></li>
+          </ul>
+      </div>
+
+    </div>
     <div class="flex flex-wrap mt-20 md:mt-8">
-          @for(product of productList;track product.id) {
-            <div class="2xl:w-3/12 xl:w-4/12 md:w-6/12 sm:w-6/12 w-full px-3 mb-6">
+
+          @for(product of productList.slice(first, first + rows);track product.id;) {
+
+            <div class="2xl:w-4/12 xl:w-4/12 md:w-6/12 sm:w-6/12 w-full px-3 mb-6">
               <app-item-product [popularItem]="product"></app-item-product>
             </div>
+
           }@empty {
             <div class="text-center flex flex-col items-center justify-center mx-auto">
               <img src="../../../../../assets/imgs/no-data.png" alt="" width="200px" height="200px" class="text-center">
               <h1 class="text-center my-6 text-4xl font-bold text-primary"> {{ 'notFound.title' | translate }}</h1>
             </div>
           }
-        </div>
 
+
+        </div>
+        @if(productList.length > 0) {
+            <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="productList.length" [rowsPerPageOptions]="[5, 10, 20, 30 , 40 ,50]" />
+          }
 </section>
