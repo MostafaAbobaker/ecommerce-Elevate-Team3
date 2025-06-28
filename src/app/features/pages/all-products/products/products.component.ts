@@ -8,10 +8,11 @@ import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown'; // ✅ PrimeNG Dropdown
 import { FormsModule } from '@angular/forms';
 import { SortOption } from './sort-option.enum';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products',
-  imports: [CommonModule, DropdownModule, FormsModule, ItemProductComponent],
+  imports: [CommonModule, DropdownModule, FormsModule, ItemProductComponent,TranslatePipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
   providers: [MessageService],
@@ -19,6 +20,7 @@ import { SortOption } from './sort-option.enum';
 export class ProductsComponent implements OnDestroy, OnInit {
   productsItems: IItemProduct[] = [];
   private getProducts!: Subscription;
+
 
   sortOptions = [
     { label: 'Price: Low to High', value: SortOption.PriceAsc },
