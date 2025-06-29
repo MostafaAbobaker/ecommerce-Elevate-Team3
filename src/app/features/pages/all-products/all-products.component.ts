@@ -6,10 +6,11 @@ import { IItemProduct } from '../../../shared/components/ui/item-product/model/i
 import { CommonModule } from '@angular/common';
 import { IFilterObj } from './model/ifilter-obj';
 import { FilterComponent } from './filter/filter.component';
+import { TestFilterComponent } from './test-filter/test-filter.component';
 
 @Component({
   selector: 'app-all-products',
-  imports: [ ProductsComponent, CommonModule, FilterComponent],
+  imports: [ ProductsComponent, CommonModule, TestFilterComponent],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css'
 })
@@ -37,10 +38,10 @@ export class AllProductsComponent implements OnInit, OnDestroy {
     });
   }
 
- onFilterChange(filter: IFilterObj) {
+ /* onFilterChange(filter: IFilterObj) {
   // Do something with the filter object
   console.log('Filter from parent:', filter);
-}
+} */
 
   ngOnDestroy(): void {
     this.getProductsService.unsubscribe();

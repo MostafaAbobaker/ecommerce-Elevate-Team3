@@ -1,11 +1,10 @@
 <aside class="aside-filer">
   <!-- Start categories -->
-  <form action="" class="filter-form" [formGroup]="filterForm" (ngSubmit)="onFilterChange(filterForm.value)">
     <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
       <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
         {{ "AllProducts.SearchFilter" | translate }}
       </h4>
-      <input type="search" name="" id="" formControlName="textSearch" placeholder="Search categories"
+      <input type="search" name="" id="" (keyup)="onFilterChange()" [(ngModel)]="filterObject.textSearch" placeholder="Search categories"
         class="w-full h-[40px] px-4 shadow rounded-full bg-white dark:bg-zinc-600 text-sm text-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary" />
     </section>
     <!-- End categories -->
@@ -14,7 +13,7 @@
       <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
         {{ "AllProducts.Categories" | translate }}
       </h4>
-      <ul class="space-y-2 h-[100px] overflow-y-auto">
+      <!-- <ul class="space-y-2 h-[100px] overflow-y-auto">
         @for(category of Categories; track category._id; let i = $index ){
         <li class="pe-2">
           <label class="flex items-center text-zinc-500 gap-2 cursor-pointer relative px-1
@@ -22,24 +21,38 @@
             has-[:checked]:before:text-white">
             <input type="checkbox"
               class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"
-              formControlName="categories"  />
+              [(ngModel)]="filterObject.Categories"
+              (change)="onFilterChange()" />
             <div class="flex justify-between w-full text-sm">
               <div class="">{{ category.name }}</div>
               <div class="">({{ category.productsCount }})</div>
             </div>
           </label>
         </li>
+
+
         }
-      </ul>
+      </ul> -->
+      <div class="space-y-2 h-[100px] overflow-y-auto">
+      <div *ngFor="let category of Categories" class="flex items-center  ">
+            <p-checkbox [inputId]="category._id" name="group" [value]="category" [(ngModel)]="filterObject.Categories" />
+            <label (click)="onFilterChange()" [for]="category._id" class="flex items-center text-zinc-500 gap-2 cursor-pointer relative px-1 w-full">
+              <div class="flex justify-between w-full text-sm">
+              <div class="">{{ category.name }}</div>
+              <div class="">({{ category.productsCount }})</div>
+            </div>
+          </label>
+        </div>
+        </div>
     </section>
     <!-- End categories -->
 
     <!-- Start Brands -->
-    <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
+     <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
       <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
         {{ "AllProducts.Brands" | translate }}
       </h4>
-      <ul class="space-y-2 h-[100px] overflow-y-auto">
+      <!-- <ul class="space-y-2 h-[100px] overflow-y-auto">
         @for(occasion of Occasions; track occasion._id; let i = $index ){
         <li class="pe-2">
           <label
@@ -56,26 +69,38 @@
         </li>
 
         }
-      </ul>
+      </ul> -->
+      <div class="space-y-2 h-[100px] overflow-y-auto">
+      <div *ngFor="let occasion of Occasions" class="flex items-center  ">
+            <p-checkbox [inputId]="occasion._id" name="group" [value]="occasion" [(ngModel)]="filterObject.occasions" />
+            <label (click)="onFilterChange()" [for]="occasion._id" class="flex items-center text-zinc-500 gap-2 cursor-pointer relative px-1 w-full">
+              <div class="flex justify-between w-full text-sm">
+              <div class="">{{ occasion.name }}</div>
+              <div class="">({{ occasion.productsCount }})</div>
+            </div>
+          </label>
+        </div>
+        </div>
+
     </section>
     <!-- End Brands -->
     <!-- Start Brands -->
-    <!-- <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
+    <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
     <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
      {{'AllProducts.priceRating' | translate}}
     </h4>
-    <p class="mb-3 text-primary font-bold">${{rangeValues[0]}} - ${{rangeValues[1]}}</p>
-    <p-slider [(ngModel)]="rangeValues" [range]="true"  />
+    <p class="mb-3 text-primary font-bold">${{filterObject.priceRange![0]}} - ${{filterObject.priceRange![1]}}</p>
+    <p-slider [(ngModel)]="filterObject.priceRange" [range]="true"  />
 
 
-  </section> -->
+  </section>
     <!-- End Brands -->
     <!-- Start Ratings -->
     <section class="ratings p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow">
       <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
         {{ "AllProducts.Ratings" | translate }}
       </h4>
-      <ul class="space-y-2">
+      <!-- <ul class="space-y-2">
         @for (rating of [5, 4, 3, 2, 1]; track $index; let i = $index) {
         <li>
           <label class="flex items-center text-zinc-500 gap-2 cursor-pointer relative
@@ -94,8 +119,20 @@
           </label>
         </li>
         }
-      </ul>
+      </ul> -->
+      <div *ngFor="let rating of [5, 4, 3, 2, 1] let i = index" class="flex items-center  ">
+            <p-checkbox [inputId]="rating.toString()" name="group" [value]="5 - i" [(ngModel)]="filterObject.rating" />
+            <label (click)="onFilterChange()" [for]="rating.toString()" class="flex items-center text-zinc-500 gap-2 cursor-pointer relative px-1 w-full">
+               <span>
+              @for (star of [].constructor(rating); track $index) {
+              <i class="fa-solid fa-star text-primary"></i>
+              } @for (star of [].constructor(5 - rating); track $index) {
+              <i class="fa-regular fa-star text-primary"></i>
+              }
+            </span>
+          </label>
+        </div>
     </section>
     <!-- End Ratings -->
-  </form>
+
 </aside>

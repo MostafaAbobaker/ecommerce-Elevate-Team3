@@ -8,23 +8,33 @@ import { CategoriesService } from '../service/categories.service';
 import { IOccasions } from '../model/ioccasions';
 import { Categories } from '../../homePage/categories/model/categories';
 import { TranslatePipe } from '@ngx-translate/core';
+import { IFilterObj, TestIFilterObj } from '../model/ifilter-obj';
+
+import { CheckboxModule } from 'primeng/checkbox';
+
 @Component({
   selector: 'app-test-filter',
-  imports: [SliderModule , FormsModule, TranslatePipe, CommonModule,ReactiveFormsModule],
+  imports: [SliderModule , FormsModule, TranslatePipe, CommonModule , CheckboxModule],
   templateUrl: './test-filter.component.html',
   styleUrl: './test-filter.component.css'
 })
 export class TestFilterComponent {
   rangeValues: number[] = [0, 80];
   textSearchInput: string = '';
-
+  filterObject:TestIFilterObj={
+    textSearch: '',
+    Categories: [],
+    occasions: [],
+    priceRange: [0, 80],
+    rating: [],
+  }
   Occasions: IOccasions[] = [];
   Categories: Categories[] = [];
   constructor(private _occasionsService:OccasionsService,
               private _categoriesService: CategoriesService
   ) { }
 
-  filterForm:FormGroup = new FormGroup({
+  /* filterForm:FormGroup = new FormGroup({
     textSearch: new FormControl(''),
     priceRange: new FormGroup({
       min: new FormControl(0),
@@ -33,7 +43,7 @@ export class TestFilterComponent {
     occasions: new FormControl(),
     categories: new FormControl(),
     rating: new FormControl(),
-  });
+  }); */
 
 
   ngOnInit(): void {
@@ -63,8 +73,8 @@ export class TestFilterComponent {
       }
     });
   }
-  onFilterChange(filter: any) {
+  onFilterChange() {
     // Emit the filter object to the parent component
-    console.log('Filter from child:', filter);
+    console.log('Filter from child:', this.filterObject);
   }
 }

@@ -8,3 +8,11 @@ export interface IFilterObj {
   },
   rating?: string[],
 }
+
+export interface TestIFilterObj {
+  textSearch?: string,
+  Categories?: string[],
+  occasions?: string[],
+  priceRange?: number[],
+  rating?: string[],
+}
