@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ItemProductComponent } from '../../../../shared/components/ui/item-product/item-product.component';
-import { IItemProduct } from '../../../../shared/components/ui/item-product/model/iitem-product';
 import { Subscription } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { ProductsService } from './services/products.service';
@@ -9,18 +8,22 @@ import { DropdownModule } from 'primeng/dropdown'; // ✅ PrimeNG Dropdown
 import { FormsModule } from '@angular/forms';
 import { SortOption } from './sort-option.enum';
 import { TranslatePipe } from '@ngx-translate/core';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { IResponse } from '../../homePage/popular-items/model/iresponse';
+import { IItemProduct } from '../../../../shared/components/ui/item-product/model/iitem-product';
 
 @Component({
   selector: 'app-products',
-  imports: [CommonModule, DropdownModule, FormsModule, ItemProductComponent,TranslatePipe],
+  imports: [CommonModule, DropdownModule, FormsModule, ItemProductComponent, TranslatePipe, PaginatorModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
   providers: [MessageService],
 })
 export class ProductsComponent implements OnDestroy, OnInit {
+
+  products!: IResponse;
   productsItems: IItemProduct[] = [];
   private getProducts!: Subscription;
-
 
   sortOptions = [
     { label: 'Price: Low to High', value: SortOption.PriceAsc },
@@ -31,20 +34,22 @@ export class ProductsComponent implements OnDestroy, OnInit {
 
   selectedSort: SortOption | '' = '';
 
-  limit: number = 10;
+  page: number = 0;
+  limit: number = 6;
   constructor(
     private _productsService: ProductsService,
     private messageService: MessageService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.getAllProducts(this.limit);
+    this.getAllProducts(this.limit, this.page);
   }
 
-  getAllProducts(limit: number) {
-    this.getProducts = this._productsService.getAllProducts(limit).subscribe({
+  getAllProducts(limit: number, page: number) {
+    this.getProducts = this._productsService.getAllProducts(limit, page).subscribe({
       next: (res) => {
-        this.productsItems = res.products;
+        this.products = res;
+        this.productsItems = this.products.products;
         console.log(this.productsItems);
       },
       error: (err) => {
@@ -80,6 +85,13 @@ export class ProductsComponent implements OnDestroy, OnInit {
       'Sorted Products:',
       this.productsItems.map((p) => p.price)
     );
+  }
+
+  // pagination
+  onPageChange(event: any) {
+    const page = event.page + 1;
+    const limit = event.rows;
+    this.getAllProducts(limit, page)
   }
 
   ngOnDestroy(): void {

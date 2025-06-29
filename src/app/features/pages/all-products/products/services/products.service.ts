@@ -10,7 +10,7 @@ export class ProductsService {
 
   constructor(private _http:HttpClient) { }
 
-getAllProducts(limit: number): Observable<IResponse> {
-    return this._http.get<IResponse>(`products?limit=${limit}`);
+getAllProducts(limit: number,page:number): Observable<IResponse> {
+    return this._http.get<IResponse>(`products?limit=${limit}&page=${page}`);
   }
 }
