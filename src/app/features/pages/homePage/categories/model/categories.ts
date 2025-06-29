@@ -8,5 +8,5 @@ export interface Categories {
   productsCount: number,
   // Category Filter Properties
   checked?: boolean, // Optional property to track if the category is selected
-  unChecked?: boolean; // Optional property to track if the category is not selected
+  // unChecked?: boolean; // Optional property to track if the category is not selected
 }

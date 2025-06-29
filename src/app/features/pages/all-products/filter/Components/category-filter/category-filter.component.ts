@@ -38,16 +38,16 @@ export class CategoryFilterComponent implements OnInit, OnDestroy{
         this.allCategories = data.categories.map((category: Categories) => ({
           ...category,
           checked: false,
-          unChecked: true
+          // unChecked: true
         }));
 
 
         // Filter Object
-        this.filterObjectService.filterObject.category = data.categories.map((category: Categories) => ({
+        /*this.filterObjectService.filterObject.category = data.categories.map((category: Categories) => ({
           ...category,
-          checked: false,
-          unChecked: true
-        }));
+          // checked: false,
+          // unChecked: true
+        }));*/
         //
 
         console.log(this.allCategories);
@@ -59,14 +59,14 @@ export class CategoryFilterComponent implements OnInit, OnDestroy{
   /// This method is called when a checkbox is selected or deselected /***/(## Not Done)
   checkBoxSelected (category: Categories): void {
     category.checked = !category.checked;
-    category.unChecked = !category.unChecked;
+    // category.unChecked = !category.unChecked;
 
     // if this true, then we need to fetch the specific category
     if(category.checked) {
       console.log("checked",category.name, category._id);
       this.getSpecificCategory(category);
     }
-    if(category.unChecked) {
+    if(!category.checked) {
 
       console.log("obj",this.filterObjectService.filterObject.products);
 

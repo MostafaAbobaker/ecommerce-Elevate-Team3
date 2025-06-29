@@ -17,11 +17,10 @@ export class SearchFilterComponent {
   private readonly filterObjectService: FilterObjectService = inject (FilterObjectService); // Filter
 
   inputSearch(searchTerm: any): void{
-    const value: string = searchTerm.value;
+    // const value: string = searchTerm.value;
     this.filterObjectService.filterObject.searchTerm = searchTerm.value;
-    console.log("input", value);
-    console.log("obj", this.filterObjectService.filterObject.searchTerm);
-    console.log("obj all", this.filterObjectService.filterObject );
+    // console.log("input", value);
+    // console.log("obj", this.filterObjectService.filterObject.searchTerm);
+    // console.log("obj all", this.filterObjectService.filterObject );
   }
-  //
 }
