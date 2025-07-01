@@ -86,19 +86,5 @@
       "placeholder-input": "أدخل بريدك الإلكتروني",
       "subscribe-button": "اشترك"
     }
-  },
-  "allProduct": {
-    "filter": {
-      "search-section": {
-        "search": "البحث",
-        "placeholder-input": "ابحث عن منتجك المفضل"
-      },
-      "category-section": {
-        "category": "الفئة"
-      },
-      "price-section": {
-        "price-rating": "تقييم السعر"
-      }
-    }
   }
 }

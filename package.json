@@ -15,7 +15,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-slider/ngx-slider": "^19.0.0",
     "@angular/animations": "19.2.14",
     "@angular/common": "19.2.14",
     "@angular/compiler": "19.2.14",

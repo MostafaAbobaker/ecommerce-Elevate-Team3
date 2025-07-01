@@ -1,18 +1,18 @@
-import { Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { SectionTitleComponent } from '../../../../shared/components/ui/section-title/section-title.component';
 import { Categories } from '../categories/model/categories';
 import { ItemProductComponent } from '../../../../shared/components/ui/item-product/item-product.component';
 import { IItemProduct } from '../../../../shared/components/ui/item-product/model/iitem-product';
-import { GetCategoriesService } from '../../../../shared/services/getCategories/getCategories.service';
-import { getProductsService } from '../../../../shared/services/getProducts/getProducts.service';
+import { CategoriesService } from '../categories/service/categories.service';
+import { popularItemService } from './service/popular-item.service';
 import { Subscription } from 'rxjs';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import {NotFoundComponent} from '../../../../shared/components/ui/not-found/not-found.component';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-popular-items',
-  imports: [SectionTitleComponent, ItemProductComponent, ToastModule, NotFoundComponent],
+  imports: [SectionTitleComponent, ItemProductComponent, ToastModule, TranslatePipe],
   templateUrl: './popular-items.component.html',
   styleUrl: './popular-items.component.css',
   providers: [MessageService]
@@ -26,8 +26,8 @@ export class TestPopularItemsComponent implements  OnDestroy {
   private getPopularItemsService!: Subscription;
 
   constructor(
-    private _popularItemService: getProductsService,
-    private _categoriesService: GetCategoriesService,
+    private _popularItemService: popularItemService,
+    private _categoriesService: CategoriesService,
     private messageService: MessageService
   ) {}
 

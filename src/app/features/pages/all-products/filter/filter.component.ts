@@ -1,12 +1,9 @@
 import { CommonModule } from '@angular/common';
-import {Component} from '@angular/core';
-import {SearchFilterComponent} from './Components/search-filter/search-filter.component';
-import {CategoryFilterComponent} from './Components/category-filter/category-filter.component';
-import {PriceRatingFilterComponent} from './Components/price-rating-filter/price-rating-filter.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
-  imports: [CommonModule, SearchFilterComponent, CategoryFilterComponent, PriceRatingFilterComponent],
+  imports: [CommonModule],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.css'
 })

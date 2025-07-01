@@ -1,8 +1,8 @@
-import {FilterObjectService} from '../filter/service/filter-object.service';
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ItemProductComponent } from '../../../../shared/components/ui/item-product/item-product.component';
 import { Subscription } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { ProductsService } from './services/products.service';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown'; // ✅ PrimeNG Dropdown
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,6 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { IResponse } from '../../homePage/popular-items/model/iresponse';
 import { IItemProduct } from '../../../../shared/components/ui/item-product/model/iitem-product';
-import { ProductsService } from '../../../../shared/services/getProducts/products.service';
 
 @Component({
   selector: 'app-products',
@@ -20,13 +19,11 @@ import { ProductsService } from '../../../../shared/services/getProducts/product
   styleUrl: './products.component.css',
   providers: [MessageService],
 })
-
 export class ProductsComponent implements OnDestroy, OnInit {
 
   products!: IResponse;
   productsItems: IItemProduct[] = [];
   private getProducts!: Subscription;
-  private readonly filterObjectService: FilterObjectService = inject(FilterObjectService);
 
   sortOptions = [
     { label: 'Price: Low to High', value: SortOption.PriceAsc },
@@ -46,10 +43,6 @@ export class ProductsComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.getAllProducts(this.limit, this.page);
-    this.productsItems = this.filterObjectService.filterObject.products;
-    console.log("ProductsComponent" ,this.productsItems);
-    console.log("obj all", this.filterObjectService.filterObject );
-
   }
 
   getAllProducts(limit: number, page: number) {
