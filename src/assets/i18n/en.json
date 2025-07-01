@@ -86,5 +86,19 @@
       "placeholder-input": "Enter Your Email",
       "subscribe-button": "Subscribe"
     }
+  },
+  "allProduct": {
+    "filter" : {
+      "search-section": {
+        "search": "Search",
+        "placeholder-input": "Search for products..."
+      },
+      "category-section": {
+        "category": "Category"
+      },
+      "price-section": {
+        "price-rating": "Price Rating"
+      }
+    }
   }
 }

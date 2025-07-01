@@ -1,4 +1,10 @@
 <aside class="aside-filer">
+  <!-- Start Search -->
+    <app-search-filter></app-search-filter>
+
+  <!-- Start Categories -->
+    <app-category-filter></app-category-filter>
+
   <!-- Start Brands -->
   <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
     <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
@@ -17,13 +23,16 @@
 
         </label>
       </li>
-
-
     </ul>
   </section>
-  <!-- End Brands -->
+
+  <!-- Start Price Range -->
+    <app-price-rating-filter></app-price-rating-filter>
+
+
   <!-- Start Ratings -->
-  <section class="ratings p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow">
+  <!--
+    <section class="ratings p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow">
     <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
       Ratings
     </h4>
@@ -49,5 +58,6 @@
       }
     </ul>
   </section>
-  <!-- End Ratings -->
+  -->
+
 </aside>

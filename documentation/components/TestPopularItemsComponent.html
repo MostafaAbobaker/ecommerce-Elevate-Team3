@@ -266,7 +266,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(_popularItemService: <a href="../injectables/popularItemService.html" target="_self">popularItemService</a>, _categoriesService: <a href="../injectables/CategoriesService.html" target="_self">CategoriesService</a>, messageService: MessageService)</code>
+<code>constructor(_popularItemService: <a href="../injectables/popularItemService.html" target="_self">getProductsService</a>, _categoriesService: <a href="../injectables/CategoriesService.html" target="_self">GetCategoriesService</a>, messageService: MessageService)</code>
                     </td>
                 </tr>
                         <tr>
@@ -290,39 +290,39 @@
                                         <tbody>
                                                 <tr>
                                                         <td>_popularItemService</td>
-                                                  
+
                                                         <td>
-                                                                        <code><a href="../injectables/popularItemService.html" target="_self" >popularItemService</a></code>
+                                                                        <code><a href="../injectables/popularItemService.html" target="_self" >getProductsService</a></code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                 </tr>
                                                 <tr>
                                                         <td>_categoriesService</td>
-                                                  
+
                                                         <td>
-                                                                        <code><a href="../injectables/CategoriesService.html" target="_self" >CategoriesService</a></code>
+                                                                        <code><a href="../injectables/CategoriesService.html" target="_self" >GetCategoriesService</a></code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                 </tr>
                                                 <tr>
                                                         <td>messageService</td>
-                                                  
+
                                                         <td>
                                                                     <code>MessageService</code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -338,7 +338,7 @@
 
 
     <section data-compodoc="block-methods">
-    
+
     <h3 id="methods">
         Methods
     </h3>
@@ -410,7 +410,7 @@
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -440,7 +440,7 @@
 
                         </div>
                             <div class="io-description">
-                                
+
                             </div>
                 </td>
             </tr>
@@ -559,7 +559,7 @@
     </table>
 </section>
     <section data-compodoc="block-properties">
-    
+
     <h3 id="inputs">
         Properties
     </h3>
@@ -721,8 +721,8 @@ import { SectionTitleComponent } from &#x27;../../../../shared/components/ui/sec
 import { Categories } from &#x27;../categories/model/categories&#x27;;
 import { ItemProductComponent } from &#x27;../../../../shared/components/ui/item-product/item-product.component&#x27;;
 import { IItemProduct } from &#x27;../../../../shared/components/ui/item-product/model/iitem-product&#x27;;
-import { CategoriesService } from &#x27;../categories/service/categories.service&#x27;;
-import { popularItemService } from &#x27;./service/popular-item.service&#x27;;
+import { GetCategoriesService } from &#x27;../categories/service/categories.service&#x27;;
+import { getProductsService } from &#x27;./service/popular-item.service&#x27;;
 import { Subscription } from &#x27;rxjs&#x27;;
 import { ToastModule } from &#x27;primeng/toast&#x27;;
 import { MessageService } from &#x27;primeng/api&#x27;;
@@ -744,8 +744,8 @@ export class TestPopularItemsComponent implements AfterViewInit, OnDestroy {
   private getPopularItemsService!: Subscription;
 
   constructor(
-    private _popularItemService: popularItemService,
-    private _categoriesService: CategoriesService,
+    private _popularItemService: getProductsService,
+    private _categoriesService: GetCategoriesService,
     private messageService: MessageService
   ) {}
   ngOnDestroy(): void {
@@ -852,7 +852,7 @@ export class TestPopularItemsComponent implements AfterViewInit, OnDestroy {
         </div>
     </div>
 
-    
+
 </div>
 
 <script src="../js/libs/vis.min.js"></script>

@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import { ThemeService } from '../../../services/theme.service';
+import { ThemeService } from '../../../services/theme/theme.service';
 import {TranslationService} from '../../../../core/Services/translation.service';
 import {TranslatePipe} from '@ngx-translate/core';
 

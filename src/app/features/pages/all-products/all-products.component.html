@@ -1,18 +1,17 @@
-<section class="all-products-page  px-4 bg-white dark:bg-zinc-800 dark:text-white py-[50px]">
+<section class="all-products-page px-4 bg-white dark:bg-zinc-800 dark:text-white py-[50px]">
   <div class="max-w-screen-xl mx-auto">
-    <div class="container mx-auto  ">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-2 lg:grid-cols-12 gap-4">
 
-        <div class="lg:col-span-3 p-4 lg:p-0">
+        <div class="lg:col-span-3  p-4 lg:p-0">
           <!-- Filter -->
           <app-filter></app-filter>
         </div>
 
-        <div class="lg:col-span-9">
+        <div class="grid-cols-1 lg:col-span-9">
           <!-- Product -->
           <app-products></app-products>
         </div>
-
       </div>
     </div>
   </div>
