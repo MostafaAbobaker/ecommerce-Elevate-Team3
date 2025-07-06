@@ -15,7 +15,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-slider/ngx-slider": "^19.0.0",
     "@angular/animations": "19.2.14",
     "@angular/common": "19.2.14",
     "@angular/compiler": "19.2.14",
@@ -28,6 +27,7 @@
     "@angular/ssr": "19.2.15",
     "@colsen1991/ngx-translate-extract-marker": "^3.0.1",
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "@ngrx/store": "^19.2.1",
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",
     "@primeng/themes": "^19.1.3",

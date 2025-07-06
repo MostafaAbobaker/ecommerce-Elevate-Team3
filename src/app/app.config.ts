@@ -16,6 +16,8 @@ import Aura from '@primeng/themes/aura';
 // Import NGX Translate
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideStore } from '@ngrx/store';
+import { productsReducer } from './store/products.reducer';
 
 // Function to create the TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -32,18 +34,21 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAnimationsAsync(),
     providePrimeNG({
-      theme: {
-        preset: Aura
-      }
+        theme: {
+            preset: Aura
+        }
     }),
     importProvidersFrom([
-      TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient],
-        },
-      })
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient],
+            },
+        })
     ]),
-  ]
+    provideStore({
+      productStore: productsReducer
+    })
+]
 };
