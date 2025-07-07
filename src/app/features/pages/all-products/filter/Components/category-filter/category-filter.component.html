@@ -3,12 +3,12 @@
   <ul class="space-y-2 h-[100px] overflow-y-auto">
     @for(category of allCategories; track category._id){
       <li class="pe-2">
-        <label [for]="category.name" class="flex items-center text-zinc-500 gap-2 cursor-pointer relative
+        <label [for]="category.name" class="flex items-center text-zinc-500 dark:text-white gap-2 cursor-pointer relative
                       has-[:checked]:before:content-['\f00c'] has-[:checked]:before:absolute has-[:checked]:before:font-['Font_Awesome_6_Free']
                       has-[:checked]:before:font-bold has-[:checked]:before:text-white">
 
                       <input type="checkbox" [id]="category.name" [name]="category.name"
-                      [checked]="category.checked" (change)="checkBoxSelected(category)" class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"/>
+                      [checked]="category.checked" (change)="checkBoxSelected(category)" class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border dark:border-white default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"/>
                       <div class="flex justify-between w-full text-sm">
                         <div class="">{{category.name }}</div>
                         <div class="">({{ category.productsCount }})</div>

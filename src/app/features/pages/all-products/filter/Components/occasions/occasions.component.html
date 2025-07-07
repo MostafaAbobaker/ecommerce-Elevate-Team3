@@ -7,13 +7,13 @@
   <ul class="space-y-2 h-[100px] overflow-y-auto">
     @for(occasion of allOccasions; track occasion._id ){
     <li class="pe-2">
-      <label class="flex items-center text-zinc-500 gap-2 cursor-pointer relative
+      <label class="flex items-center text-zinc-500 dark:text-white gap-2 cursor-pointer relative
                       has-[:checked]:before:content-['\f00c'] has-[:checked]:before:absolute has-[:checked]:before:font-['Font_Awesome_6_Free']
                       has-[:checked]:before:font-bold has-[:checked]:before:text-white"
                       for="occasion-{{ occasion._id }}">
         <input
           type="checkbox"
-          class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"
+          class="w-[15px] h-[15px] border-zinc-500 dark:border-white checked:bg-primary border default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"
           id="occasion-{{ occasion._id }}"
           (change)="checkBoxSelected(occasion)"
           />
