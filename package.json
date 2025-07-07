@@ -27,6 +27,7 @@
     "@angular/ssr": "19.2.15",
     "@colsen1991/ngx-translate-extract-marker": "^3.0.1",
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "@ngrx/effects": "^19.2.1",
     "@ngrx/store": "^19.2.1",
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",

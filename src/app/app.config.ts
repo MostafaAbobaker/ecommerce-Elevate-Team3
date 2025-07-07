@@ -18,6 +18,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideStore } from '@ngrx/store';
 import { productsReducer } from './store/products.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { ProductsEffects } from './store/products.effect';
 
 // Function to create the TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -48,7 +50,8 @@ export const appConfig: ApplicationConfig = {
         })
     ]),
     provideStore({
-      productStore: productsReducer
-    })
+        productStore: productsReducer
+    }),
+    provideEffects(ProductsEffects)
 ]
 };
