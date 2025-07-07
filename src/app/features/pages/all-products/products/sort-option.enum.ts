@@ -3,6 +3,7 @@ export enum SortOption {
   PriceDesc = 'priceDesc',
   NameAsc = 'nameAsc',
   NameDesc = 'nameDesc',
+  NameRecommended = 'nameRecommended',
 }
 
 

@@ -88,6 +88,8 @@
     }
   },
   "allProduct": {
+    "totalProducts": "إجمالي المنتجات",
+    "sortBy": "ترتيب حسب",
     "filter": {
       "search-section": {
         "search": "البحث",
@@ -95,6 +97,12 @@
       },
       "category-section": {
         "category": "الفئة"
+      },
+      "occasion-section": {
+        "occasion": "العلامة التجارية"
+      },
+       "ratings-section": {
+        "ratings": "التقييمات"
       },
       "price-section": {
         "price-rating": "تقييم السعر"
