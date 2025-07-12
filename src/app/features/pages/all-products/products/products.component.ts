@@ -40,6 +40,7 @@ export class ProductsComponent implements OnInit {
   products$: Observable<IItemProduct[]>;
   loading$: Observable<boolean>;
   error$: Observable<string | null>;
+
   productsItems$: IItemProduct[] = [];
   OriginProducts: IItemProduct[] = [];
 
@@ -58,6 +59,7 @@ export class ProductsComponent implements OnInit {
   rows: number = 6;
 
   constructor(private store: Store) {
+
     this.products$ = this.store.select(ProductsSelector.selectAllProducts).pipe(
       map((products) => {
         this.productsItems$ = products;
@@ -65,6 +67,7 @@ export class ProductsComponent implements OnInit {
         return products;
       })
     );
+
     this.loading$ = this.store.select(ProductsSelector.selectProductsLoading);
     this.error$ = this.store.select(ProductsSelector.selectProductsError);
   }
@@ -100,18 +103,12 @@ export class ProductsComponent implements OnInit {
 
   // pagination
   onPageChange(event: any) {
-    debugger;
-    console.log(event);
-
     this.first = event.first ?? 0;
     this.page = event.page ?? 10;
     this.rows = event.rows;
     this.getPaginatedProducts(this.productsItems$, this.rows);
   }
-  getPaginatedProducts(
-    products: IItemProduct[],
-    rows?: number
-  ): IItemProduct[] {
+  getPaginatedProducts(products: IItemProduct[],rows?: number): IItemProduct[] {
     return products.slice(this.first, this.first + this.rows);
   }
 }
