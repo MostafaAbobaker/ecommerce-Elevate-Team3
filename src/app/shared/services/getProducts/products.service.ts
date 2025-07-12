@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IResponse } from '../../../features/pages/homePage/popular-items/model/iresponse';
+import {  IResponseProduct } from '../../../features/pages/homePage/popular-items/model/IResponseProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class ProductsService {
 
   constructor(private _http:HttpClient) { }
 
-getAllProducts(limit: number,page:number): Observable<IResponse> {
-    return this._http.get<IResponse>(`products?limit=${limit}&page=${page}`);
+getAllProducts(limit: 1000,page:1): Observable<IResponseProduct> {
+    return this._http.get<IResponseProduct>(`products?limit=${limit}&page=${page}`);
   }
 }

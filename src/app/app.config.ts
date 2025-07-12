@@ -17,7 +17,7 @@ import Aura from '@primeng/themes/aura';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideStore } from '@ngrx/store';
-import { productsReducer } from './store/products.reducer';
+import {  productsReducer } from './store/products.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { ProductsEffects } from './store/products.effect';
 
@@ -49,9 +49,7 @@ export const appConfig: ApplicationConfig = {
             },
         })
     ]),
-    provideStore({
-        productStore: productsReducer
-    }),
-    provideEffects(ProductsEffects)
+    provideStore({ products: productsReducer }),
+    provideEffects([ProductsEffects])
 ]
 };
