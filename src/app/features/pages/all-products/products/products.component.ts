@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -36,7 +36,7 @@ import * as ProductsSelector from '../../../../store/products.selector';
   styleUrl: './products.component.css',
   providers: [MessageService],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit , OnDestroy{
   products$: Observable<IItemProduct[]>;
   loading$: Observable<boolean>;
   error$: Observable<string | null>;
@@ -57,6 +57,7 @@ export class ProductsComponent implements OnInit {
   first: number = 0;
   page: number = 0;
   rows: number = 6;
+  private destroy$ = new Subject<void>();
 
   constructor(private store: Store) {
 
@@ -65,15 +66,17 @@ export class ProductsComponent implements OnInit {
         this.productsItems$ = products;
         this.totalRecords = products.length;
         return products;
-      })
+      }),takeUntil(this.destroy$)
     );
 
-    this.loading$ = this.store.select(ProductsSelector.selectProductsLoading);
-    this.error$ = this.store.select(ProductsSelector.selectProductsError);
+
+    this.loading$ = this.store.select(ProductsSelector.selectProductsLoading).pipe( takeUntil(this.destroy$));
+    this.error$ = this.store.select(ProductsSelector.selectProductsError).pipe( takeUntil(this.destroy$));
   }
 
+
   ngOnInit() {
-    this.store.dispatch(loadProducts());
+    this.store.dispatch(loadProducts({ limit: 1000, page: 1 }));
   }
 
   onSortChange(sortValue: SortOption): void {
@@ -110,5 +113,9 @@ export class ProductsComponent implements OnInit {
   }
   getPaginatedProducts(products: IItemProduct[],rows?: number): IItemProduct[] {
     return products.slice(this.first, this.first + this.rows);
+  }
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

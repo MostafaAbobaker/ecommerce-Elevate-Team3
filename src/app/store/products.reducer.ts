@@ -6,17 +6,25 @@ export interface ProductsState {
   products: IItemProduct[];
   loading: boolean;
   error: string | null;
+  pagination:{
+    limit:number;
+     page:number;
+  }
 }
 
 export const initialState: ProductsState = {
   products: [],
   loading: false,
-  error: null
+  error: null,
+  pagination:{
+    limit:0,
+    page:0
+  }
 };
 
 export const productsReducer = createReducer(
   initialState,
-  on(ProductsActions.loadProducts, (state) => ({
+  on(ProductsActions.loadProducts, (state,{ limit, page}) => ({
     ...state,
     loading: true,
     error: null

@@ -14,7 +14,7 @@ export class ProductsEffects {
     private productsService = inject(ProductsService);
 
 
-  loadProducts$ = createEffect(() =>{
+  /* loadProducts$ = createEffect(() =>{
     return this.actions$.pipe(
       ofType('[Products] Load Products'),
       exhaustMap(({ limit, page }) => this.productsService.getAllProducts(limit, page)
@@ -29,7 +29,27 @@ export class ProductsEffects {
         )
       )
     )
-  });
+  }); */
+
+  loadProducts$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductsActions.loadProducts),
+      mergeMap(({ limit, page }) =>
+        this.productsService.getAllProducts(limit, page).pipe(
+          map((response) =>
+            ProductsActions.loadProductsSuccess({
+              products: response.products,
+              limit: response.metadata.limit,
+              page: response.metadata.currentPage,
+            })
+          ),
+          catchError((error) =>
+            of(ProductsActions.loadProductsFailure({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
 
 
 }
