@@ -9,9 +9,7 @@ export const loadProducts = createAction(
 export const loadProductsSuccess = createAction(
   '[Products] Load Products Success',
   props<{
-    products: IItemProduct[],
-    limit: number,
-    page: number
+    products: IItemProduct[]
    }>()
 );
 

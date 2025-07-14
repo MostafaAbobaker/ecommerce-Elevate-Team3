@@ -38,9 +38,7 @@ export class ProductsEffects {
         this.productsService.getAllProducts(limit, page).pipe(
           map((response) =>
             ProductsActions.loadProductsSuccess({
-              products: response.products,
-              limit: response.metadata.limit,
-              page: response.metadata.currentPage,
+              products: response.products
             })
           ),
           catchError((error) =>
