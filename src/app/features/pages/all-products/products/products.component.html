@@ -1,8 +1,12 @@
 <section class="product-section">
-  <div class="flex justify-between items-center mb-6 ">
-    <h4 class="text-primary font-bold">{{productsItems.length}} {{'allProduct.totalProducts' | translate}}</h4>
+  <div class="flex justify-between items-center mb-6">
+    <h4 class="text-primary font-bold">
+      {{ totalRecords }} {{ "allProduct.totalProducts" | translate }}
+    </h4>
     <div class="">
-      <span class="pe-2 text-primary">{{'allProduct.sortBy' | translate}} :</span>
+      <span class="pe-2 text-primary"
+        >{{ "allProduct.sortBy" | translate }} :</span
+      >
       <p-dropdown [options]="sortOptions" [(ngModel)]="selectedSort" placeholder="Sort by..."
         (onChange)="onSortChange($event.value)" optionLabel="label" optionValue="value"
         class="custom-dropdown w-60 dark:bg-zinc-700">
@@ -14,27 +18,28 @@
   <!-- Products Grid -->
 
   <div class="flex flex-wrap mt-20 md:mt-8">
-    @for(product of productsItems.slice(first, first + limit);track product.id) {
+    @for(product of getPaginatedProducts((products$ | async) ?? []) ;track
+    product.id) {
     <div class="2xl:w-4/12 xl:w-4/12 md:w-6/12 sm:w-6/12 w-full px-3 mb-6">
       <app-item-product [popularItem]="product"></app-item-product>
     </div>
     }@empty {
     <div class="text-center flex flex-col items-center justify-center mx-auto">
-
-          <app-not-found></app-not-found>
-
+      <app-not-found></app-not-found>
     </div>
     }
   </div>
   <!-- PrimeNG Pagination -->
-    @if(productsItems.length > 0) {
+  @if(totalRecords > 0) {
   <div class="card flex justify-center">
-    <p-paginator  (onPageChange)="onPageChange($event)"  [first]="first" [rows]="limit"
-      [totalRecords]="productsItems.length" [rowsPerPageOptions]="[6,12,18,24]" />
+    <p-paginator
+      [first]="first"
+      [rows]="rows"
+      [totalRecords]="totalRecords"
+      (onPageChange)="onPageChange($event)"
+      [rowsPerPageOptions]="[6, 12, 18, 24]"
+    >
+    </p-paginator>
   </div>
-   }
-
-
-
-
+  }
 </section>
