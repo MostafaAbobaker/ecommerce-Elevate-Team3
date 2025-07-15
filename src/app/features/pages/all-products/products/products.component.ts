@@ -61,7 +61,7 @@ export class ProductsComponent implements OnInit , OnDestroy{
 
   constructor(private store: Store) {
 
-    this.products$ = this.store.select(ProductsSelector.selectAllProducts).pipe(
+    this.products$ = this.store.select(ProductsSelector.selectSortedProducts).pipe(
       map((products) => {
         this.productsItems$ = products;
         this.totalRecords = products.length;
