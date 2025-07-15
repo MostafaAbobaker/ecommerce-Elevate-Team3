@@ -17,7 +17,7 @@ import { PaginatorModule } from 'primeng/paginator';
 
 /* Import Store NGRX */
 import { Store } from '@ngrx/store';
-import { loadProducts } from '../../../../store/products.actions';
+import { loadProducts, setSortOption } from '../../../../store/products.actions';
 import * as ProductsSelector from '../../../../store/products.selector';
 
 @Component({
@@ -79,29 +79,33 @@ export class ProductsComponent implements OnInit , OnDestroy{
     this.store.dispatch(loadProducts({ limit: 1000, page: 1 }));
   }
 
-  onSortChange(sortValue: SortOption): void {
-    debugger;
-    switch (sortValue) {
-      case SortOption.PriceAsc:
-        this.productsItems$.sort((a, b) => a.price - b.price);
-        break;
-      case SortOption.PriceDesc:
-        this.productsItems$.sort((a, b) => b.price - a.price);
-        break;
-      case SortOption.NameAsc:
-        this.productsItems$.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      case SortOption.NameDesc:
-        this.productsItems$.sort((a, b) => b.title.localeCompare(a.title));
-        break;
-      case SortOption.NameRecommended:
-        this.productsItems$ = this.OriginProducts;
-        break;
-    }
+  // onSortChange(sortValue: SortOption): void {
+  //   debugger;
+  //   switch (sortValue) {
+  //     case SortOption.PriceAsc:
+  //       this.productsItems$.sort((a, b) => a.price - b.price);
+  //       break;
+  //     case SortOption.PriceDesc:
+  //       this.productsItems$.sort((a, b) => b.price - a.price);
+  //       break;
+  //     case SortOption.NameAsc:
+  //       this.productsItems$.sort((a, b) => a.title.localeCompare(b.title));
+  //       break;
+  //     case SortOption.NameDesc:
+  //       this.productsItems$.sort((a, b) => b.title.localeCompare(a.title));
+  //       break;
+  //     case SortOption.NameRecommended:
+  //       this.productsItems$ = this.OriginProducts;
+  //       break;
+  //   }
 
-    // Force detection if needed
-    this.productsItems$ = this.productsItems$.map((p) => ({ ...p }));
-    this.getPaginatedProducts(this.productsItems$);
+  //   // Force detection if needed
+  //   this.productsItems$ = this.productsItems$.map((p) => ({ ...p }));
+  //   this.getPaginatedProducts(this.productsItems$);
+  // }
+
+  onSortChange(sortValue: SortOption): void {
+    this.store.dispatch(setSortOption({ sortOption: sortValue }));
   }
 
   // pagination
