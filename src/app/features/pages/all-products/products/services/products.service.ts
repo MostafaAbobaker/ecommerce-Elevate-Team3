@@ -8,9 +8,9 @@ import { IResponse } from '../../../homePage/popular-items/model/iresponse';
 })
 export class ProductsService {
 
-  constructor(private _http:HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-getAllProducts(limit: number,page:number): Observable<IResponse> {
+  getAllProducts(limit: number, page: number): Observable<IResponse> {
     return this._http.get<IResponse>(`products?limit=${limit}&page=${page}`);
   }
 }
