@@ -12,8 +12,8 @@ export interface Auth_Api_Response {
     phone: string
     photo: string
     role: string
-    wishlist: any[]
-    addresses: any[]
+    wishlist: string[]
+    addresses: string[]
     createdAt: string
   }
 }
