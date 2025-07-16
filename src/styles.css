@@ -176,3 +176,16 @@ html[dir="rtl"]  .fa-arrow-right-long {
   background-color: #fff !important;
   color: var(--secondary-dark) !important;
 }
+
+
+/*  */
+
+.p-slider .p-slider-range {
+      background-color: var(--primary);
+}
+
+
+.p-paginator-pages .p-paginator-page.p-paginator-page-selected {
+      background: color-mix(in srgb, var(--primary), white 90%);;
+    color: var(--primary);
+}

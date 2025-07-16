@@ -1,30 +1,45 @@
 <section class="product-section">
-  <div class="flex justify-end items-center mb-6">
-    <p-dropdown [options]="sortOptions" [(ngModel)]="selectedSort" placeholder="Sort by..."
-      (onChange)="onSortChange($event.value)" optionLabel="label" optionValue="value"
-      class="custom-dropdown w-60 dark:bg-zinc-700">
-    </p-dropdown>
+  <div class="flex justify-between items-center mb-6">
+    <h4 class="text-primary font-bold">
+      {{ totalRecords }} {{ "allProduct.totalProducts" | translate }}
+    </h4>
+    <div class="">
+      <span class="pe-2 text-primary"
+        >{{ "allProduct.sortBy" | translate }} :</span
+      >
+      <p-dropdown [options]="sortOptions" [(ngModel)]="selectedSort" placeholder="Sort by..."
+        (onChange)="onSortChange($event.value)" optionLabel="label" optionValue="value"
+        class="custom-dropdown w-60 dark:bg-zinc-700">
+      </p-dropdown>
+
+    </div>
   </div>
 
   <!-- Products Grid -->
 
   <div class="flex flex-wrap mt-20 md:mt-8">
-    @for(product of productsItems;track product.id) {
+    @for(product of getPaginatedProducts((products$ | async) ?? []) ;track
+    product.id) {
     <div class="2xl:w-4/12 xl:w-4/12 md:w-6/12 sm:w-6/12 w-full px-3 mb-6">
       <app-item-product [popularItem]="product"></app-item-product>
     </div>
     }@empty {
     <div class="text-center flex flex-col items-center justify-center mx-auto">
-      <img src="../../../../../assets/imgs/no-data.png" alt="" width="200px" height="200px" class="text-center" />
-      <h1 class="text-center my-6 text-4xl font-bold text-primary">
-        {{ "notFound.title" | translate }}
-      </h1>
+      <app-not-found></app-not-found>
     </div>
     }
   </div>
   <!-- PrimeNG Pagination -->
+  @if(totalRecords > 0) {
   <div class="card flex justify-center">
-    <p-paginator (onPageChange)="onPageChange($event)" [rows]="products.metadata.limit"
-      [totalRecords]="products.metadata.totalItems" [rowsPerPageOptions]="[6,12,18,24]" />
+    <p-paginator
+      [first]="first"
+      [rows]="rows"
+      [totalRecords]="totalRecords"
+      (onPageChange)="onPageChange($event)"
+      [rowsPerPageOptions]="[6, 12, 18, 24]"
+    >
+    </p-paginator>
   </div>
+  }
 </section>

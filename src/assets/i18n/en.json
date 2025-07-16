@@ -86,5 +86,27 @@
       "placeholder-input": "Enter Your Email",
       "subscribe-button": "Subscribe"
     }
+  },
+  "allProduct": {
+    "totalProducts": "Total Products ",
+    "sortBy": "Sort by ",
+    "filter" : {
+      "search-section": {
+        "search": "Search",
+        "placeholder-input": "Search for products..."
+      },
+      "category-section": {
+        "category": "Category"
+      },
+      "occasion-section": {
+        "occasion": "Brands"
+      },
+      "ratings-section": {
+        "ratings": "Ratings"
+      },
+      "price-section": {
+        "price-rating": "Price Rating"
+      }
+    }
   }
 }

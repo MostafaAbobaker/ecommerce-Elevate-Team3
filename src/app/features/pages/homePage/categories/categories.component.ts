@@ -1,7 +1,7 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {CategoryCardComponent} from './components/category-card/category-card.component';
 import {Categories} from './model/categories';
-import {CategoriesService} from './service/categories.service';
+import {GetCategoriesService} from '../../../../shared/services/getCategories/getCategories.service';
 import {Carousel} from 'primeng/carousel';
 import {Subscription} from 'rxjs';
 
@@ -16,7 +16,7 @@ import {Subscription} from 'rxjs';
 })
 export class CategoriesComponent implements OnInit, OnDestroy{
 
-  private readonly categoriesService: CategoriesService = inject(CategoriesService);
+  private readonly categoriesService: GetCategoriesService = inject(GetCategoriesService);
   private getAllCategoriesService!: Subscription;
 
   categories: Categories [] = [];
@@ -59,8 +59,6 @@ export class CategoriesComponent implements OnInit, OnDestroy{
       next: (data: any): void => {
         this.categories = data.categories;
         this.categories = this.categories.slice(0, 8);
-       /*  console.log('=> ',data); */
-
       }
     })
   }

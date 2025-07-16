@@ -5,5 +5,8 @@ export interface Categories {
   image: string,
   createdAt: string,
   updatedAt: string,
-  productsCount: number
+  productsCount: number,
+  // Category Filter Properties
+  checked?: boolean, // Optional property to track if the category is selected
+  // unChecked?: boolean; // Optional property to track if the category is not selected
 }
