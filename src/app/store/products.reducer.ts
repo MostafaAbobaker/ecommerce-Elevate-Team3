@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { IItemProduct } from "../shared/components/ui/item-product/model/iitem-product";
 import * as ProductsActions from './products.actions';
+import { SortOption } from "../features/pages/all-products/products/sort-option.enum";
 
 export interface ProductsState {
   products: IItemProduct[];
@@ -10,6 +11,8 @@ export interface ProductsState {
     limit:number;
      page:number;
   }
+  sortOption: SortOption,
+
 }
 
 export const initialState: ProductsState = {
@@ -19,7 +22,8 @@ export const initialState: ProductsState = {
   pagination:{
     limit:0,
     page:0
-  }
+  },
+  sortOption: SortOption.NameRecommended,
 };
 
 export const productsReducer = createReducer(
@@ -38,5 +42,9 @@ export const productsReducer = createReducer(
     ...state,
     loading: false,
     error
-  }))
+  })),
+  on(ProductsActions.setSortOption, (state, { sortOption }) => ({
+    ...state,
+    sortOption,
+  })),
 );

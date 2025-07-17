@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ProductsState } from './products.reducer';
+import { SortOption } from '../features/pages/all-products/products/sort-option.enum';
 
 
 export const selectProductsState = createFeatureSelector<ProductsState>('products');
@@ -30,3 +31,30 @@ export const selectCurrentPage = createSelector(
   selectPagination,
   (pagination) => pagination.page
 );
+
+export const selectSortOption = createSelector(
+  selectProductsState,
+  (state) => state.sortOption
+);
+
+export const selectSortedProducts = createSelector(
+  selectAllProducts,
+  selectSortOption,
+  (products, sortOption) => {
+    const sorted = [...products];
+    switch (sortOption) {
+      case SortOption.PriceAsc:
+        return sorted.sort((a, b) => a.price - b.price);
+      case SortOption.PriceDesc:
+        return sorted.sort((a, b) => b.price - a.price);
+      case SortOption.NameAsc:
+        return sorted.sort((a, b) => a.title.localeCompare(b.title));
+      case SortOption.NameDesc:
+        return sorted.sort((a, b) => b.title.localeCompare(a.title));
+      case SortOption.NameRecommended:
+      default:
+        return sorted;
+    }
+  }
+);
+

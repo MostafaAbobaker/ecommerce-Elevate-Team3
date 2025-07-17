@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { IItemProduct } from "../shared/components/ui/item-product/model/iitem-product";
+import { SortOption } from "../features/pages/all-products/products/sort-option.enum";
 
 export const loadProducts = createAction(
   '[Products] Load Products',
@@ -16,4 +17,9 @@ export const loadProductsSuccess = createAction(
 export const loadProductsFailure = createAction(
   '[Products] Load Products Failure',
   props<{ error: string }>()
+);
+
+export const setSortOption = createAction(
+  '[Products] Set Sort Option',
+  props<{ sortOption: SortOption }>()
 );
