@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IResponse } from '../../../features/pages/homePage/categories/model/iresponse';
-import { IResponseProduct } from '../../../features/pages/homePage/popular-items/model/IResponseProduct';
+import {IResponseProduct} from '../../../../features/pages/homePage/popular-items/model/IResponseProduct';
 
 @Injectable({
   providedIn: 'root'

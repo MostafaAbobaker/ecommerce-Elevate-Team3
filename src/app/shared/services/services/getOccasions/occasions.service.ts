@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IResponse } from '../../interfaces/IOccasions/iresponse';
+import {IResponse} from '../../../interfaces/IOccasions/iresponse';
+
 
 @Injectable({
   providedIn: 'root'
