@@ -22,6 +22,8 @@ import {
   AuthDataResponded
 } from '../../../../../../projects/auth-lib/src/lib/interface/auth/data-responded/auth-data-responded';
 import {ThemeService} from '../../../../shared/services/theme/theme.service';
+import {passwordMatchValidator} from '../../Service/validators/PasswordIsMatch.utility';
+import {ValidationMessagesComponent} from '../validation-messages/validation-messages.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -34,6 +36,7 @@ import {ThemeService} from '../../../../shared/services/theme/theme.service';
     ReactiveFormsModule,
     NgClass,
     Toast,
+    ValidationMessagesComponent,
   ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
@@ -62,35 +65,22 @@ export class SignUpComponent implements OnInit, OnDestroy {
       firstName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       email: new FormControl('', [Validators.required, Validators.email,]),
-      phone: new FormControl ('', [Validators.required]).value?.toString(),
+      phone: new FormControl ('', [Validators.required]),// .value?.toString()
       gender: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
       rePassword: new FormControl ('', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
-    }, { validators: this.passwordIsMatch });
+    }, { validators: passwordMatchValidator });
   };
 
-  passwordIsMatch(control: AbstractControl ): {misMatch: boolean} | null{
-    const password: string = control.get('password')?.value;
-    const rePassword: string = control.get("rePassword")?.value;
-
-    if(password === rePassword) {
-      return null;
-    } else {
-      return {
-        misMatch: true,
-      };
-    }
-  }
-
-  showPassword(): void{
+  showPassword(): void {
     this.isShowPassword = !this.isShowPassword;
   }
 
-  showRePassword(): void{
+  showRePassword(): void {
     this.isShowRePassword = !this.isShowRePassword;
   }
 
-  signUp (): void {
+  signUp(): void {
 
     if(this.signUpFormGroup.invalid){
       this.show("Error");
@@ -106,7 +96,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         this.show("Error");
       }
     })
-
+    console.log(this.signUpFormGroup.value);
     this.signUpFormGroup.reset();
     this.goToSignin();
   }
@@ -120,7 +110,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   goToSignin (): void {
-    this.router.navigate(['/signin']).then(r => r);
+    this.router.navigate(['/signin']);
   }
 
   ngOnDestroy(): void {
