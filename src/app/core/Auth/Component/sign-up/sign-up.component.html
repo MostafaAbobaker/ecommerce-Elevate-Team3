@@ -1,0 +1,68 @@
+<section class="">
+  <app-auth-header></app-auth-header>
+  <!-- Content -->
+  <div class="card flex justify-center">
+    <p-toast [showTransitionOptions]="'250ms'" [showTransformOptions]="'translateX(100%)'" [hideTransitionOptions]="'150ms'" [hideTransformOptions]="'translateX(100%)'" />
+  </div>
+  <div class="md:max-w-sm lg:max-w-md max-w-md mx-auto">
+    <form [formGroup]="signUpFormGroup" (ngSubmit)="signUp()">
+      <!-- First Name - Last Name -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4">
+        <!-- First Name -->
+        <div class="flex flex-col mt-5">
+          <label> {{ 'auth.sign-up.firstName' | translate }} </label>
+          @let firstNameControl = signUpFormGroup.get('firstName');
+          <input type="text" id="firstName" formControlName="firstName" [ngClass]="{ 'border-red-400' : firstNameControl?.touched && firstNameControl!.invalid }" class="border rounded-lg p-3 outline-[#741C21] dark:bg-[#3F3F46] dark:border-[#52525B]" placeholder="Mohamed">
+        </div>
+        <!-- Last Name -->
+        <div class="flex flex-col mt-5">
+          <label> {{ 'auth.sign-up.lastName' | translate }} </label>
+          @let lastNameControl = signUpFormGroup.get('lastName');
+          <input type="text" id="lastName" formControlName="lastName" [ngClass]="{ 'border-red-400' : lastNameControl?.touched && lastNameControl!.invalid }" class="border rounded-lg p-3 outline-[#741C21] dark:bg-[#3F3F46] dark:border-[#52525B]" placeholder="Elganzory">
+        </div>
+      </div>
+      <!-- Email -->
+      <div class="flex flex-col mt-5">
+        <label> {{ 'auth.sign-up.email' | translate }} </label>
+        @let emailControl = signUpFormGroup.get('email');
+        <input type="email" id="email" formControlName="email" [ngClass]="{ 'border-red-400' : emailControl?.touched && emailControl!.invalid }" class="border rounded-lg p-3 outline-[#741C21] dark:bg-[#3F3F46] dark:border-[#52525B]" placeholder="example@gmail.com">
+      </div>
+      <!-- Phone -->
+      <div class="flex flex-col mt-5">
+        <label> {{ 'auth.sign-up.phone' | translate }} </label>
+        @let phoneControl = signUpFormGroup.get('phone');
+        <input type="text" id="phone" formControlName="phone" [ngClass]="{ 'border-red-400' : phoneControl?.touched && phoneControl!.invalid }"  class="border rounded-lg p-3 outline-[#741C21] dark:bg-[#3F3F46] dark:border-[#52525B]" placeholder="01037482738">
+      </div>
+      <!-- Gender -->
+      <div class="flex flex-col mt-5">
+        <label> {{ 'auth.sign-up.gender.gender' | translate }} </label>
+        @let genderControl = signUpFormGroup.get('gender');
+        <select formControlName="gender" [ngClass]="{ 'border-red-400' : genderControl?.touched && genderControl!.invalid }" class="border rounded-lg p-3 outline-[#741C21] dark:bg-[#3F3F46] dark:border-[#52525B]">
+          <option value="" disabled selected>{{ 'auth.sign-up.gender.select-gender' | translate }}</option>
+          <option value="male">{{ 'auth.sign-up.gender.male' | translate }}</option>
+          <option value="female">{{ 'auth.sign-up.gender.female' | translate }}</option>
+        </select>
+      </div>
+      <!-- Password -->
+      <div class="flex flex-col mt-5 relative">
+        <label> {{ 'auth.sign-up.password' | translate }} </label>
+        @let passwordControl = signUpFormGroup.get('password');
+        <input [type]="isShowPassword ? 'text' : 'password'" id="password" formControlName="password" [ngClass]="{'border-red-400' : passwordControl?.touched && passwordControl!.invalid }" class="border rounded-lg p-3 outline-[#741C21] dark:bg-[#3F3F46] dark:border-[#52525B]" placeholder="">
+        <button type="button" class="absolute top-11 ltr:right-3 cursor-pointer rtl:left-3" (click)="showPassword()"><i class="fa-solid fa-eye text-gray-400"></i></button>
+      </div>
+      <!-- Confirm Password -->
+      <div class="flex flex-col mt-5 relative">
+        <label> {{ 'auth.sign-up.confirm-password' | translate }} </label>
+        @let rePassword = signUpFormGroup.get('rePassword');
+        <input [type]="isShowRePassword ? 'text' : 'password'" id="rePassword" formControlName="rePassword" [ngClass]="{ 'border-red-400' : rePassword?.touched && rePassword!.invalid }" class="border rounded-lg p-3 outline-[#741C21] dark:bg-[#3F3F46] dark:border-[#52525B]" placeholder="">
+        <button type="button" class="absolute top-11 ltr:right-3 cursor-pointer rtl:left-3" (click)="showRePassword()"><i class="fa-solid fa-eye text-gray-400"></i></button>
+      </div>
+      <!-- Button Create Account -->
+      <app-auth-btn [title]="title"></app-auth-btn>
+    </form>
+    <div class="m-auto text-center my-9 border-t-2 pt-4">
+      <h3 class="">{{'auth.sign-up.helper.have-account' | translate}} <a class="text-[#741C21] font-semibold dark:text-[#FFA3B9]" href="">{{'auth.sign-up.helper.login' | translate}}</a></h3>
+    </div>
+  </div>
+  <app-auth-footer></app-auth-footer>
+</section>

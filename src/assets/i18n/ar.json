@@ -1,4 +1,35 @@
 {
+  "auth": {
+    "auth-header-lang": "العربية",
+    "sign-in": {
+      "title": "تسجيل الدخول",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "remember-me": "تذكرني",
+      "forgot-password": "نسيت كلمة المرور؟",
+      "login-button": "تسجيل الدخول",
+      "no-account": "ليس لديك حساب؟",
+      "register-here": "سجل هنا"
+    },
+    "sign-up": {
+      "firstName": "الاسم الأول",
+      "lastName": "الاسم الأخير",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "gender": {
+        "gender": "الجنس",
+        "male": "ذكر",
+        "female": "انثي",
+        "select-gender": "حدد الجنس"
+      },
+      "password": "كلمة المرور",
+      "confirm-password": "تأكيد كلمة المرور",
+      "helper": {
+        "have-account": "هل لديك حساب...؟",
+        "login": "تسجيل دخول"
+      }
+    }
+  },
   "header": {
     "login": "تسجيل الدخول",
     "language": "العربية",

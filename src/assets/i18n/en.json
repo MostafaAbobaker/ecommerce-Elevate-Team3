@@ -1,4 +1,34 @@
 {
+  "auth": {
+    "auth-header-lang": "English",
+    "sign-in": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "remember-me": "Remember Me",
+      "forgot-password": "Forgot Password?",
+      "login-button": "Login",
+      "register-link": "Don't have an account? Register here"
+    },
+    "sign-up": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "gender": {
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "select-gender": "Select Gender"
+      },
+      "password": "Password",
+      "confirm-password": "Confirm Password",
+      "helper": {
+        "have-account": "Already have an account..?",
+        "login": "Login"
+      }
+    }
+  },
   "header": {
     "login": "Login",
     "language": "English",
