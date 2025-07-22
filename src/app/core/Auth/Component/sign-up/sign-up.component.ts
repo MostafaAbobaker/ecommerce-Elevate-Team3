@@ -22,6 +22,7 @@ import {
   AuthDataResponded
 } from '../../../../../../projects/auth-lib/src/lib/interface/auth/data-responded/auth-data-responded';
 import {ThemeService} from '../../../../shared/services/theme/theme.service';
+import {PasswordIsMatchService} from '../../Service/validators/passwordIsMatch.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -45,6 +46,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
   private readonly authLibService: AuthLibService = inject(AuthLibService);
   private readonly messageService: MessageService = inject(MessageService);
+  private readonly passwordIsMatchService: PasswordIsMatchService = inject(PasswordIsMatchService);
 
   title: string = "Create Account";
   signUpFormGroup!: FormGroup;
@@ -66,21 +68,10 @@ export class SignUpComponent implements OnInit, OnDestroy {
       gender: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
       rePassword: new FormControl ('', [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
-    }, { validators: this.passwordIsMatch });
+    }, { validators: this.passwordIsMatchService.passwordIsMatch });
   };
 
-  passwordIsMatch(control: AbstractControl ): {misMatch: boolean} | null{
-    const password: string = control.get('password')?.value;
-    const rePassword: string = control.get("rePassword")?.value;
 
-    if(password === rePassword) {
-      return null;
-    } else {
-      return {
-        misMatch: true,
-      };
-    }
-  }
 
   showPassword(): void{
     this.isShowPassword = !this.isShowPassword;
@@ -120,7 +111,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   goToSignin (): void {
-    this.router.navigate(['/signin']).then(r => r);
+    this.router.navigate(['/signin']);
   }
 
   ngOnDestroy(): void {
