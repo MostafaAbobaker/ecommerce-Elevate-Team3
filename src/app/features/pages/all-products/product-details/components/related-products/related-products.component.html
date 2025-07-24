@@ -1,0 +1,44 @@
+@if (productList.length == 0) {
+    <hr />
+<div class="flex justify-center items-center mt-3">
+    <h3>No Related Products</h3>
+</div>
+}@else {
+<div #related class="product-reviews my-3">
+    <h2 class="reviews relative text-primary font-bold text-[36px]">
+        <span class="reviews-line"></span>
+        Related Products
+    </h2>
+    <p-carousel [value]="productList" [numVisible]="5" [numScroll]="1" [circular]="false"
+        [responsiveOptions]="responsiveOptions">
+
+        <ng-template let-productList #item>
+            <div>
+                <img [src]="productList.imgCover" [alt]="productList.title" class="h-56 w-full rounded-md object-cover">
+                <h5 class="my-2">{{productList.title}}</h5>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <div>
+                            @for(star of [1, 2, 3, 4, 5]; track star) {
+                            <i class="fa-regular fa-star text-amber-500"
+                                [ngClass]="{ 'fa-solid  ': star <= productList.rateAvg }"></i>
+                            }
+                        </div>
+                        <div>
+                            <span class="text-price-color line-through">{{ productList.price * 1.2 |
+                                number:'1.2-2'
+                                }}</span>
+                            <span class="text-primary font-bold">{{ productList.price }} EGP</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button
+                            class="bg-primary text-white  rounded-full px-3 py-2 hover:bg-primary-dark hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary"><i
+                                class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>
+}
