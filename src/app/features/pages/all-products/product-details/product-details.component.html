@@ -1,0 +1,51 @@
+<section class="py-10 px-4 dark:bg-zinc-800 dark:text-white bg-white">
+    @if (productList) {
+    <div class="grid grid-cols-2 items-center gap-4 p-3">
+        <div class="">
+            <img [src]="selectedImage" class="w-full h-96 rounded-2xl" />
+
+            <div class="flex flex-wrap justify-center gap-[10px] mt-5 ">
+                @for (img of productList.images; track productList._id) {
+                <img [src]="img"
+                    class="w-[70px] h-[70px] object-cover rounded-xl cursor-pointer bottom-2 border-transparent border-solid transition-all"
+                    [class.selected]="img === selectedImage" (click)="selectImage(img)" />
+                }
+            </div>
+        </div>
+
+        <div class="flex flex-col justify-between w-full h-full">
+            <div>
+                <h2>{{ productList.title }}</h2>
+
+                <div class="my-5 text-[1.2rem]">
+                    <span class="mx-3 text-price-color line-through">{{ productList.price * 1.2 | number:'1.2-2'
+                        }}</span>
+                    <span class="text-primary font-bold">{{ productList.price }} EGP</span>
+                    <p-badge value="{{ productList.quantity }} left in stock" severity="secondary" styleClass="ml-2"
+                        icon="pi pi-box"></p-badge>
+                </div>
+
+                <div class="mb-5 text-[1rem] py-3 border-y-2 border-[#F4F4F5]">
+                    <i class="fa-solid fa-star text-amber-500 me-2"></i>
+                    <strong>Rating:</strong> {{ productList.rateAvg }}/5
+                    <a href="#" class="ml-2">({{ productList.quantity }} ratings)</a>
+                </div>
+
+                <p class="text-[#333] my-3 text-[1rem]">
+                    {{ productList.description }}
+                </p>
+            </div>
+            <div class="flex gap-5 mt-5 items-center">
+                <i class="fa-solid fa-heart-circle-plus fa-2xl"></i>
+                <button
+                    class="bg-primary text-white  rounded-[10px] py-2.5 px-5 hover:bg-primary-dark hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary w-full"><i
+                        class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    }
+    <app-product-reviews #related [productDetails]="productList"></app-product-reviews>
+    @defer (on viewport(related); on timer(20s)) {
+        <app-related-products [productDetails]="productList"></app-related-products>
+    }
+</section>

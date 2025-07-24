@@ -1,0 +1,99 @@
+<div class="product-reviews my-3">
+    <h2 class="reviews relative text-primary font-bold text-[36px]">
+        <span class="reviews-line"></span>
+        Product Reviews
+    </h2>
+    <p class="font-bold text-[20px]">General rating:</p>
+    <span class="font-bold me-1">4.5</span>
+    <span class="text-[#71717A] text-[14px]">(8 ratings)</span>
+    <div class="rating">
+        @for(star of [1, 2, 3, 4, 5]; track star) {
+        <i class="fa-solid fa-star text-amber-500" [ngClass]="{ 'fa-solid  ': star <= productRatie }"></i>
+        }
+    </div>
+    <hr class="my-3" />
+    <div class="grid grid-cols-2 items-center gap-4 p-3">
+        <form [formGroup]="reviewsForm" (ngSubmit)="submitReviews()">
+            <div class="border-r-2 border-textGray pr-10">
+                <div class="rating">
+                    <span>Your rating:</span>
+                    @for(star of [1, 2, 3, 4, 5]; track star) {
+                    <i class="fa-regular fa-star text-amber-500 ms-2"
+                        [ngClass]="{ 'fa-solid  ': star <= productRatie }"></i>
+                    }
+                </div>
+                <label for="title">
+                    <span class="text-sm font-medium text-gray-700"> Title </span>
+                    <input type="text" formControlName="title" name="title" id="title" placeholder="Enter review title"
+                        class="mt-0.5 w-full rounded border-2 border-gray-200 shadow-sm sm:text-sm p-3" />
+                </label>
+                <label for="review">
+                    <p class="text-sm font-medium text-gray-700 mt-3"> Review </p>
+
+                    <textarea name="review" formControlName="comment" id="review"
+                        placeholder="What do you think of this product?"
+                        class="mt-1 rounded w-full h-52 border-2 border-gray-200 shadow-sm sm:text-sm p-3"></textarea>
+
+                </label>
+                <button
+                    class="bg-primary my-2 text-white rounded-[10px] py-2.5 px-5 hover:bg-primary-dark hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary w-full">
+                    Add Review
+                </button>
+            </div>
+        </form>
+        @if (productList.length > 0) {
+        <div class="flex flex-col justify-between w-full h-full p-3">
+            <div class="flex gap-3">
+                <img src="../../../../../../../assets/imgs/about/1.png" alt="" class="w-[50px] h-[50px] rounded-full">
+                <div>
+                    <p class="font-bold">Adrian</p>
+                    <p class="text-textGray">Apr 7, 2025</p>
+                </div>
+            </div>
+            <div>
+                @for(star of [1, 2, 3, 4, 5]; track star) {
+                <i class="fa-regular fa-star text-amber-500 ms-2"
+                    [ngClass]="{ 'fa-solid  ': star <= productRatie }"></i>
+                }
+                <span class="font-bold ms-2">(4.5)</span>
+            </div>
+            <div>
+                <h3 class="font-bold">Awesome Bouquet!</h3>
+                <p class="text-textDesc">I ordered this bouquet for a special occasion, and it absolutely exceeded my
+                    expectations! The flowers were fresh, beautifully arranged, and exactly as pictured—if not better.
+                    The color combination was stunning and gave off such a luxurious vibe. Even the wrapping was elegant
+                    and thoughtful.
+                    Delivery was right on time, and the bouquet arrived in perfect condition. The recipient was
+                    genuinely touched and couldn't stop admiring it. Highly recommend for anyone looking to make a
+                    lasting impression. Will definitely order again!</p>
+            </div>
+            <hr />
+            <div class="flex gap-3">
+                <img src="../../../../../../../assets/imgs/about/1.png" alt="" class="w-[50px] h-[50px] rounded-full">
+                <div>
+                    <p class="font-bold">Adrian</p>
+                    <p class="text-textGray">Apr 7, 2025</p>
+                </div>
+            </div>
+            <div>
+                @for(star of [1, 2, 3, 4, 5]; track star) {
+                <i class="fa-regular fa-star text-amber-500 ms-2"
+                    [ngClass]="{ 'fa-solid  ': star <= productRatie }"></i>
+                }
+                <span class="font-bold ms-2">(4.5)</span>
+            </div>
+            <div>
+                <h3 class="font-bold">Awesome Bouquet!</h3>
+                <p class="text-textDesc">I ordered this bouquet for a special occasion, and it absolutely exceeded my
+                    expectations! The
+                    flowers were fresh, beautifully arranged, and exactly as pictured—if not better. The color
+                    combination was stunning and gave off such a luxurious vibe. Even the wrapping was elegant and
+                    thoughtful.</p>
+            </div>
+        </div>
+        }@else {
+        <div class="flex justify-center items-center mt-3">
+            <h3>No Reviews Product</h3>
+        </div>
+        }
+    </div>
