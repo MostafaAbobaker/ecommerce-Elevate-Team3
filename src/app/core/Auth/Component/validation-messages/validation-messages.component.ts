@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {AbstractControl, FormControl} from '@angular/forms';
+import {AbstractControl} from '@angular/forms';
 
 @Component({
   selector: 'app-validation-messages',
@@ -11,4 +11,11 @@ export class ValidationMessagesComponent {
 
   @Input() controls!: AbstractControl;
 
+  minLength(): string | null{
+    return this.controls?.getError('minlength')?.requiredLength ?? null;
+  }
+
+  maxLength(): string | null {
+    return this.controls.getError('maxlength').requiredLength ?? null;
+  }
 }

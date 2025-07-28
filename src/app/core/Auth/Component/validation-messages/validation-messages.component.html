@@ -11,10 +11,10 @@
           <li>Input is required</li>
         }
         @else if (controls.getError('minlength')){
-          <li>Input must be at least 3 characters long</li>
+          <li>Input must be at least {{ minLength() }} characters long</li>
         }
         @else if (controls.getError('maxlength')){
-          <li>Input must not exceed 50 characters long</li>
+          <li>Input must not exceed {{ maxLength() }} characters long</li>
         }
         @else if (controls.getError('email')){
           <li>Please enter valid email address.</li>
