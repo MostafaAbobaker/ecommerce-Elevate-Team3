@@ -1,0 +1,5 @@
+@if(secureAccessStep() === "otp"){
+  <app-otp></app-otp>
+} @else if (secureAccessStep() === "resetPassword"){
+  <app-reset-password></app-reset-password>
+}
