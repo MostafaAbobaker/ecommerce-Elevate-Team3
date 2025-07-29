@@ -1,0 +1,47 @@
+@if(controls.errors && controls.touched){ <!--  && !controls.get('rePassword') -->
+  <div class="flex p-2 my-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    <svg class="shrink-0 inline w-4 h-4 lg:me-2 me-1.5 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+    </svg>
+    <span class="sr-only">Danger</span>
+    <div>
+      <span class="font-medium">Ensure requirements are met:</span>
+      <ul class="mt-1.5 list-disc list-inside">
+        @if(controls.getError('required')){
+          <li>Input is required</li>
+        }
+        @else if (controls.getError('minlength')){
+          <li>Input must be at least {{ minLength() }} characters long</li>
+        }
+        @else if (controls.getError('maxlength')){
+          <li>Input must not exceed {{ maxLength() }} characters long</li>
+        }
+        @else if (controls.getError('email')){
+          <li>Please enter valid email address.</li>
+        }
+        @else if (controls.getError('pattern')){
+          <li>At least one upper case English letter {{' [ A - Z ] '}}</li>
+          <li>At least one lower case English letter {{' [ a - z ] '}}</li>
+          <li>At least one digit {{' [ 0 - 9 ] '}}</li>
+          <li>At least one special character {{' [ # ? ! @ $ % ^ & * - ] '}}</li>
+          <li>Minimum eight in length {{' { 8, }'}}</li>
+        }
+      </ul>
+    </div>
+  </div>
+}
+
+@if (controls.getError('misMatch') && controls!.get('rePassword')?.touched ) { <!-- && controls!.get('rePassword')?.touched -->
+  <div class="flex p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+    </svg>
+    <span class="sr-only">Danger</span>
+    <div>
+      <span class="font-medium">Ensure that these requirements are met:</span>
+      <ul class="mt-1.5 list-disc list-inside">
+        <li>Password do not match</li>
+      </ul>
+    </div>
+  </div>
+}

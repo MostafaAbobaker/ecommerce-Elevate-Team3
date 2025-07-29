@@ -14,6 +14,7 @@ import {SignupDataRequested} from './interface/auth/data-requested/signup-data-r
 import {SignInDataRequested} from './interface/auth/data-requested/signin-data-requested';
 import {ForgetPasswordDataRequested} from './interface/forget-password/forget-password-data-requested';
 import {ForgetPasswordDataResponses} from './interface/forget-password/forget-password-data-responded';
+import {Auth_Api_Response} from './interface/auth/auth-api-response';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class AuthLibService implements AuthApiAbstract {
       })
     );
   }
-
+  // Process
   SIGN_UP(data: SignupDataRequested): Observable<AuthDataResponded> {
     // this.API_BASE_URL + AuthApiEndpoint.SIGNIN
     return this.httpClient.post(AuthApiEndpoint.SIGN_UP, data).pipe(

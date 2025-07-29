@@ -288,15 +288,15 @@ export class CategoryCardComponent {
         </div>
     </div>
 
-    
+
 </div>
 
 <script src="../js/libs/vis.min.js"></script>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="w-[217px] h-[122px] rounded-3xl p-4 bg-primary-light ">  <div class="  flex justify-around items-center h-full ">    <!-- bg-background-rose invert -->    <div class="p-4 bg-primary w-20 h-20 rounded-full">      <img [src]="category.image" alt="Category Image" class="text-white w-12 h-12 invert brightness-0">    </div>    <div>      <h3 class="text-primary-dark font-medium	  text-lg capitalize">{{ category.name.slice(0, 6) }}</h3>      <h4 class="text-secondary-dark text-l">{{category.productsCount}} Item</h4>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BestSellerComponent', 'selector': 'app-best-seller'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CategoryCardComponent', 'selector': 'app-category-card'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GalleryComponent', 'selector': 'app-gallery'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeLayoutComponent', 'selector': 'app-home-layout'},{'name': 'ItemProductComponent', 'selector': 'app-item-product'},{'name': 'LoaderComponent', 'selector': 'app-loader'},{'name': 'MainCardComponent', 'selector': 'app-main-card'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'SectionTitleComponent', 'selector': 'app-section-title'},{'name': 'TestPopularItemsComponent', 'selector': 'app-popular-items'},{'name': 'TrustedByComponent', 'selector': 'app-trusted-by'}];
+        var COMPONENT_TEMPLATE = '<div><div class="w-[217px] h-[122px] rounded-3xl p-4 bg-primary-light ">  <div class="  flex justify-around items-center h-full ">    <!-- bg-background-rose invert -->    <div class="p-4 bg-primary w-20 h-20 rounded-full">      <img [src]="category.auth-cover" alt="Category Image" class="text-white w-12 h-12 invert brightness-0">    </div>    <div>      <h3 class="text-primary-dark font-medium	  text-lg capitalize">{{ category.name.slice(0, 6) }}</h3>      <h4 class="text-secondary-dark text-l">{{category.productsCount}} Item</h4>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BestSellerComponent', 'selector': 'app-best-seller'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CategoryCardComponent', 'selector': 'app-category-card'},{'name': 'FooterComponent', 'selector': 'app-auth-footer'},{'name': 'GalleryComponent', 'selector': 'app-gallery'},{'name': 'HeaderComponent', 'selector': 'app-auth-header'},{'name': 'HomeLayoutComponent', 'selector': 'app-home-layout'},{'name': 'ItemProductComponent', 'selector': 'app-item-product'},{'name': 'LoaderComponent', 'selector': 'app-loader'},{'name': 'MainCardComponent', 'selector': 'app-main-card'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'SectionTitleComponent', 'selector': 'app-section-title'},{'name': 'TestPopularItemsComponent', 'selector': 'app-popular-items'},{'name': 'TrustedByComponent', 'selector': 'app-trusted-by'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CategoryCardComponent'};
 </script>

@@ -9,6 +9,6 @@ export abstract class AdapterAbstract {
   // Authentication API response adapter
   abstract AdaptResponse(data: Auth_Api_Response): AuthDataResponded;
   abstract AdaptError(data: ErrorApiResponse): ErrorDataResponse;
-  abstract AdaptForgetPasswordResponse(data: Auth_Api_Response): ForgetPasswordDataResponses;
-  abstract AdaptVerifyResponse(data: Auth_Api_Response): VerifyDataResponse;
+  abstract AdaptForgetPasswordResponse(data: ForgetPasswordDataResponses): ForgetPasswordDataResponses;
+  abstract AdaptVerifyResponse(data: VerifyDataResponse): VerifyDataResponse;
 }
