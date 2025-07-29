@@ -118,6 +118,8 @@
     }
   },
   "allProduct": {
+    "totalProducts": "Total Products ",
+    "sortBy": "Sort by ",
     "filter" : {
       "search-section": {
         "search": "Search",
@@ -125,6 +127,12 @@
       },
       "category-section": {
         "category": "Category"
+      },
+      "occasion-section": {
+        "occasion": "Brands"
+      },
+      "ratings-section": {
+        "ratings": "Ratings"
       },
       "price-section": {
         "price-rating": "Price Rating"

@@ -36,20 +36,19 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAnimationsAsync(),
     providePrimeNG({
-      theme: {
-        preset: Aura
-      }
+        theme: {
+            preset: Aura
+        }
     }),
     importProvidersFrom([
-      TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient],
-        },
-      })
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient],
+            },
+        })
     ]),
     provideStore({ products: productsReducer }),
     provideEffects([ProductsEffects])
-  ]
 };
