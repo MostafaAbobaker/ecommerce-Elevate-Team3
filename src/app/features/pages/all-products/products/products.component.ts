@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,8 +17,8 @@ import { PaginatorModule } from 'primeng/paginator';
 
 /* Import Store NGRX */
 import { Store } from '@ngrx/store';
-import { loadProducts } from '../../../../store/products.actions';
 import * as ProductsSelector from '../../../../store/products.selector';
+import * as ProductActions from '../../../../store/products.actions';
 
 @Component({
   selector: 'app-products',
@@ -38,8 +38,8 @@ import * as ProductsSelector from '../../../../store/products.selector';
 })
 export class ProductsComponent implements OnInit , OnDestroy{
   products$: Observable<IItemProduct[]>;
-  loading$: Observable<boolean>;
-  error$: Observable<string | null>;
+  // loading$: Observable<boolean>;
+  // error$: Observable<string | null>;
 
   productsItems$: IItemProduct[] = [];
   OriginProducts: IItemProduct[] = [];
@@ -59,29 +59,41 @@ export class ProductsComponent implements OnInit , OnDestroy{
   rows: number = 6;
   private destroy$ = new Subject<void>();
 
+
   constructor(private store: Store) {
 
-    this.products$ = this.store.select(ProductsSelector.selectAllProducts).pipe(
+    /* this.products$ = this.store.select(ProductsSelector.selectAllProducts).pipe(
       map((products) => {
         this.productsItems$ = products;
         this.totalRecords = products.length;
         return products;
       }),takeUntil(this.destroy$)
-    );
+    ); */
+
+    this.products$ = this.store.select(ProductsSelector.selectAllProducts).pipe(
+      map((products) => {
+        this.productsItems$ = products;
+        this.OriginProducts = [...products]; // Store original products for sorting
+        this.totalRecords = products.length;
+        return products;
+      }),
+      takeUntil(this.destroy$)
+    )
 
 
-    this.loading$ = this.store.select(ProductsSelector.selectProductsLoading).pipe( takeUntil(this.destroy$));
+/*     this.loading$ = this.store.select(ProductsSelector.selectProductsLoading).pipe( takeUntil(this.destroy$));
     this.error$ = this.store.select(ProductsSelector.selectProductsError).pipe( takeUntil(this.destroy$));
-  }
+ */
+}
 
 
   ngOnInit() {
-    this.store.dispatch(loadProducts({ limit: 1000, page: 1 }));
+    this.store.dispatch(ProductActions.getProducts({ limit: 1000, page: 1 }));
   }
 
   onSortChange(sortValue: SortOption): void {
-    debugger;
-    switch (sortValue) {
+    this.store.dispatch(ProductActions.SortOptions({ sortOption: sortValue }));
+    /* switch (sortValue) {
       case SortOption.PriceAsc:
         this.productsItems$.sort((a, b) => a.price - b.price);
         break;
@@ -97,11 +109,11 @@ export class ProductsComponent implements OnInit , OnDestroy{
       case SortOption.NameRecommended:
         this.productsItems$ = this.OriginProducts;
         break;
-    }
+    } */
 
     // Force detection if needed
-    this.productsItems$ = this.productsItems$.map((p) => ({ ...p }));
-    this.getPaginatedProducts(this.productsItems$);
+    /* this.productsItems$ = this.productsItems$.map((p) => ({ ...p }));
+    this.getPaginatedProducts(this.productsItems$); */
   }
 
   // pagination

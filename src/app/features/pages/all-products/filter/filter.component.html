@@ -1,18 +1,128 @@
 <aside class="aside-filer">
-  <!-- Start Search -->
-    <app-search-filter></app-search-filter>
+  <!-- Start categories -->
+  <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
+    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
+      {{ 'allProduct.filter.search-section.search' | translate}}
+    </h4>
+    <input type="search" name="" id="" [(ngModel)]="filterObject.textSearch" (keyup)="filterOption()"  placeholder="Search categories" class="w-full h-[40px] px-4 shadow rounded-full bg-white dark:bg-zinc-600 text-sm text-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary ">
 
-  <!-- Start Categories -->
-    <app-category-filter></app-category-filter>
+  </section>
+  <!-- End categories -->
+   <!-- Start categories -->
+  <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
+    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
+      {{ 'allProduct.filter.category-section.category' | translate }}
+    </h4>
+    <ul class="space-y-2 h-[100px] overflow-y-auto">
+
+      @for(category of Categories; track category._id; let i = $index ){
+        <li class="pe-2">
+          <!-- <label class="flex items-center text-zinc-500 gap-2 cursor-pointer relative
+          has-[:checked]:before:content-['\f00c']  has-[:checked]:before:absolute has-[:checked]:before:font-['Font_Awesome_6_Free'] has-[:checked]:before:font-bold has-[:checked]:before:text-white  " >
+            <input type="checkbox"
+              class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"
+              (change)="filterOption('Categories',category._id)"/>
+              <div class="flex justify-between w-full text-sm">
+                <div class="">{{category.name}}</div>
+                <div class="">({{category.productsCount}})</div>
+              </div>
+
+          </label> -->
+
+              <p-checkbox [inputId]="category._id" name="group" [value]="category._id" [(ngModel)]="filterObject.Categories" (change)="filterOption()"/>
+              <label [for]="category._id" class="ml-2"> {{ category.name }} </label>
+
+        </li>
+
+      }
+
+
+    </ul>
+  </section>
+  <!-- End categories -->
 
   <!-- Start Brands -->
-  <app-occasions></app-occasions>
+  <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
+    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
+          {{ "allProduct.filter.occasion-section.occasion" | translate }}
 
-  <!-- Start Price Range -->
-  <app-price-rating-filter></app-price-rating-filter>
+    </h4>
+    <ul class="space-y-2 h-[100px] overflow-y-auto">
+      @for(occasion of Occasions; track occasion._id; let i = $index ){
+        <!-- <li class="pe-2">
+                  <label class="flex items-center text-zinc-500 gap-2 cursor-pointer relative has-[:checked]:before:content-['\f00c']  has-[:checked]:before:absolute has-[:checked]:before:font-['Font_Awesome_6_Free'] has-[:checked]:before:font-bold has-[:checked]:before:text-white" >
 
+            <input type="checkbox"
+              class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"
+              (change)="filterOption('occasions',occasion._id)" />
+              <div class="flex justify-between w-full text-sm">
+                <div class="">{{occasion.name}}</div>
+                <div class="">({{occasion.productsCount}})</div>
+              </div>
+
+          </label>
+        </li> -->
+        <li class="pe-2">
+          <p-checkbox [inputId]="occasion._id" name="group" [value]="occasion._id" [(ngModel)]="filterObject.occasions" (change)="filterOption()"/>
+                <label [for]="occasion._id" class="ml-2"> {{ occasion.name }} </label>
+
+
+        </li>
+      }
+
+
+    </ul>
+  </section>
+  <!-- End Brands -->
+  <!-- Start Brands -->
+  <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
+    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
+     {{ 'allProduct.filter.price-section.price-rating' | translate }}
+    </h4>
+      <!-- <p class="mb-3 text-primary font-bold">${{filterObject.priceRange[0]}} - ${{filterObject.priceRange[1]}}</p> -->
+      <!-- <p-slider [(ngModel)]="filterObject.priceRange" [range]="true" (click)="filterOption()" /> -->
+
+  </section>
+  <!-- End Brands -->
   <!-- Start Ratings -->
-  <app-ratings-filter></app-ratings-filter>
+  <section class="ratings p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow">
+    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
+      {{ "allProduct.filter.ratings-section.ratings" | translate }}
+    </h4>
+    <ul class="space-y-2">
+  @for (rating of [5, 4, 3, 2, 1]; track $index; let i = $index) {
+    <li>
+        <!-- <label class="flex items-center text-zinc-500 gap-2 cursor-pointer relative has-[:checked]:before:content-['\f00c']  has-[:checked]:before:absolute has-[:checked]:before:font-['Font_Awesome_6_Free'] has-[:checked]:before:font-bold has-[:checked]:before:text-white" >
 
+        <input
+          type="checkbox"
+          [value]="filterObject.rating[i]"
+          [(ngModel)]="filterObject.rating"
+          class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"
+          (change)="filterOption()"
+        />
+        <span>
+          @for (star of [].constructor(rating); track $index) {
+            <i class="fa-solid fa-star text-primary"></i>
+          }
+          @for (star of [].constructor(5 - rating); track $index) {
+            <i class="fa-regular fa-star text-primary"></i>
+          }
+        </span>
+      </label> -->
 
+      <p-checkbox [inputId]="(rating + 1).toString() " name="group" [value]="rating " [(ngModel)]="filterObject.rating" (change)="filterOption()"/>
+                <label [for]="(rating + 1).toString() " class="ml-2"> <span>
+          @for (star of [].constructor(rating); track $index) {
+            <i class="fa-solid fa-star text-primary"></i>
+          }
+          @for (star of [].constructor(5 - rating); track $index) {
+            <i class="fa-regular fa-star text-primary"></i>
+          }
+        </span> </label>
+    </li>
+  }
+</ul>
+  </section>
+  <!-- End Ratings -->
 </aside>

@@ -13,3 +13,10 @@ export interface FilterObject {
     max: number,
   };
 }
+export interface IFilterObj {
+  textSearch: string,
+  Categories: string[],
+  occasions: string[],
+  priceRange: [number, number],
+  rating: number[],
+}

@@ -1,32 +1,29 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ProductsState } from './products.reducer';
+import { productState } from './product.state';
 
 
-export const selectProductsState = createFeatureSelector<ProductsState>('products');
+export const selectProductsState = createFeatureSelector<productState>('products');
 
 export const selectAllProducts = createSelector(
   selectProductsState,
-  (state) => state.products
-);
+  (state: productState) => state.products
+)
 
-export const selectProductsLoading = createSelector(
+export const selectSortedProducts = createSelector(
   selectProductsState,
-  (state) => state.loading
-);
-
-export const selectProductsError = createSelector(
-  selectProductsState,
-  (state) => state.error
-);
-export const selectPagination = createSelector(
-  selectProductsState,
-  (state) => state.pagination
-);
-export const selectLimit = createSelector(
-  selectPagination,
-  (pagination) => pagination.limit
-);
-export const selectCurrentPage = createSelector(
-  selectPagination,
-  (pagination) => pagination.page
-);
+  (state: productState) => {
+    return [...state.products].sort((a, b) => {
+      switch (state.SortOption) {
+        case 'priceAsc':
+          return a.price - b.price;
+        case 'priceDesc':
+          return b.price - a.price;
+        case 'nameAsc':
+          return a.title.localeCompare(b.title);
+        case 'nameDesc':
+          return b.title.localeCompare(a.title);
+        default:
+          return 0; // No sorting
+      }
+    });
+  })
