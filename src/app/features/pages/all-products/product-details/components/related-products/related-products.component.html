@@ -1,7 +1,7 @@
 @if (productList.length == 0) {
     <hr />
 <div class="flex justify-center items-center mt-3">
-    <h3>No Related Products</h3>
+    <h3>No Available Related Products</h3>
 </div>
 }@else {
 <div #related class="product-reviews my-3">
@@ -28,7 +28,7 @@
                             <span class="text-price-color line-through">{{ productList.price * 1.2 |
                                 number:'1.2-2'
                                 }}</span>
-                            <span class="text-primary font-bold">{{ productList.price }} EGP</span>
+                            <span class="text-primary font-bold ms-2">{{ productList.price }} EGP</span>
                         </div>
                     </div>
                     <div>

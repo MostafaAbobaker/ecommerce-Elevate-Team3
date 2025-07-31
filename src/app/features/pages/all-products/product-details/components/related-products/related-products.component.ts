@@ -1,10 +1,10 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
-import { IProductDetails, IResponseProductDetails } from '../../models/product-details';
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { IProductDetails, IRelatedProduct, IResponseProductDetails } from '../../models/product-details';
 import { CommonModule } from '@angular/common';
 import { ProductDetailsService } from '../../services/product-details.service';
-import { IRelatedProduct } from '../../models/details';
 import { ActivatedRoute } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-related-products',
@@ -12,10 +12,11 @@ import { CarouselModule } from 'primeng/carousel';
   templateUrl: './related-products.component.html',
   styleUrl: './related-products.component.css'
 })
-export class RelatedProductsComponent implements OnInit {
+export class RelatedProductsComponent implements OnInit, OnDestroy {
 
   productId!: string
   productList: IRelatedProduct[] = []
+  subscription:Subscription = new Subscription
 
   @Input() productDetails: IProductDetails = {} as IProductDetails
   private _productDetailsService = inject(ProductDetailsService)
@@ -50,7 +51,7 @@ export class RelatedProductsComponent implements OnInit {
   }
 
   getRelatedProduct(id: string) {
-    this._productDetailsService.getRelatedProducts(id).subscribe({
+    this.subscription = this._productDetailsService.getRelatedProducts(id).subscribe({
       next: (res) => {
         this.productList = res.relatedProducts
         console.log(this.productList);
@@ -61,6 +62,10 @@ export class RelatedProductsComponent implements OnInit {
 
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 
 }

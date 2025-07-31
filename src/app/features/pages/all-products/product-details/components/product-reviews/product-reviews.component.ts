@@ -63,7 +63,7 @@ export class ProductReviewsComponent implements OnInit, OnDestroy {
         console.log(this.productList);
 
       }, error: (err) => {
-
+        
       }, complete: () => {
 
       }
