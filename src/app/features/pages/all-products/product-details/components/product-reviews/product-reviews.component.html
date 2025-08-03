@@ -18,8 +18,7 @@
                 <div class="rating">
                     <span>Your rating:</span>
                     @for(star of [1, 2, 3, 4, 5]; track star) {
-                    <i class="fa-regular fa-star text-amber-500 ms-2"
-                        [ngClass]="{ 'fa-solid  ': star <= productRatie }"></i>
+                    <i class="fa-regular fa-star text-amber-500 ms-2" [ngClass]="{ 'fa-solid  ': star <= 5 }"></i>
                     }
                 </div>
                 <label for="title">
@@ -42,33 +41,28 @@
             </div>
         </form>
         @if (productList.length > 0) {
+        @for (review of productList; track review.reviews._id) {
         <div class="flex flex-col justify-between w-full h-full p-3">
             <div class="flex gap-3">
                 <img src="../../../../../../../assets/imgs/about/1.png" alt="" class="w-[50px] h-[50px] rounded-full">
                 <div>
                     <p class="font-bold">Adrian</p>
-                    <p class="text-textGray">Apr 7, 2025</p>
+                    <p class="text-textGray">{{review.reviews.createdAt}}</p>
                 </div>
             </div>
             <div>
                 @for(star of [1, 2, 3, 4, 5]; track star) {
                 <i class="fa-regular fa-star text-amber-500 ms-2"
-                    [ngClass]="{ 'fa-solid  ': star <= productRatie }"></i>
+                    [ngClass]="{ 'fa-solid  ': star <= review.reviews.rating}"></i>
                 }
                 <span class="font-bold ms-2">(4.5)</span>
             </div>
             <div>
-                <h3 class="font-bold">Awesome Bouquet!</h3>
-                <p class="text-textDesc">I ordered this bouquet for a special occasion, and it absolutely exceeded my
-                    expectations! The flowers were fresh, beautifully arranged, and exactly as pictured—if not better.
-                    The color combination was stunning and gave off such a luxurious vibe. Even the wrapping was elegant
-                    and thoughtful.
-                    Delivery was right on time, and the bouquet arrived in perfect condition. The recipient was
-                    genuinely touched and couldn't stop admiring it. Highly recommend for anyone looking to make a
-                    lasting impression. Will definitely order again!</p>
+                <h3 class="font-bold">{{review.reviews.title}}</h3>
+                <p class="text-textDesc">{{review.reviews.comment}}</p>
             </div>
             <hr />
-            <div class="flex gap-3">
+            <!-- <div class="flex gap-3">
                 <img src="../../../../../../../assets/imgs/about/1.png" alt="" class="w-[50px] h-[50px] rounded-full">
                 <div>
                     <p class="font-bold">Adrian</p>
@@ -89,8 +83,9 @@
                     flowers were fresh, beautifully arranged, and exactly as pictured—if not better. The color
                     combination was stunning and gave off such a luxurious vibe. Even the wrapping was elegant and
                     thoughtful.</p>
-            </div>
+            </div> -->
         </div>
+        }
         }@else {
         <div class="flex justify-center items-center mt-3">
             <h3>No Available Reviews Product</h3>

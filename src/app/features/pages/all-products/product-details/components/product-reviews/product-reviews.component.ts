@@ -1,5 +1,5 @@
 import { Component, inject, Input, input, OnDestroy, OnInit } from '@angular/core';
-import { IProductDetails, IResponseProductDetails } from '../../models/product-details';
+import { IResponseReview, IReviewProduct } from '../../models/product-details';
 import { CommonModule } from '@angular/common';
 import { ProductDetailsService } from '../../services/product-details.service';
 import { ActivatedRoute } from '@angular/router';
@@ -17,17 +17,17 @@ export class ProductReviewsComponent implements OnInit, OnDestroy {
   productId!: string
   reviewsForm!: FormGroup
   subscription: Subscription = new Subscription
-  productList: any[] = []
-  reviewsList: any[] = []
+  productList!: IResponseReview[]
+  reviewsList!: IResponseReview[]
 
-  @Input() productDetails: IProductDetails = {} as IProductDetails;
+  // @Input() productDetails: IProductDetails = {} as IProductDetails;
   productRatie!: number
 
   private _productDetailsService = inject(ProductDetailsService)
   private _activatedRoute = inject(ActivatedRoute)
 
   ngOnInit(): void {
-    this.productRatie = this.productDetails?.rateAvg;
+    // this.productRatie = this.productDetails?.rateAvg;
 
     this.productId = this._activatedRoute.snapshot.params['id']
     this.getReviewsProduct(this.productId)
@@ -56,14 +56,16 @@ export class ProductReviewsComponent implements OnInit, OnDestroy {
     })
   }
 
+  // get review
   getReviewsProduct(id: string) {
     this._productDetailsService.getReviewsProduct(id).subscribe({
       next: (res) => {
         this.productList = res
+        this.productRatie = res.reviews.rating
         console.log(this.productList);
 
       }, error: (err) => {
-        
+
       }, complete: () => {
 
       }

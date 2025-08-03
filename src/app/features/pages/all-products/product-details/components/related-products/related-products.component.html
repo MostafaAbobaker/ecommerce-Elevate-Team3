@@ -1,5 +1,5 @@
 @if (productList.length == 0) {
-    <hr />
+<hr />
 <div class="flex justify-center items-center mt-3">
     <h3>No Available Related Products</h3>
 </div>
@@ -25,10 +25,12 @@
                             }
                         </div>
                         <div>
-                            <span class="text-price-color line-through">{{ productList.price * 1.2 |
-                                number:'1.2-2'
-                                }}</span>
-                            <span class="text-primary font-bold ms-2">{{ productList.price }} EGP</span>
+                            <span class="text-primary font-bold ms-2">
+                                {{ productList.price }} EGP
+                            </span>
+                            <span class="text-price-color line-through">
+                                {{ productList.price * 1.2 | number:'1.2-2'}}
+                            </span>
                         </div>
                     </div>
                     <div>

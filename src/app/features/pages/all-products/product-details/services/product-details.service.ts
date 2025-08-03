@@ -24,6 +24,8 @@ export class ProductDetailsService {
     });
   }
   getReviewsProduct(id: string): Observable<any> {
-    return this._http.get(`products/${id}/reviews`);
+    return this._http.get(`products/${id}/reviews`, {
+      headers:{token:localStorage.getItem('userToken')!}
+    });
   }
 }

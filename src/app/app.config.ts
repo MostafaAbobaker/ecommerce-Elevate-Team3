@@ -51,4 +51,4 @@ export const appConfig: ApplicationConfig = {
     ]),
     provideStore({ products: productsReducer }),
     provideEffects([ProductsEffects])
-};
+]};
