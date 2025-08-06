@@ -35,7 +35,7 @@ export class AuthLibService implements AuthApiAbstract {
       })
     );
   }
-
+  // Process
   SIGN_UP(data: SignupDataRequested): Observable<AuthDataResponded> {
     // this.API_BASE_URL + AuthApiEndpoint.SIGNIN
     return this.httpClient.post(AuthApiEndpoint.SIGN_UP, data).pipe(
