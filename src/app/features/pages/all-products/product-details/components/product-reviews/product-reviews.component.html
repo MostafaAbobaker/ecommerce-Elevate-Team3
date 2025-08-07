@@ -40,26 +40,30 @@
                 </button>
             </div>
         </form>
-        @if (productList.length > 0) {
-        @for (review of productList; track review.reviews._id) {
+        @if (productList.length === 0) {
+        <div class="flex justify-center items-center mt-3">
+            <h3>No Available Reviews Product</h3>
+        </div>
+        }@else {
+        @for (review of productList; track review._id) {
         <div class="flex flex-col justify-between w-full h-full p-3">
             <div class="flex gap-3">
                 <img src="../../../../../../../assets/imgs/about/1.png" alt="" class="w-[50px] h-[50px] rounded-full">
                 <div>
                     <p class="font-bold">Adrian</p>
-                    <p class="text-textGray">{{review.reviews.createdAt}}</p>
+                    <p class="text-textGray">{{review.createdAt}}</p>
                 </div>
             </div>
             <div>
                 @for(star of [1, 2, 3, 4, 5]; track star) {
                 <i class="fa-regular fa-star text-amber-500 ms-2"
-                    [ngClass]="{ 'fa-solid  ': star <= review.reviews.rating}"></i>
+                    [ngClass]="{ 'fa-solid  ': star <= review.rating}"></i>
                 }
                 <span class="font-bold ms-2">(4.5)</span>
             </div>
             <div>
-                <h3 class="font-bold">{{review.reviews.title}}</h3>
-                <p class="text-textDesc">{{review.reviews.comment}}</p>
+                <h3 class="font-bold">{{review.title}}</h3>
+                <p class="text-textDesc">{{review.comment}}</p>
             </div>
             <hr />
             <!-- <div class="flex gap-3">
@@ -86,9 +90,5 @@
             </div> -->
         </div>
         }
-        }@else {
-        <div class="flex justify-center items-center mt-3">
-            <h3>No Available Reviews Product</h3>
-        </div>
         }
     </div>

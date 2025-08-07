@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { IResponseReview } from '../../models/product-details';
+import { IResponseReview, IReviewProduct } from '../../models/product-details';
 import { CommonModule } from '@angular/common';
 import { ProductDetailsService } from '../../services/product-details.service';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +19,7 @@ export class ProductReviewsComponent implements OnInit, OnDestroy {
   productId!: string
   reviewsForm!: FormGroup
   subscription: Subscription = new Subscription
-  productList!: IResponseReview[]
+  productList!: IReviewProduct[]
   reviewsList!: IResponseReview[]
   productRatie!: number
 
@@ -55,7 +55,7 @@ export class ProductReviewsComponent implements OnInit, OnDestroy {
   getReviewsProduct(id: string) {
     this._productDetailsService.getReviewsProduct(id).subscribe({
       next: (res) => {
-        this.productList = res
+        this.productList = res.reviews
         this.productRatie = res.reviews.rating
       }, error: (err) => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
