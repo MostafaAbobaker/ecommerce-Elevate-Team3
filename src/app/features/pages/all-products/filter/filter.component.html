@@ -1,36 +1,39 @@
 <aside class="aside-filer">
   <!-- Start categories -->
-  <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
+  <!-- <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
     <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
       {{ 'allProduct.filter.search-section.search' | translate}}
     </h4>
     <input type="search" name="" id="" [(ngModel)]="filterObject.textSearch" (keyup)="filterOption()"  placeholder="Search categories" class="w-full h-[40px] px-4 shadow rounded-full bg-white dark:bg-zinc-600 text-sm text-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary ">
 
-  </section>
+  </section> -->
   <!-- End categories -->
    <!-- Start categories -->
-  <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
-    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
-      {{ 'allProduct.filter.category-section.category' | translate }}
-    </h4>
-    <ul class="space-y-2 h-[100px] overflow-y-auto">
+  <section class=" p-5 pt-2  ">
+    <div class="header flex justify-between">
+      <h4 class="title  mb-[10px] capitalize font-bold dark:text-white text-zinc-800">
+        {{ 'allProduct.filter.category-section.category' | translate }}
+      </h4>
+      <button class="text-red-600" (click)="resetOptionFilter('Categories')"><i class="fa-solid fa-xmark fa-fw me-2"></i>Reset</button>
+    </div>
+    <ul class="space-y-1 h-[250px] overflow-y-auto ">
 
       @for(category of Categories; track category._id; let i = $index ){
-        <li class="pe-2">
-          <!-- <label class="flex items-center text-zinc-500 gap-2 cursor-pointer relative
-          has-[:checked]:before:content-['\f00c']  has-[:checked]:before:absolute has-[:checked]:before:font-['Font_Awesome_6_Free'] has-[:checked]:before:font-bold has-[:checked]:before:text-white  " >
-            <input type="checkbox"
-              class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"
-              (change)="filterOption('Categories',category._id)"/>
-              <div class="flex justify-between w-full text-sm">
-                <div class="">{{category.name}}</div>
-                <div class="">({{category.productsCount}})</div>
-              </div>
+        <li class="rounded-[10px] cursor-pointer bg-zinc-300 ">
 
-          </label> -->
+    <p-checkbox [inputId]="category._id" name="group" class="hidden peer" [value]="category._id" [(ngModel)]="filterObject.Categories" (change)="filterOption()"/>
+      <label [for]="category._id" [ngClass]="{'bg-primary-light ': filterObject.Categories.includes(category._id),
+      'flex items-center rounded-[10px]  w-full cursor-pointer text-sm capitalize  font-medium tracking-wide ':true}"
+                                  >
+                <div
+                class="image p-2 rounded-s-[10px] me-2"
+                    [ngClass]="{'bg-primary text-white':filterObject.Categories.includes(category._id) , 'bg-zinc-500': !filterObject.Categories.includes(category._id)}">
+                  <img [src]="category.image" alt="" class="w-[20px] h-[20px]    invert brightness-0">
+                </div>
 
-              <p-checkbox [inputId]="category._id" name="group" [value]="category._id" [(ngModel)]="filterObject.Categories" (change)="filterOption()"/>
-              <label [for]="category._id" class="ml-2"> {{ category.name }} </label>
+                {{ category.name }}
+
+      </label>
 
         </li>
 
@@ -40,76 +43,56 @@
     </ul>
   </section>
   <!-- End categories -->
-
+  <hr>
   <!-- Start Brands -->
-  <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
-    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
-          {{ "allProduct.filter.occasion-section.occasion" | translate }}
+  <section class=" p-5 pt-2  ">
 
-    </h4>
-    <ul class="space-y-2 h-[100px] overflow-y-auto">
+    <div class="header flex justify-between">
+      <h4 class="title  mb-[10px] capitalize font-bold dark:text-white text-zinc-800">
+        {{ "allProduct.filter.occasion-section.occasion" | translate }}
+      </h4>
+      <button class="text-red-600" (click)="resetOptionFilter('occasions')"><i class="fa-solid fa-xmark fa-fw me-2"></i>Reset</button>
+    </div>
+    <ul class="  overflow-y-auto h-[250px] overflow-y-auto grid grid-cols-12 gap-2.5">
       @for(occasion of Occasions; track occasion._id; let i = $index ){
+
         <!-- <li class="pe-2">
-                  <label class="flex items-center text-zinc-500 gap-2 cursor-pointer relative has-[:checked]:before:content-['\f00c']  has-[:checked]:before:absolute has-[:checked]:before:font-['Font_Awesome_6_Free'] has-[:checked]:before:font-bold has-[:checked]:before:text-white" >
-
-            <input type="checkbox"
-              class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"
-              (change)="filterOption('occasions',occasion._id)" />
-              <div class="flex justify-between w-full text-sm">
-                <div class="">{{occasion.name}}</div>
-                <div class="">({{occasion.productsCount}})</div>
-              </div>
-
-          </label>
-        </li> -->
-        <li class="pe-2">
           <p-checkbox [inputId]="occasion._id" name="group" [value]="occasion._id" [(ngModel)]="filterObject.occasions" (change)="filterOption()"/>
                 <label [for]="occasion._id" class="ml-2"> {{ occasion.name }} </label>
 
 
-        </li>
-      }
+        </li> -->
+      <li class="col-span-6 p-0">
+        <p-checkbox [inputId]="occasion._id" name="group" class="hidden peer " [value]="occasion._id" [(ngModel)]="filterObject.occasions" (change)="filterOption()"/>
+      <label [for]="occasion._id" >
+                <div  class="image  rounded-[10px]  relative  "       [ngClass]="{'border-2 border-primary ': filterObject.occasions.includes(occasion._id)}"       >
+                  <img src="../../../../../assets/imgs/09e34f581028477fc0429735838fe283ba6a0804.jpg" alt="" class="w-full     h-full object-cover rounded-[8px]">
+                  <div class="title absolute w-full h-full bg-black/50 grid place-items-center z-10 inset-0 rounded-[10px] text-white"
+                  [ngClass]="{' bg-primary/50 ': filterObject.occasions.includes(occasion._id)}"
+                  >{{ occasion.name }}</div>
+                </div>
+      </label>
+      </li>
 
+      }
 
     </ul>
   </section>
   <!-- End Brands -->
-  <!-- Start Brands -->
-  <section class="brands p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow mb-6">
-    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
-     {{ 'allProduct.filter.price-section.price-rating' | translate }}
-    </h4>
-      <!-- <p class="mb-3 text-primary font-bold">${{filterObject.priceRange[0]}} - ${{filterObject.priceRange[1]}}</p> -->
-      <!-- <p-slider [(ngModel)]="filterObject.priceRange" [range]="true" (click)="filterOption()" /> -->
+   <hr>
+   <!-- Start Ratings -->
+  <section class=" p-5 pt-2  ">
 
-  </section>
-  <!-- End Brands -->
-  <!-- Start Ratings -->
-  <section class="ratings p-6 rounded-[20px] bg-white dark:bg-zinc-700 shadow">
-    <h4 class="title border-b border-zinc-500 pb-6 mb-6 capitalize font-bold">
-      {{ "allProduct.filter.ratings-section.ratings" | translate }}
-    </h4>
-    <ul class="space-y-2">
+    <div class="header flex justify-between">
+      <h4 class="title  mb-[10px] capitalize font-bold dark:text-white text-zinc-800">
+        {{ "allProduct.filter.ratings-section.ratings" | translate }}
+      </h4>
+      <button class="text-red-600" (click)="resetOptionFilter('rating')"><i class="fa-solid fa-xmark fa-fw me-2"></i>Reset</button>
+    </div>
+    <!-- <ul class="space-y-2">
   @for (rating of [5, 4, 3, 2, 1]; track $index; let i = $index) {
     <li>
-        <!-- <label class="flex items-center text-zinc-500 gap-2 cursor-pointer relative has-[:checked]:before:content-['\f00c']  has-[:checked]:before:absolute has-[:checked]:before:font-['Font_Awesome_6_Free'] has-[:checked]:before:font-bold has-[:checked]:before:text-white" >
 
-        <input
-          type="checkbox"
-          [value]="filterObject.rating[i]"
-          [(ngModel)]="filterObject.rating"
-          class="w-[15px] h-[15px] border-zinc-500 checked:bg-primary border default:ring-2 rounded-[3px] appearance-none indeterminate:bg-primary"
-          (change)="filterOption()"
-        />
-        <span>
-          @for (star of [].constructor(rating); track $index) {
-            <i class="fa-solid fa-star text-primary"></i>
-          }
-          @for (star of [].constructor(5 - rating); track $index) {
-            <i class="fa-regular fa-star text-primary"></i>
-          }
-        </span>
-      </label> -->
 
       <p-checkbox [inputId]="(rating + 1).toString() " name="group" [value]="rating " [(ngModel)]="filterObject.rating" (change)="filterOption()"/>
                 <label [for]="(rating + 1).toString() " class="ml-2"> <span>
@@ -122,7 +105,46 @@
         </span> </label>
     </li>
   }
-</ul>
+</ul> -->
+      <p-rating [(ngModel)]="filterObject.rating" (click)="filterOption()" />
   </section>
   <!-- End Ratings -->
+   <hr>
+  <!-- Start Brands -->
+  <section class="p-5 pt-2">
+    <div class="header flex justify-between">
+      <h4 class="title  mb-[10px] capitalize font-bold dark:text-white text-zinc-800">
+        {{ 'allProduct.filter.price-section.price-rating' | translate }}
+      </h4>
+      <button class="text-red-600" (click)="resetOptionFilter('priceRange')"><i class="fa-solid fa-xmark fa-fw me-2"></i>Reset</button>
+    </div>
+      <div class="grid grid grid-cols-12">
+        <div class="col-span-6 p-2">
+          <label for="" class="mb-[6px] ps-2">from</label>
+          <input type="number" name="priceRange" id="priceRangeFrom" (keyup)="filterOption()" min="0" max="5000" class="w-full h-[40px] px-4 rounded-[10px] border border-zinc-300 rounded-2 bg-white dark:bg-zinc-600 text-sm text-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary " value="0"  [(ngModel)]="filterObject.priceRange[0]"  />
+        </div>
+        <div class="col-span-6 p-2">
+          <label for="" class="mb-[6px] ps-2">to</label>
+          <input type="number" name="priceRange" id="priceRangeTo" (keyup)="filterOption()" min="0" max="5000" class="w-full h-[40px] px-4 rounded-[10px] border border-zinc-300 rounded-2 bg-white dark:bg-zinc-600 text-sm text-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary "  value="5000" [(ngModel)]="filterObject.priceRange[1]"  />
+        </div>
+      </div>
+      <!-- <p class="mb-3 text-primary font-bold">${{priceRangeSS[0]}} - ${{priceRangeSS[1]}}</p>
+       <p-slider [(ngModel)]="priceRangeSS" [max]="5000"  [step]="100" [range]="true" (click)="slideEvent($event)" /> -->
+
+  </section>
+  <!-- End Brands -->
+   <hr>
+   <div class="pt-2">
+    <button class="bg-primary-light w-full rounded-xl shadow p-2 block text-primary hover:shadow-sm hover:bg-primary hover:text-white transition" (click)="resetOptionFilter('all')">
+      <i class="fa-solid fa-arrow-rotate-left me-1"></i>
+      Reset All
+    </button>
+   </div>
+
 </aside>
+
+
+
+
+
+

@@ -62,14 +62,6 @@ export class ProductsComponent implements OnInit , OnDestroy{
 
   constructor(private store: Store) {
 
-    /* this.products$ = this.store.select(ProductsSelector.selectAllProducts).pipe(
-      map((products) => {
-        this.productsItems$ = products;
-        this.totalRecords = products.length;
-        return products;
-      }),takeUntil(this.destroy$)
-    ); */
-
     this.products$ = this.store.select(ProductsSelector.selectAllProducts).pipe(
       map((products) => {
         this.productsItems$ = products;
@@ -79,11 +71,6 @@ export class ProductsComponent implements OnInit , OnDestroy{
       }),
       takeUntil(this.destroy$)
     )
-
-
-/*     this.loading$ = this.store.select(ProductsSelector.selectProductsLoading).pipe( takeUntil(this.destroy$));
-    this.error$ = this.store.select(ProductsSelector.selectProductsError).pipe( takeUntil(this.destroy$));
- */
 }
 
 

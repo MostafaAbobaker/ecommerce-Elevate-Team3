@@ -4,6 +4,7 @@ import { Categories } from '../../homePage/categories/model/categories';
 
 import { SliderModule } from 'primeng/slider';
 import { CheckboxModule } from 'primeng/checkbox';
+import { RatingModule } from 'primeng/rating';
 
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -17,7 +18,7 @@ import * as ProductActions from '../../../../store/products.actions';
 
 @Component({
   selector: 'app-filter',
-  imports: [ SliderModule , FormsModule, TranslatePipe, CommonModule, CheckboxModule, TranslatePipe ],
+  imports: [ SliderModule , FormsModule, TranslatePipe, CommonModule, CheckboxModule, TranslatePipe , RatingModule ],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.css'
 })
@@ -28,10 +29,11 @@ export class FilterComponent implements OnInit {
     textSearch: '',
     Categories: [],
     occasions: [],
-    priceRange: [0, 80],
-    rating: [],
+    priceRange: [0, 4200],
+    rating: 0,
   } ;
 
+  priceRangeSS: number[] = [0, 4200];
 
   Occasions: IOccasions[] = [];
   Categories: Categories[] = [];
@@ -68,12 +70,16 @@ export class FilterComponent implements OnInit {
       }
     });
   }
+slideEvent(event:any) {
+  console.log('Slider value changed:', event);
 
+}
 
   filterOption( ) {
-
-    console.log('This Object Filter',this.filterObject);
-    this.store.dispatch(ProductActions.filterProducts({ filterObject: this.filterObject }));
+    debugger
+    var cloned = JSON.parse(JSON.stringify(this.filterObject));
+    console.log('This Object Filter',cloned);
+    this.store.dispatch(ProductActions.filterProducts({ filterObject: cloned }));
 
     /* if (option === 'Categories') {
 
@@ -100,5 +106,40 @@ export class FilterComponent implements OnInit {
     /* this.filterObjectChange.emit(this.filterObject);  */// Emit to parent
 
   }
+
+  resetOptionFilter(type:string){
+
+   switch (type) {
+    case 'Categories':
+      this.filterObject.Categories = [];
+      break;
+    case 'occasions':
+      this.filterObject.occasions = [];
+      break;
+    case 'rating':
+      this.filterObject.rating = 0;
+      break;
+    case 'priceRange':
+      this.filterObject.priceRange = [0, 5000];
+      break;
+    case 'all':
+      this.filterObject = {
+        textSearch: '',
+        Categories: [],
+        occasions: [],
+        priceRange: [0, 5000],
+        rating: 0,
+      };
+      break;
+  }
+  var cloned = JSON.parse(JSON.stringify(this.filterObject));
+    console.log('This Object Filter',cloned);
+    this.store.dispatch(ProductActions.filterProducts({ filterObject: cloned }));
+
+  }
+
+
+
+
 
 }

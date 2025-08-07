@@ -12,12 +12,15 @@ export interface productState {
     totalItems: number;
   }
   products: IItemProduct[];
+  productOrigin: IItemProduct[];
+  loading: boolean;
+  error: string | null;
   SortOption: SortOption;
-  filterOject:IFilterObj
 }
 
+/* Assign a default value to initialState */
 export const initialState: productState = {
-  message: 'string',
+  message: '',
   metadata: {
     currentPage: 0,
     totalPages: 0,
@@ -25,7 +28,10 @@ export const initialState: productState = {
     totalItems: 0,
   },
   products: [],
-  SortOption: SortOption.NameRecommended,
-  filterOject:{} as IFilterObj
+  productOrigin: [],
+  loading: false,
+  error: null,
+  SortOption: SortOption.NameDesc,
+
 }
 

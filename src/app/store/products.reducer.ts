@@ -1,75 +1,96 @@
 import { createReducer, on } from "@ngrx/store";
 import * as ProductsActions from './products.actions';
 import { initialState } from "./product.state";
+import { SortOption } from "../features/pages/all-products/products/sort-option.enum";
+import { IItemProduct } from "../shared/components/ui/item-product/model/iitem-product";
 
 
 
 export const productsReducer = createReducer(
   initialState,
-  on(ProductsActions.getProducts, () => initialState),
-  on(ProductsActions.setProducts,(state , {products}) => ({
+  /* Action to load products */
+  on(ProductsActions.getProducts, (state, { limit, page }) =>  ({
     ...state,
-    products:products,
+    loading: true,
+    error: null,
   })),
+  /* Action to set products */
+  on(ProductsActions.setProducts, (state, { products }) => ({
+    ...state,
+    products: products,
+    productOrigin: products, // Store original products for filtering and sorting
+    loading: false,
+  })),
+  /* Action to handle loading failure */
+  on(ProductsActions.loadProductsFailure, (state, { error }) =>
+  ({
+    ...state,
+    loading: false,
+    error: error
+  })),
+
+  /* Action to sort products */
   on(ProductsActions.SortOptions, (state, { sortOption }) => ({
     ...state,
-    products: [...state.products].sort((a, b) => {
-      switch (sortOption) {
-        case 'priceAsc':
-          return a.price - b.price;
-        case 'priceDesc':
-          return b.price - a.price;
-        case 'nameAsc':
-          return a.title.localeCompare(b.title);
-        case 'nameDesc':
-          return b.title.localeCompare(a.title);
-        default:
-          return 0; // No sorting
-      }
-    }),
+    products: sortProducts(state.productOrigin, sortOption)
   })),
 
-  /* on(ProductsActions.filterProducts,(state, { filterObject }) => ({
-    ...state,
-    products: [...state.products].filter(product => {
-      product.title.includes(filterObject.textSearch);
-      debugger
-      return product;
-    })
-  })) */
-on(ProductsActions.filterProducts, (state, { filterObject }) => {
 
-  const filteredProducts = state.products.filter(product => {
+  /* Action to filter products */
+  on(ProductsActions.filterProducts, (state, { filterObject }) => {
 
+    const filteredProducts = state.productOrigin.filter(product => {
 
-    const matchesTextSearch = product.title.toLowerCase().includes(filterObject.textSearch.toLowerCase())
-    const matchesCategories =  filterObject.Categories.length === 0 || filterObject.Categories.includes(product.category);
+    const matchesTextSearch = filterObject.textSearch.length === 0 || product.title.toLowerCase().includes(filterObject.textSearch.toLowerCase())
+    const matchesCategories = filterObject.Categories.length === 0 || filterObject.Categories.includes(product.category);
     const matchesOccasions = filterObject.occasions.length === 0 || filterObject.occasions.includes(product.occasion);
-    /*const matchesRating = filterObject.rating.length === 0 || filterObject.rating.includes(product.rateAvg);
+    const matchesRating =filterObject.rating === 0 || filterObject.rating == product.rateAvg ;
+    // const matchesRating = filterObject.rating.length === 0 || filterObject.rating.includes(product.rateAvg);
     const matchesPriceRange = product.price >= filterObject.priceRange[0] && product.price <= filterObject.priceRange[1];
- */
-    /* const matchesCategories =
+      return (
+        matchesTextSearch
+        && matchesCategories &&
+        matchesOccasions &&
+        matchesRating &&
+        matchesPriceRange
+      );
+    });
 
-    const matchesOccasions =
-
-    const matchesRating =
-
-    const matchesPriceRange =  */
-
-    return (
-      matchesTextSearch
-      && matchesCategories &&
-      matchesOccasions /*&&
-      matchesRating &&
-      matchesPriceRange */
-    );
-  });
-
-  return {
-    ...state,
-    products: filteredProducts,
-  };
-})
+    return {
+      ...state,
+      products: filteredProducts,
+    };
+  })
 
 
 );
+
+
+/**
+ * Function to sort products based on the selected sort option.
+ * @param products - Array of products to be sorted.
+ * @param sortOption - The selected sort option.
+ * @returns Sorted array of products.
+ */
+function sortProducts(products: IItemProduct[], sortOption: SortOption) {
+
+  let sortedProducts
+  sortedProducts = [...products].sort((a, b) => {
+    switch (sortOption) {
+      case SortOption.PriceAsc:
+        return a.price - b.price;
+      case SortOption.PriceDesc:
+        return b.price - a.price;
+      case SortOption.NameAsc:
+        return a.title.localeCompare(b.title);
+      case SortOption.NameDesc:
+        return b.title.localeCompare(a.title);
+      default:
+        return 0; // No sorting
+    }
+
+  });
+
+  return sortedProducts;
+
+}

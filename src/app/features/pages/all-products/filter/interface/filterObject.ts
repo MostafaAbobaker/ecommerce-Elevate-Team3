@@ -7,7 +7,7 @@ export interface FilterObject {
   category: Categories[],
   products: IItemProduct[],
   occasions: IOccasions[],
-  ratings: number[],
+  ratings: number,
   price: {
     min: number,
     max: number,
@@ -18,5 +18,5 @@ export interface IFilterObj {
   Categories: string[],
   occasions: string[],
   priceRange: [number, number],
-  rating: number[],
+  rating: number,
 }
