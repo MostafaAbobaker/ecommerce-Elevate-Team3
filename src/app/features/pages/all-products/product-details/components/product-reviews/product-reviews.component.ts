@@ -1,16 +1,18 @@
-import { Component, inject, Input, input, OnDestroy, OnInit } from '@angular/core';
-import { IResponseReview, IReviewProduct } from '../../models/product-details';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { IResponseReview } from '../../models/product-details';
 import { CommonModule } from '@angular/common';
 import { ProductDetailsService } from '../../services/product-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-product-reviews',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './product-reviews.component.html',
-  styleUrl: './product-reviews.component.css'
+  styleUrl: './product-reviews.component.css',
+  providers:[MessageService]
 })
 export class ProductReviewsComponent implements OnInit, OnDestroy {
 
@@ -19,19 +21,15 @@ export class ProductReviewsComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription
   productList!: IResponseReview[]
   reviewsList!: IResponseReview[]
-
-  // @Input() productDetails: IProductDetails = {} as IProductDetails;
   productRatie!: number
 
   private _productDetailsService = inject(ProductDetailsService)
   private _activatedRoute = inject(ActivatedRoute)
+  private messageService = inject(MessageService)
 
   ngOnInit(): void {
-    // this.productRatie = this.productDetails?.rateAvg;
-
     this.productId = this._activatedRoute.snapshot.params['id']
     this.getReviewsProduct(this.productId)
-
     this.initForm()
   }
 
@@ -46,12 +44,9 @@ export class ProductReviewsComponent implements OnInit, OnDestroy {
   }
 
   submitReviews() {
-    console.log(this.reviewsForm);
-
     this.subscription = this._productDetailsService.addReviewsProduct(this.reviewsForm.value).subscribe({
       next: (res) => {
         this.reviewsList = res
-        console.log(res);
       }
     })
   }
@@ -62,12 +57,8 @@ export class ProductReviewsComponent implements OnInit, OnDestroy {
       next: (res) => {
         this.productList = res
         this.productRatie = res.reviews.rating
-        console.log(this.productList);
-
       }, error: (err) => {
-
-      }, complete: () => {
-
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
       }
     })
   }

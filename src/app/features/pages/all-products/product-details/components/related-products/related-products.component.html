@@ -26,17 +26,18 @@
                         </div>
                         <div>
                             <span class="text-primary font-bold ms-2">
-                                {{ productList.price }} EGP
+                                {{ productList.priceAfterDiscount }} EGP
                             </span>
                             <span class="text-price-color line-through">
-                                {{ productList.price * 1.2 | number:'1.2-2'}}
+                                {{ productList.price}} EGP
                             </span>
                         </div>
                     </div>
                     <div>
                         <button
-                            class="bg-primary text-white  rounded-full px-3 py-2 hover:bg-primary-dark hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary"><i
-                                class="fa-solid fa-cart-shopping"></i></button>
+                            class="bg-primary text-white  rounded-full px-3 py-2 hover:bg-primary-dark hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
                     </div>
                 </div>
             </div>

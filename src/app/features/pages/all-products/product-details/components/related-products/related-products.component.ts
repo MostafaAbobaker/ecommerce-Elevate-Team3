@@ -1,16 +1,18 @@
 import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
-import { IProductDetails, IRelatedProduct, IResponseProductDetails } from '../../models/product-details';
+import { IProductDetails, IRelatedProduct } from '../../models/product-details';
 import { CommonModule } from '@angular/common';
 import { ProductDetailsService } from '../../services/product-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
 import { Subscription } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-related-products',
   imports: [CommonModule, CarouselModule],
   templateUrl: './related-products.component.html',
-  styleUrl: './related-products.component.css'
+  styleUrl: './related-products.component.css',
+  providers:[MessageService]
 })
 export class RelatedProductsComponent implements OnInit, OnDestroy {
 
@@ -21,6 +23,7 @@ export class RelatedProductsComponent implements OnInit, OnDestroy {
   @Input() productDetails: IProductDetails = {} as IProductDetails
   private _productDetailsService = inject(ProductDetailsService)
   private _activatedRoute = inject(ActivatedRoute)
+  private messageService = inject(MessageService)
 
   responsiveOptions = [
     {
@@ -53,13 +56,9 @@ export class RelatedProductsComponent implements OnInit, OnDestroy {
   getRelatedProduct(id: string) {
     this.subscription = this._productDetailsService.getRelatedProducts(id).subscribe({
       next: (res) => {
-        this.productList = res.relatedProducts
-        console.log(this.productList);
-        
+        this.productList = res.relatedProducts;        
       }, error: (err) => {
-
-      }, complete: () => {
-
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
       }
     })
   }

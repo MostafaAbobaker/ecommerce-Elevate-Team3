@@ -1,34 +1,34 @@
-import { Component, model, inject, OnInit, Pipe, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProductDetails, IResponseProductDetails } from './models/product-details';
+import { IProductDetails } from './models/product-details';
 import { ButtonModule } from 'primeng/button';
-import { DecimalPipe } from '@angular/common';
 import { BadgeModule } from 'primeng/badge';
 import { ProductReviewsComponent } from "./components/product-reviews/product-reviews.component";
 import { RelatedProductsComponent } from "./components/related-products/related-products.component";
 import { ProductDetailsService } from './services/product-details.service';
 import { Subscription } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-product-details',
-  imports: [ButtonModule, DecimalPipe, BadgeModule, ProductReviewsComponent, RelatedProductsComponent],
+  imports: [ButtonModule, BadgeModule, ProductReviewsComponent, RelatedProductsComponent],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
-  providers: []
+  providers: [MessageService]
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   productId!: string
   productList!: IProductDetails
   selectedImage: string = ''
-  subscription:Subscription = new Subscription
+  subscription: Subscription = new Subscription
   private _activatedRoute = inject(ActivatedRoute)
   private _productDetailsService = inject(ProductDetailsService)
+  private messageService = inject(MessageService)
 
   ngOnInit(): void {
     this.productId = this._activatedRoute.snapshot.params['id']
     this.getProductById(this.productId)
-    console.log(this.productId);
   }
 
   getProductById(id: string) {
@@ -37,9 +37,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         this.productList = res.product
         this.selectedImage = this.productList.imgCover
       }, error: (err) => {
-
-      }, complete: () => {
-
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
       }
     })
   }
