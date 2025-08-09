@@ -1,4 +1,4 @@
-<a [routerLink]="[`/product-details/${popularItem._id}`]">
+<div >
   <div class="card-product rounded-[20px] transition-all hover:shadow-lg group cursor-pointer">
     <div class="image bg-red-50 rounded-[20px] grid place-items-center relative">
       <img [src]="popularItem.imgCover" alt="" class="rounded-[20px] h-[270px] w-full object-cover" />
@@ -23,7 +23,7 @@
       <div
         class="overlay absolute inset-0 bg-primary/60 dark:bg-secondary-light/60 flex justify-center items-center gap-4 rounded-[20px] z-10 opacity-0 group-hover:opacity-100 transition-all">
         <!-- Detail Eye Icon -->
-        <a type="button"
+        <a  [routerLink]="[`/product-details/${popularItem._id}`]"
           class="cursor-pointer bg-primary text-white rounded-full p-2 w-[40px] h-[40px] grid place-items-center dark:bg-white dark:text-dark-shopping"><i
             class="fa-regular fa-eye"></i></a>
         <!-- Favorite Heart Icon -->
@@ -71,4 +71,4 @@
       </div>
     </div>
   </div>
-</a>
+</div>

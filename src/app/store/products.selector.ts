@@ -6,24 +6,29 @@ export const selectProductsState = createFeatureSelector<productState>('products
 
 export const selectAllProducts = createSelector(
   selectProductsState,
-  (state: productState) => state.products
-)
+  (state) => state.products
+);
 
-export const selectSortedProducts = createSelector(
+
+export const selectProductsLoading = createSelector(
   selectProductsState,
-  (state: productState) => {
-    return [...state.products].sort((a, b) => {
-      switch (state.SortOption) {
-        case 'priceAsc':
-          return a.price - b.price;
-        case 'priceDesc':
-          return b.price - a.price;
-        case 'nameAsc':
-          return a.title.localeCompare(b.title);
-        case 'nameDesc':
-          return b.title.localeCompare(a.title);
-        default:
-          return 0; // No sorting
-      }
-    });
-  })
+  (state) => state.loading
+);
+
+export const selectProductsError = createSelector(
+  selectProductsState,
+  (state) => state.error
+);
+
+/* export const selectPagination = createSelector(
+  selectProductsState,
+  (state) => state.pagination
+); */
+/* export const selectLimit = createSelector(
+  selectPagination,
+  (pagination) => pagination.limit
+);
+export const selectCurrentPage = createSelector(
+  selectPagination,
+  (pagination) => pagination.page
+); */
