@@ -1,8 +1,9 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {TranslatePipe} from '@ngx-translate/core';
 import {FormsModule} from '@angular/forms';
-import {FilterObjectService} from '../../service/filter-object.service';
 import { FilterOjectService } from '../../service/filter-oject.service';
+import { Store } from '@ngrx/store';
+import * as ProductActions from '../../../../../../store/products.actions';
 
 @Component({
   selector: 'app-search-filter',
@@ -13,7 +14,7 @@ import { FilterOjectService } from '../../service/filter-oject.service';
 export class SearchFilterComponent implements OnInit{
   inputSearchValue:string = '';
 
-  constructor(private _filterObjectService:FilterOjectService){}
+  constructor(private _filterObjectService:FilterOjectService , private store: Store){}
 
   ngOnInit(): void {
     // this._filterObjectService.filterObject.searchTerm = this.inputSearchValue;
@@ -26,5 +27,6 @@ export class SearchFilterComponent implements OnInit{
       console.log('🟢 Received filter:', filter);
     });
 
+    this.store.dispatch(ProductActions.filterProducts({ filterObject: this._filterObjectService.currentFilter }));
   }
 }

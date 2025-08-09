@@ -1,53 +1,28 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, map, mergeMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { ProductsService } from '../shared/services/getProducts/products.service';
-import * as ProductsActions from './products.actions';
-
-
-
+import * as ProductAction from './products.actions'
+import { of } from 'rxjs';
 @Injectable()
 export class ProductsEffects {
+    private readonly actions$ = inject(Actions);
+    private readonly _productsService = inject(ProductsService);
 
-    private actions$ = inject(Actions);
-    private productsService = inject(ProductsService);
-
-
-  /* loadProducts$ = createEffect(() =>{
-    return this.actions$.pipe(
-      ofType('[Products] Load Products'),
-      exhaustMap(({ limit, page }) => this.productsService.getAllProducts(limit, page)
-      .pipe(
-          map(response => ({type:'[Products] Load Products Success',
-              products: response.products,
-            })
-          ),
-          catchError((error) =>
-            of(ProductsActions.loadProductsFailure({ error: error.message }))
+    loadProducts$ = createEffect( () =>
+      this.actions$.pipe(
+        ofType(ProductAction.getProducts),
+        switchMap(action => this._productsService.getAllProducts(action.limit, action.page).pipe(
+          map(data => ProductAction.setProducts({products : data.products})),
+          catchError(error =>
+            of(ProductAction.loadProductsFailure({ error: error.message })
           )
-        )
+        ))
       )
-    )
-  }); */
+    ));
 
-  loadProducts$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ProductsActions.loadProducts),
-      mergeMap(({ limit, page }) =>
-        this.productsService.getAllProducts(limit, page).pipe(
-          map((response) =>
-            ProductsActions.loadProductsSuccess({
-              products: response.products
-            })
-          ),
-          catchError((error) =>
-            of(ProductsActions.loadProductsFailure({ error: error.message }))
-          )
-        )
-      )
-    )
-  );
+
+
 
 
 }

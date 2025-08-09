@@ -13,7 +13,7 @@ export const routes: Routes = [
           import('./features/pages/all-products/all-products.component').then(m => m.AllProductsComponent) }, */
 
     ]},
-      
+
   { path: '', loadComponent: () => import('./core/layout/auth-layout/auth-layout.component').then(c => c.AuthLayoutComponent),
     children:[
       { path: '', redirectTo: 'signin', pathMatch: 'full' },
