@@ -26,7 +26,7 @@ export class SearchFilterComponent implements OnInit{
     this._filterObjectService.filterObject$.subscribe(filter => {
       console.log('🟢 Received filter:', filter);
     });
-    debugger
+
     this.store.dispatch(ProductActions.filterProducts({ filterObject: this._filterObjectService.currentFilter }));
   }
 }
