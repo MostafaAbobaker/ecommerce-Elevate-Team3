@@ -27,7 +27,7 @@
       </div>
       <!-- Forgot Password -->
       <div class="mt-4">
-        <a routerLink="/forget-password" class="text-[#741C21] font-semibold dark:text-[#FFA3B9]">{{'auth.sign-in.forgot-password' | translate}}</a>
+        <a routerLink="/secure-access" (click)="goToForgetPassword()" class="text-[#741C21] font-semibold dark:text-[#FFA3B9]">{{'auth.sign-in.forgot-password' | translate}}</a>
       </div>
       <!-- Button Sign In -->
       <app-auth-btn [title]="title"></app-auth-btn>

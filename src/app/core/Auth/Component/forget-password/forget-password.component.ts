@@ -13,7 +13,7 @@ import {Subscription} from 'rxjs';
 import {NgClass} from '@angular/common';
 import { ForgetPasswordDataResponses } from '../../../../../../dist/auth-lib/lib/interface/forget-password/forget-password-data-responded';
 import {StoreEmailService} from '../../Service/storeEmail/store-email.service';
-import {SecureAccessService} from '../../Service/secureAccess-OTP-resetPass/secure-access.service';
+import {SecureAccessService} from '../../Service/secure-access/secure-access.service';
 
 @Component({
   selector: 'app-forget-password',

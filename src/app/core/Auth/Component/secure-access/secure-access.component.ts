@@ -1,14 +1,16 @@
 import {Component, computed, inject, Signal} from '@angular/core';
-import {SecureAccessService} from '../../Service/secureAccess-OTP-resetPass/secure-access.service';
+import {SecureAccessService} from '../../Service/secure-access/secure-access.service';
 import {OtpComponent} from '../otp/otp.component';
 import {ResetPasswordComponent} from '../reset-password/reset-password.component';
 import {TranslateService} from '@ngx-translate/core';
+import {ForgetPasswordComponent} from '../forget-password/forget-password.component';
 
 @Component({
   selector: 'app-secure-access',
   imports: [
     OtpComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ForgetPasswordComponent
   ],
   templateUrl: './secure-access.component.html',
   styleUrl: './secure-access.component.css'

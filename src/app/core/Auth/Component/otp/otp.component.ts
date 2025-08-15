@@ -11,7 +11,7 @@ import {Subscription} from 'rxjs';
 import {AuthLibService} from '../../../../../../projects/auth-lib/src/lib/auth-lib.service';
 import {NgClass} from '@angular/common';
 import {StoreEmailService} from '../../Service/storeEmail/store-email.service';
-import {SecureAccessService} from '../../Service/secureAccess-OTP-resetPass/secure-access.service';
+import {SecureAccessService} from '../../Service/secure-access/secure-access.service';
 import {
   VerifyDataRequested
 } from '../../../../../../projects/auth-lib/src/lib/interface/verify-code/verify-data-requested';

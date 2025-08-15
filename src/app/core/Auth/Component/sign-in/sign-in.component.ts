@@ -14,6 +14,7 @@ import {AuthFooterComponent} from '../../../layout/auth-layout/Component/auth-fo
 import {
   AuthDataResponded
 } from '../../../../../../projects/auth-lib/src/lib/interface/auth/data-responded/auth-data-responded';
+import {SecureAccessService} from '../../Service/secure-access/secure-access.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -38,6 +39,7 @@ export class SignInComponent implements OnInit , OnDestroy {
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
   private readonly authLibService: AuthLibService = inject(AuthLibService);
   private readonly messageService: MessageService = inject(MessageService);
+  private readonly secureAccessService: SecureAccessService = inject(SecureAccessService);
 
   title: string = "Login";
   signInFormGroup!: FormGroup;
@@ -92,6 +94,10 @@ export class SignInComponent implements OnInit , OnDestroy {
 
   goToHome (): void {
     this.router.navigate(['/home']);
+  }
+
+  goToForgetPassword (): void {
+    this.secureAccessService.writableSignal.set("forgetPassword");
   }
 
   ngOnDestroy(): void {
