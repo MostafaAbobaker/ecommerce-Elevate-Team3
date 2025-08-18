@@ -1,0 +1,80 @@
+<div class="account-form">
+
+
+
+
+
+  <div class="image-card flex items-center gap-4 mb-4">
+    <div class="image relative rounded-full">
+      <input type="file" class="hidden" (change)="onFileSelected($event)" #inputFile
+      accept="image/png, image/jpeg , image/jpg , image/gif">
+
+      @if(!imageSrc) {
+      <div class="defult-image rounded-full border border-zinc-100">
+        <!-- SVG هنا -->
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120"
+          x="0" y="0" viewBox="0 0 53 53"  >
+          <g>
+            <path
+              d="m18.613 41.552-7.907 4.313a7.106 7.106 0 0 0-1.269.903A26.377 26.377 0 0 0 26.5 53c6.454 0 12.367-2.31 16.964-6.144a7.015 7.015 0 0 0-1.394-.934l-8.467-4.233a3.229 3.229 0 0 1-1.785-2.888v-3.322c.238-.271.51-.619.801-1.03a19.482 19.482 0 0 0 2.632-5.304c1.086-.335 1.886-1.338 1.886-2.53v-3.546c0-.78-.347-1.477-.886-1.965v-5.126s1.053-7.977-9.75-7.977-9.75 7.977-9.75 7.977v5.126a2.644 2.644 0 0 0-.886 1.965v3.546c0 .934.491 1.756 1.226 2.231.886 3.857 3.206 6.633 3.206 6.633v3.24a3.232 3.232 0 0 1-1.684 2.833z"
+               fill="#ffffff" data-original="#e7eced" opacity="1"></path>
+            <path
+              d="M26.953.004C12.32-.246.254 11.414.004 26.047-.138 34.344 3.56 41.801 9.448 46.76a7.041 7.041 0 0 1 1.257-.894l7.907-4.313a3.23 3.23 0 0 0 1.683-2.835v-3.24s-2.321-2.776-3.206-6.633a2.66 2.66 0 0 1-1.226-2.231v-3.546c0-.78.347-1.477.886-1.965v-5.126S15.696 8 26.499 8s9.75 7.977 9.75 7.977v5.126c.54.488.886 1.185.886 1.965v3.546c0 1.192-.8 2.195-1.886 2.53a19.482 19.482 0 0 1-2.632 5.304c-.291.411-.563.759-.801 1.03V38.8c0 1.223.691 2.342 1.785 2.888l8.467 4.233a7.05 7.05 0 0 1 1.39.932c5.71-4.762 9.399-11.882 9.536-19.9C53.246 12.32 41.587.254 26.953.004z"
+               fill="#fbeaea" data-original="#556080" class="" opacity="1"></path>
+          </g>
+        </svg>
+
+      </div>
+      } @else {
+      <img [src]="imageSrc" alt="Uploaded" class="rounded-full border border-zinc-100 w-[120px] h-[120px] object-cover">
+
+      }
+
+
+      <button (click)="inputFile.click()"
+        class="absolute z-3 border border-zinc-100 rounded-full bottom-0 end-0 p-2 bg-white">
+        <i class="fa-solid fa-cloud-arrow-up fa-fw"></i>
+      </button>
+    </div>
+
+    <div class="body-card">
+      <h4>Upload Photo</h4>
+      <p>You can upload a .jpg, .png, or .gif photo with max size of 5MB.</p>
+      @if(errorMessage) {
+        <p  class="text-red-500 mt-2">{{ errorMessage }}</p>
+
+      }
+    </div>
+  </div>
+  <form  class="form">
+    <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mb-4">
+      <div class="form-group">
+        <label for="firstName">First name</label>
+        <input type="text" name="" id="firstName" class="border border-slate-300 bg-white rounded-[10px] p-3 w-full dark:bg-zinc-700 dark:border-zinc-600 focus:outline-none">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last name</label>
+        <input type="text" name="" id="lastName" class="border border-slate-300 bg-white rounded-[10px] p-3 w-full dark:bg-zinc-700 dark:border-zinc-600 focus:outline-none">
+      </div>
+    </div>
+    <div class="form-group mb-4">
+        <label for="email">Email</label>
+        <input type="email" name="" id="email" class="border border-slate-300 bg-white rounded-[10px] p-3 w-full dark:bg-zinc-700 dark:border-zinc-600 focus:outline-none">
+      </div>
+    <div class="form-group mb-4">
+        <label for="Phone">Phone</label>
+        <input type="text" name="" id="Phone" class="border border-slate-300 bg-white rounded-[10px] p-3 w-full dark:bg-zinc-700 dark:border-zinc-600 focus:outline-none">
+      </div>
+    <div class="form-group mb-4">
+        <label for="Gender">Gender</label>
+        <select name="Gender" id="Gender" disabled class="disabled:bg-zinc-100 text-zinc-400 border border-slate-300 bg-white rounded-[10px] p-3 pe-4 w-full dark:bg-zinc-700 dark:border-zinc-600 focus:outline-none">
+          <option value="" selected>Male</option>
+          <option value="">female</option>
+        </select>
+      </div>
+      <div class="flex justify-between items-center mt-[60px]">
+        <button class="text-primary">Delete My Account</button>
+        <button class="bg-primary text-white rounded-[10px] py-2.5 px-5 hover:bg-primary-dark hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary">Save Changes</button>
+      </div>
+  </form>
+</div>

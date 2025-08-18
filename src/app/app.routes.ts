@@ -8,7 +8,13 @@ export const routes: Routes = [
       { path: 'all-Products', loadComponent: ()=> import('./features/pages/all-products/all-products.component').then(c => c.AllProductsComponent) },
       { path: 'product-details/:id', loadComponent: ()=> import('./features/pages/all-products/product-details/product-details.component').then(c => c.ProductDetailsComponent) },
       { path: 'orders', loadComponent: ()=> import('./features/pages/orders/orders.component').then(c => c.OrdersComponent) },
-      { path: 'profile', loadComponent: ()=> import('./features/pages/profile/profile.component').then(c => c.ProfileComponent) },
+      { path: 'profile', loadComponent: ()=> import('./features/pages/profile/profile.component').then(c => c.ProfileComponent),children:[
+
+        { path: '', redirectTo: 'account', pathMatch: 'full' },
+        { path: 'account', loadComponent: () => import('./features/pages/profile/account/account.component'). then(c => c.AccountComponent)},
+        { path: 'changePassword', loadComponent: () => import('./features/pages/profile/change-password/change-password.component'). then(c => c.ChangePasswordComponent)}
+      ]
+      },
 
       /* { path: 'home', loadChildren: () =>
           import('./features/pages/homePage/home-page/home-page.component').then(m => m.HomePageComponent) },

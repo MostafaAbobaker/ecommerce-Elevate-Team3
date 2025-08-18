@@ -141,5 +141,8 @@
   },
   "orders":{
     "orders":"orders"
+  },
+  "profile":{
+    "title":"Update Profile"
   }
 }

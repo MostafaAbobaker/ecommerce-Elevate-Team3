@@ -1,1 +1,38 @@
-<p>profile works!</p>
+<section class="test-popular-items-section bg-white py-10 px-4 dark:bg-zinc-800 dark:text-white">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="container mx-auto">
+      <!-- Header -->
+      <div class="header mb-9">
+        <div class="title">
+          <app-section-title [title]="'profile.title'| translate "></app-section-title>
+        </div>
+      </div>
+      <div class="container mx-auto">
+        <div class="grid grid-cols-4 gap-4">
+          <aside class="bg-zinc-50 border border-zinc-100 p-4 rounded-2xl flex flex-col justify-between">
+            <ul class="space-y-2.5">
+              <li>
+
+                <a class="p-4  block  rounded-xl font-medium hover:bg-black/10 " routerLink="account" routerLinkActive="bg-black text-white">
+
+
+                  <i class="fa-solid fa-user-pen fa-fw me-2"></i>My Account</a></li>
+              <li>
+                <a class="p-4 block  rounded-xl font-medium hover:bg-black/10 " routerLink="changePassword" routerLinkActive="bg-black text-white">
+
+
+                  <i class="fa-solid fa-lock fa-fw me-2"></i>Change Password</a></li>
+            </ul>
+            <button class="text-start p-4 block rounded-xl text-primary font-medium hover:bg-black/10">
+              <i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal fa-fw me-2"></i>
+              Logout
+            </button>
+          </aside>
+          <div class="col-span-3">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
