@@ -138,5 +138,8 @@
         "price-rating": "Price"
       }
     }
+  },
+  "orders":{
+    "orders":"orders"
   }
 }

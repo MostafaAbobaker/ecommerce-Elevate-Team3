@@ -1,0 +1,114 @@
+<section class="test-popular-items-section bg-white py-10 px-4 dark:bg-zinc-800 dark:text-white">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="container mx-auto">
+      <!-- Header -->
+      <div class="header mb-6">
+        <div class="title">
+          <app-section-title [title]="'Orders'"></app-section-title>
+        </div>
+        </div>
+        <!-- Card -->
+         <div class="container mx-auto">
+        <div class="flex flex-wrap gap-4">
+          <div class="card-order w-full  ">
+            <div class="header-card flex justify-between items-center bg-primary px-[16px] py-[20px] text-white rounded-t-[12px]">
+              <h5 class="text-2xl font-semibold">Order #{{orderNo}}</h5>
+              <div class="info-date">
+                Created in: {{dateOrder | date : 'dd MMMM, YYYY'}} at {{dateOrder | date : 'shortTime'}}
+              </div>
+            </div>
+            <div class="body-card bg-neutral-100 rounded-b-[12px] p-4 border-zinc-200 border-x-1 border-b-1">
+              <div class="description-title flex flex-wrap justify-between items-center pb-4 mb-4 border-b-2 border-zinc-200">
+                <h5 class="text-2xl ">Total Price: <span class="font-semibold me-4">{{ price  | currency : 'EGP '}}</span>
+                  <span class="bg-[#00BC7D] text-white py-1.5 px-2.5 rounded-full text-base"><i class="fa-solid fa-check fa-fw me-1"></i> Paid</span>
+                </h5>
+                <div class="">Status:
+                  @if(status == 'In Progress') {
+                    <span class="bg-[#2B7FFF] text-white py-1.5 px-2.5 rounded-full text-base">In Progress</span>
+
+                  }@else if (status == 'Canceled') {
+
+                    <span class="bg-[#DC2626] text-white py-1.5 px-2.5 rounded-full text-base">Canceled</span>
+                  }@else if (status == 'Done') {
+
+                    <span class="bg-[#00BC7D] text-white py-1.5 px-2.5 rounded-full text-base">Done</span>
+                  }
+
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="mb-2.5">
+                  Payment Method:
+                  @if(paymentMethod =='Cash') {
+                    <span class="text-zinc-500">
+                      <i class="fa-solid fa-money-bill me-1 fa-fw"></i> Cash
+                    </span>
+                  } @else if (paymentMethod =='Credit Card') {
+                  <span class="text-zinc-500">
+                    <i class="fa-solid fa-credit-card me-1 fa-fw"></i> Credit Card
+                  </span>
+                  }
+                </div>
+                <div class="mb-2.5">
+                  Delivery Status:
+                  @if(deliveryStatus =='Pending') {
+                    <span class="text-[#CA8A04]">
+                    <i class="fa-solid fa-truck me-1 fa-fw"></i> Pending
+                  </span>
+                  } @else if (deliveryStatus =='Canceled') {
+                    <span class="text-[#CD2E33]">
+                    <i class="fa-solid fa-triangle-exclamation me-1 fa-fw"></i> Canceled
+                  </span>
+
+                  }@else if (deliveryStatus =='Delivered') {
+                    <span class="text-[#009966]">
+                    <i class="fa-solid fa-check-double me-1 fa-fw"></i> Delivered
+                  </span>
+                  }
+
+
+
+                </div>
+                <div class="mb-2.5">
+                  Order Items:
+                </div>
+                <div class="card-details bg-white p-4 rounded-2 grid grid-cols-2 gap-4 rounded-lg"
+                [ngClass]="isShow?'overflow-auto max-h-none':'max-h-[180px] overflow-y-hidden'">
+                  @for(item of [1,2,3,4,5,6,7,8,9,10]; track item) {
+                    <div class="  ">
+                      <div class="item-product flex" >
+                        <div class="image h-[100px] me-3">
+                          <img src="../../../../assets/imgs/item.png" alt="" class="h-full object-fit-contain rounded-s-lg">
+                        </div>
+                        <div class="body-item flex flex-col justify-between">
+                          <div class="caption ">
+                          <h5 class="text-primary">Moko Chocolate Set | Esperance Rose</h5>
+                          <div class="">
+                            <i class="fa-solid fa-star  fa-fw text-[#ffa508]"></i>
+                            Rating: 5/5
+                            <span class="text-[#155DFC]">(4 ratings)</span>
+
+                          </div>
+                          </div>
+                          <div class="footer">
+                            <span class="text-primary">(x2) </span>
+                            <span> {{priceProduct |  currency : 'EGP '}}</span>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  }
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
