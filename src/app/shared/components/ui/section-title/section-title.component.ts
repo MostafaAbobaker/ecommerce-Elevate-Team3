@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-section-title',
   imports: [
-    TranslatePipe
+    TranslateModule
   ],
   templateUrl: './section-title.component.html',
   styleUrl: './section-title.component.css'

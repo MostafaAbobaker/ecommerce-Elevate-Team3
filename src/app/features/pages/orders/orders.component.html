@@ -4,7 +4,7 @@
       <!-- Header -->
       <div class="header mb-6">
         <div class="title">
-          <app-section-title [title]="'Orders'"></app-section-title>
+          <app-section-title [title]="'orders.orders'| translate "></app-section-title>
         </div>
         </div>
         <!-- Card -->
@@ -73,8 +73,9 @@
                 <div class="mb-2.5">
                   Order Items:
                 </div>
-                <div class="card-details bg-white p-4 rounded-2 grid grid-cols-2 gap-4 rounded-lg"
-                [ngClass]="isShow?'overflow-auto max-h-none':'max-h-[180px] overflow-y-hidden'">
+                <div class="card-details bg-white p-4 rounded-2 grid grid-cols-2 gap-4 rounded-lg relative transition-all"
+                [class]="isShow? 'overflow-auto max-h-none pb-16':'max-h-[180px] overflow-y-hidden'"
+                >
                   @for(item of [1,2,3,4,5,6,7,8,9,10]; track item) {
                     <div class="  ">
                       <div class="item-product flex" >
@@ -102,7 +103,19 @@
                     </div>
 
                   }
+                  <!-- @if(orderProduct.length > 2) {
 
+
+                  } -->
+                  <div class="absolute bottom-0 w-full p-2 flex justify-center z-3  bg-gradient-to-t from-white transition-all ">
+                      <button class="text-primary leading-none " (click)="isShow = !isShow">
+                        {{isShow? 'Show less': 'Show All'}}
+
+                        <div class="">
+                          <i class="fa-solid " [class]="isShow?'fa-angle-up':'fa-angle-down'"></i>
+                        </div>
+                      </button>
+                    </div>
                 </div>
               </div>
             </div>
