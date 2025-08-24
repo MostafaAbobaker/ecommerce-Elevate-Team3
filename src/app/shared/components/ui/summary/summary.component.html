@@ -1,0 +1,29 @@
+<div class="max-w-sm mx-auto p-4 bg-white rounded shadow my-2">
+    <h2 class="font-medium text-2xl">Summary</h2>
+    <div class="flex my-2">
+        <input type="text" formControlName="code" name="code" id="code" placeholder="Coupon Code"
+            class="w-48 me-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-400" />
+        <button
+            class="bg-primary text-white rounded-[10px] py-2.5 px-3 hover:bg-primary-dark hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary">
+            <i class="fa-solid fa-ticket"></i>
+            Apply Coupon
+        </button>
+    </div>
+
+    <textarea name="review" formControlName="comment" id="review"  placeholder="No coupons applied"
+     class="mt-1 w-full h-40 border border-gray-300 rounded-md p-[16px] text-center text-gray-400 italic placeholder:p-10 focus:outline-none focus:ring-1 focus:ring-blue-400"></textarea>
+
+    <div class="flex justify-between mt-2">
+        <h4>Subtotal</h4>
+        <h4 class="font-semibold">250 EGP</h4>
+    </div>
+    <div class="flex items-center justify-between my-3">
+        <hr class="flex-grow border-gray-300 mr-2">
+        <p class="text-sm">50% Discount</p>
+        <hr class="flex-grow border-gray-300 ml-2">
+    </div>
+    <div class="flex justify-between font-bold text-lg">
+        <h4>Total</h4>
+        <h4>125 EGP</h4>
+    </div>
+</div>
