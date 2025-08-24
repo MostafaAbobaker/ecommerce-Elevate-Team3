@@ -1,6 +1,21 @@
 import { Routes } from '@angular/router';
+import { HomeLayoutComponent } from './core/layout/home-layout/home-layout.component';
+import {loggedGuard} from './core/Guard/logged.guard';
 
 export const routes: Routes = [
+  {path:'', component:HomeLayoutComponent , children:[
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', loadComponent: ()=> import('./features/pages/homePage/home-page/home-page.component').then (c => c.HomePageComponent) },
+      { path: 'all-Products', loadComponent: ()=> import('./features/pages/all-products/all-products.component').then(c => c.AllProductsComponent) },
+      { path: 'product-details/:id', loadComponent: ()=> import('./features/pages/all-products/product-details/product-details.component').then(c => c.ProductDetailsComponent) },
+      { path: 'cart', loadComponent: () => import('./features/pages/cart/cart.component').then(c => c.CartComponent), title: 'Cart', canActivate: [loggedGuard] },
+      /* { path: 'home', loadChildren: () =>
+          import('./features/pages/homePage/home-page/home-page.component').then(m => m.HomePageComponent) },
+      { path: 'all-Products',  loadChildren: () =>
+          import('./features/pages/all-products/all-products.component').then(m => m.AllProductsComponent) }, */
+
+    ]},
+
   { path: '', loadComponent: () => import('./core/layout/auth-layout/auth-layout.component').then(c => c.AuthLayoutComponent),
     children:[
       { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -11,12 +26,5 @@ export const routes: Routes = [
       // { path: 'otp', loadComponent: () => import('./core/Auth/Component/otp/otp.component').then(c => c.OtpComponent), title: 'OTP' },
       // { path: 'reset-password', loadComponent: () => import('./core/Auth/Component/reset-password/reset-password.component').then(c => c.ResetPasswordComponent), title: 'Reset Password' },
     ]
-  },
-  { path:'', loadComponent: () => import('./core/layout/home-layout/home-layout.component').then(c => c.HomeLayoutComponent)
-    , children:[
-        { path: '', redirectTo: 'home', pathMatch: 'full' },
-        { path: 'home', loadComponent: ()=> import('./features/pages/homePage/home-page/home-page.component').then (c => c.HomePageComponent), title: 'Home' },
-        { path: 'all-Products', loadComponent: ()=> import('./features/pages/all-products/all-products.component').then(c => c.AllProductsComponent), title: 'All Products' }
-      ]
-  },
-];
+  }
+]

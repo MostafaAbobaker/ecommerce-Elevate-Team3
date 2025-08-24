@@ -1,0 +1,20 @@
+
+.reviews::after{
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    width: 12%;
+    height: 15px;
+    background-color: rgb(255, 194, 208,.4);
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.reviews-line{
+    width: 5%;
+    height: 2px;
+    background-color: red;
+    position: absolute;
+    bottom: 2px;
+    left: 0px;
+}

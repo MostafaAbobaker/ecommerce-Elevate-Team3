@@ -202,3 +202,27 @@ html[dir="rtl"]  .fa-arrow-right-long {
       background: color-mix(in srgb, var(--primary), white 90%);;
     color: var(--primary);
 }
+
+
+.aside-filer .p-checkbox-checked .p-checkbox-box {
+    border-color: var(--primary);
+    background: var(--primary);
+}
+.aside-filer .p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {
+  border-color: var(--primary);
+    background: var(--primary);
+}
+
+
+/*  */
+
+.aside-filer  .p-rating-icon {
+  --p-rating-icon-size:25px;
+
+}
+.aside-filer  .p-rating-option-active .p-rating-icon {
+  color: #ffa508;
+}
+.aside-filer  .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-option:hover .p-rating-icon {
+  color: #ffa508;
+}

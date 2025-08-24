@@ -146,14 +146,21 @@
         "category": "Category"
       },
       "occasion-section": {
-        "occasion": "Brands"
+        "occasion": "Occasion"
       },
       "ratings-section": {
         "ratings": "Ratings"
       },
       "price-section": {
-        "price-rating": "Price Rating"
+        "price-rating": "Price"
       }
+    }
+  },
+  "cart":{
+    "header": {
+      "title": "Cart",
+      "products": "Products",
+      "btn-clear": "Clear Cart"
     }
   }
 }
