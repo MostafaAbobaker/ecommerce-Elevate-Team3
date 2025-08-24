@@ -1,13 +1,14 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ProductsState } from './products.reducer';
+import { productState } from './product.state';
 
 
-export const selectProductsState = createFeatureSelector<ProductsState>('products');
+export const selectProductsState = createFeatureSelector<productState>('products');
 
 export const selectAllProducts = createSelector(
   selectProductsState,
   (state) => state.products
 );
+
 
 export const selectProductsLoading = createSelector(
   selectProductsState,
@@ -18,15 +19,16 @@ export const selectProductsError = createSelector(
   selectProductsState,
   (state) => state.error
 );
-export const selectPagination = createSelector(
+
+/* export const selectPagination = createSelector(
   selectProductsState,
   (state) => state.pagination
-);
-export const selectLimit = createSelector(
+); */
+/* export const selectLimit = createSelector(
   selectPagination,
   (pagination) => pagination.limit
 );
 export const selectCurrentPage = createSelector(
   selectPagination,
   (pagination) => pagination.page
-);
+); */

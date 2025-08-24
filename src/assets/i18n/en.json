@@ -146,13 +146,13 @@
         "category": "Category"
       },
       "occasion-section": {
-        "occasion": "Brands"
+        "occasion": "Occasion"
       },
       "ratings-section": {
         "ratings": "Ratings"
       },
       "price-section": {
-        "price-rating": "Price Rating"
+        "price-rating": "Price"
       }
     }
   }
