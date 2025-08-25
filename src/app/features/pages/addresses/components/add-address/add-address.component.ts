@@ -34,7 +34,6 @@ export class AddAddressComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   private _addressService = inject(AddressService);
-  private route = inject(ActivatedRoute);
   private messageService = inject(MessageService);
   private config = inject(DynamicDialogConfig)
   private ref = inject(DynamicDialogRef)
@@ -54,6 +53,8 @@ export class AddAddressComponent implements OnInit {
       const addr: IAddress = this.config.data.address;
       this.addressId = addr._id;
       this.addressForm.patchValue(addr);
+      console.log(addr);
+      
     }
   }
 

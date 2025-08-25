@@ -1,34 +1,37 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { SummaryComponent } from "../../../shared/components/ui/summary/summary.component";
 import { ButtonModule } from 'primeng/button';
 import { StepperModule } from 'primeng/stepper';
 import { Subscription } from 'rxjs';
-import { IAddress, IResponseAddress } from './models/address';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { AddAddressComponent } from './components/add-address/add-address.component';
 import { CarouselModule } from 'primeng/carousel';
-import { ItemProductComponent } from "../../../shared/components/ui/item-product/item-product.component";
-import { BestSellerService } from '../homePage/best-seller/services/best-seller.service';
-import { IProduct } from '../../interfaces/iproduct';
-import { AddressService } from './services/address.service';
+
 import { StepsModule } from 'primeng/steps';
+import { ItemProductComponent } from '../../../../../shared/components/ui/item-product/item-product.component';
+import { SummaryComponent } from '../../../../../shared/components/ui/summary/summary.component';
+import { IAddress, IResponseAddress } from '../../models/address';
+import { IProduct } from '../../../../interfaces/iproduct';
+import { AddressService } from '../../services/address.service';
+import { BestSellerService } from '../../../homePage/best-seller/services/best-seller.service';
+import { AddAddressComponent } from '../add-address/add-address.component';
 
 @Component({
-  selector: 'app-checkout',
+  selector: 'app-addresses',
   imports: [SummaryComponent, ButtonModule, StepperModule, CommonModule, StepsModule,
-    DialogModule, ButtonModule, InputTextModule, CarouselModule, ItemProductComponent],
-  templateUrl: './checkout.component.html',
-  styleUrl: './checkout.component.css',
+      DialogModule, ButtonModule, InputTextModule, CarouselModule, ItemProductComponent],
+  templateUrl: './addresses.component.html',
+  styleUrl: './addresses.component.css',
   providers: [MessageService, DialogService]
+
 })
-export class CheckoutComponent implements OnInit, OnDestroy {
+export class AddressesComponent {
 
   stepIndex = 0;
   addressesList: IAddress[] = [];
+  selectedAddressId: string | null = null;
   visible: boolean = false;
   visibleDelete: boolean = false;
   ref: DynamicDialogRef | undefined;
@@ -68,12 +71,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.visible = true;
   }
 
+  // delete address
   showDeleteDialog() {
     this.visibleDelete = true;
   }
 
   deleteAddress(id: string) {
-    this._addressService.deleteUserAddress(id).subscribe({
+    this._addressService.deleteAddress(id).subscribe({
       next: (res: IResponseAddress) => {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
         this.visibleDelete = false;
@@ -85,7 +89,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     })
   }
 
-  // Show add-address
+  // add address
   showAddAddress() {
     const ref = this.dialogService.open(AddAddressComponent, {
       header: 'Add a New Address',
@@ -107,7 +111,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       }
     });
   }
-  // Show edit-address
+  // edit address
   showEditAddress(address: IAddress) {
     const ref = this.dialogService.open(AddAddressComponent, {
       header: 'Update Address Info',
@@ -170,14 +174,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     ]
   }
 
-  selectedCard!: number | null;
-
-  selectCard(addressId: number) {
-    this.selectedCard = addressId;
+  selectAddress(id: string) {
+    this.selectedAddressId = id;
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
   }
+
 
 }

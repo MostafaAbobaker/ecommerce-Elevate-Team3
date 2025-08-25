@@ -8,15 +8,9 @@ export const routes: Routes = [
       { path: 'home', loadComponent: () => import('./features/pages/homePage/home-page/home-page.component').then(c => c.HomePageComponent) },
       { path: 'all-Products', loadComponent: () => import('./features/pages/all-products/all-products.component').then(c => c.AllProductsComponent) },
       { path: 'product-details/:id', loadComponent: () => import('./features/pages/all-products/product-details/product-details.component').then(c => c.ProductDetailsComponent) },
-      { path: 'checkout', loadComponent: () => import('./features/pages/checkout/checkout.component').then(c => c.CheckoutComponent) },
-      /* { path: 'home', loadChildren: () =>
-          import('./features/pages/homePage/home-page/home-page.component').then(m => m.HomePageComponent) },
-      { path: 'all-Products',  loadChildren: () =>
-          import('./features/pages/all-products/all-products.component').then(m => m.AllProductsComponent) }, */
-
+      { path: 'address', loadComponent: () => import('./features/pages/addresses/components/addresses/addresses.component').then(c => c.AddressesComponent) },
     ]
   },
-
   {
     path: '', loadComponent: () => import('./core/layout/auth-layout/auth-layout.component').then(c => c.AuthLayoutComponent),
     children: [
@@ -25,11 +19,4 @@ export const routes: Routes = [
       { path: 'signup', loadComponent: () => import('./core/Auth/Component/sign-up/sign-up.component').then(c => c.SignUpComponent) }
     ]
   },
-  //   { path:'', loadComponent: () => import('./core/layout/home-layout/home-layout.component').then(c => c.HomeLayoutComponent)
-  //     , children:[
-  //         { path: '', redirectTo: 'home', pathMatch: 'full' },
-  //         { path: 'home', loadComponent: ()=> import('./features/pages/homePage/home-page/home-page.component').then (c => c.HomePageComponent) },
-  //         { path: 'all-Products', loadComponent: ()=> import('./features/pages/all-products/all-products.component').then(c => c.AllProductsComponent) }
-  //       ]
-  //   },
 ];

@@ -16,7 +16,7 @@ export class AddressService {
     )
   }
 
-  deleteUserAddress(id: string): Observable<IResponseAddress> {
+  deleteAddress(id: string): Observable<IResponseAddress> {
     return this._http.delete<IResponseAddress>(`addresses/${id}`,
       { headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjdmNjQ3YzVhOTgzMmQ4MzU5ZGRhNzhhIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NTQ2NjM1OTN9.A9WhB_UVXzBjZUaqShUUN95LvN-5gKFrtzq4HER2xkQ` } },
     )

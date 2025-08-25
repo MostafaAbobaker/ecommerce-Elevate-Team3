@@ -13,18 +13,23 @@
                     @if (addressesList.length > 0) {
                     <div class="flex flex-col">
                         @for (address of addressesList; track address?._id) {
-                        <div class="card shadow p-3 border rounded-2xl my-3 cursor-pointer">
+                        <div class="card shadow p-3 border rounded-2xl my-3 cursor-pointer"
+                            (click)="selectAddress(address._id)" [ngClass]="selectedAddressId === address._id ?
+                             'bg-red-700 text-white' : 'bg-white text-black border-gray-300'">
                             <div class="flex justify-between items-center">
                                 <h3>{{address?.city}}</h3>
                                 <div class="flex items-center gap-2">
                                     <span
-                                        class="bg-primary text-white rounded-full grid place-items-center w-[30px] dark:bg-dark-shopping h-[30px] dark:hover:bg-primary-dark  hover:bg-primary-dark hover:shadow-lg">
+                                        class="rounded-full grid place-items-center w-[30px] dark:bg-dark-shopping h-[30px] dark:hover:bg-primary-dark  hover:bg-primary-dark hover:shadow-lg"
+                                        [ngClass]="selectedAddressId === address._id ?
+                                        'bg-white text-primary' : 'bg-primary text-white'">
                                         <i class="fa-solid fa-phone"></i>
                                     </span>
                                     {{address?.phone}}
                                 </div>
                             </div>
-                            <p class="bg-checkout py-1 px-2 rounded-xl shadow w-fit">
+                            <p class="border-gray-300 py-1 px-2 rounded-xl shadow w-fit" [ngClass]="selectedAddressId === address._id ?
+                             'bg-black text-checkout' : 'bg-checkout'">
                                 {{address?.street}}</p>
                         </div>
                         }
