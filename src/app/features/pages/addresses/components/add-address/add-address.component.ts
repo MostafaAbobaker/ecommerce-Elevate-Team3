@@ -12,11 +12,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { MessageService } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import {NgxIntlTelInputModule,SearchCountryField, CountryISO, PhoneNumberFormat} from 'ngx-intl-tel-input'
 
 @Component({
   selector: 'app-add-address',
   imports: [ReactiveFormsModule, GoogleMapsModule, CommonModule, StepsModule,
-    ButtonModule, InputTextModule, TextareaModule],
+    ButtonModule, InputTextModule, TextareaModule,NgxIntlTelInputModule],
   templateUrl: './add-address.component.html',
   styleUrl: './add-address.component.css',
   providers: [MessageService]
@@ -57,7 +58,13 @@ export class AddAddressComponent implements OnInit {
       
     }
   }
-
+  
+  // tel
+  separateDialCode = false;
+  SearchCountryField = SearchCountryField;
+  CountryISO = CountryISO;
+  PhoneNumberFormat = PhoneNumberFormat;
+  
   nextStep() {
     if (this.addressForm.valid) {
       this.stepIndex = 1;
