@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CountryISO, NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+
 
 @Component({
   selector: 'app-account',
-  imports: [],
+  imports: [ ReactiveFormsModule, NgxIntlTelInputModule],
   templateUrl: './account.component.html',
   styleUrl: './account.component.css'
 })
@@ -10,6 +13,28 @@ export class AccountComponent {
 
   imageSrc: string | null = null;
   errorMessage: string | null = null;
+
+  CountryISO = CountryISO;
+  accountForm : FormGroup ;
+  constructor(private fb:FormBuilder){
+
+    this.accountForm = this.fb.group({
+      firstName :['', [Validators.required]],
+      lastName :['', [Validators.required]],
+      email :['', [Validators.required, Validators.email]],
+      phone :['', [Validators.required]],
+      gender :['', [Validators.required]],
+    })
+  }
+
+
+submitForm() {
+    if (this.accountForm.valid) {
+      console.log(this.accountForm.value);
+    } else {
+      console.warn('Form is invalid');
+    }
+  }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
