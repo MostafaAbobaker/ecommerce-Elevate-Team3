@@ -54,11 +54,7 @@ export class CartService implements OnDestroy {
     }
 
     if(token){
-      this.subscription = this.httpClient.post <resGetLoggedUserCart> (Api_End_Point.CART, payLoad, {
-        headers:{
-          Authorization: `Bearer ${token}`
-        }
-      }).subscribe({
+      this.subscription = this.httpClient.post <resGetLoggedUserCart> (Api_End_Point.CART, payLoad).subscribe({
         next:(response: resGetLoggedUserCart) => {
           console.log(response);
           // this.cartList.set(response);
@@ -76,11 +72,7 @@ export class CartService implements OnDestroy {
     const token: string | null = this.localStorageService.getItem('token');
 
     if(token){
-      this.subscription = this.httpClient.delete(Api_End_Point.CART, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }).subscribe({
+      this.subscription = this.httpClient.delete(Api_End_Point.CART).subscribe({
         next: response =>{
           this.numberOfProductCart.set(0);
           this.cartList.set({} as resGetLoggedUserCart);
@@ -93,13 +85,9 @@ export class CartService implements OnDestroy {
 
   removeSpecificProduct (productID: string): void {
 
-    const token: string | null = this.localStorageService.getItem('token');
+    // const token: string | null = this.localStorageService.getItem('token'); Interceptor
 
-    this.httpClient.delete <resGetLoggedUserCart> (`${Api_End_Point.CART}/${productID}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).subscribe({
+    this.httpClient.delete <resGetLoggedUserCart> (`${Api_End_Point.CART}/${productID}`).subscribe({
       next:(response: resGetLoggedUserCart) => {
         // console.log(response);
         // this.getLoggedUserCart();
@@ -114,11 +102,7 @@ export class CartService implements OnDestroy {
     const token: string | null = this.localStorageService.getItem('token');
 
     if(token){
-      this.httpClient.put <resGetLoggedUserCart> (`${Api_End_Point.CART}/${productID}`, {quantity}, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).subscribe({
+      this.httpClient.put <resGetLoggedUserCart> (`${Api_End_Point.CART}/${productID}`, {quantity}).subscribe({
         next:(response: resGetLoggedUserCart) => {
           console.log(response);
           // this.getLoggedUserCart();
