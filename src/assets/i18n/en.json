@@ -155,5 +155,12 @@
         "price-rating": "Price"
       }
     }
+  },
+  "cart":{
+    "header": {
+      "title": "Cart",
+      "products": "Products",
+      "btn-clear": "Clear Cart"
+    }
   }
 }

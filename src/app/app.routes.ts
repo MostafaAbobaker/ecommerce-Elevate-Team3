@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeLayoutComponent } from './core/layout/home-layout/home-layout.component';
+import {loggedGuard} from './core/Guard/logged.guard';
 
 export const routes: Routes = [
   {path:'', component:HomeLayoutComponent , children:[
@@ -7,6 +8,7 @@ export const routes: Routes = [
       { path: 'home', loadComponent: ()=> import('./features/pages/homePage/home-page/home-page.component').then (c => c.HomePageComponent) },
       { path: 'all-Products', loadComponent: ()=> import('./features/pages/all-products/all-products.component').then(c => c.AllProductsComponent) },
       { path: 'product-details/:id', loadComponent: ()=> import('./features/pages/all-products/product-details/product-details.component').then(c => c.ProductDetailsComponent) },
+      { path: 'cart', loadComponent: () => import('./features/pages/cart/cart.component').then(c => c.CartComponent), title: 'Cart', canActivate: [loggedGuard] },
       /* { path: 'home', loadChildren: () =>
           import('./features/pages/homePage/home-page/home-page.component').then(m => m.HomePageComponent) },
       { path: 'all-Products',  loadChildren: () =>
