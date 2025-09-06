@@ -12,28 +12,26 @@ import { CarouselModule } from 'primeng/carousel';
 import { StepsModule } from 'primeng/steps';
 import { ItemProductComponent } from '../../../../../shared/components/ui/item-product/item-product.component';
 import { SummaryComponent } from '../../../../../shared/components/ui/summary/summary.component';
-import { IAddress, IResponseAddress } from '../../models/address';
+import { IAddress } from '../../models/address';
 import { IProduct } from '../../../../interfaces/iproduct';
 import { AddressService } from '../../services/address.service';
 import { BestSellerService } from '../../../homePage/best-seller/services/best-seller.service';
-import { AddAddressComponent } from '../add-address/add-address.component';
+import { AllAddressComponent } from "../all-address/all-address.component";
 
 @Component({
   selector: 'app-addresses',
   imports: [SummaryComponent, ButtonModule, StepperModule, CommonModule, StepsModule,
-      DialogModule, ButtonModule, InputTextModule, CarouselModule, ItemProductComponent],
+    DialogModule, ButtonModule, InputTextModule, CarouselModule, ItemProductComponent],
   templateUrl: './addresses.component.html',
   styleUrl: './addresses.component.css',
   providers: [MessageService, DialogService]
 
 })
-export class AddressesComponent {
+export class AddressesComponent implements OnInit, OnDestroy {
 
   stepIndex = 0;
   addressesList: IAddress[] = [];
   selectedAddressId: string | null = null;
-  visible: boolean = false;
-  visibleDelete: boolean = false;
   ref: DynamicDialogRef | undefined;
   productsList: IProduct[] = [];
   responsiveOptions: any[] | undefined;
@@ -68,31 +66,8 @@ export class AddressesComponent {
   }
 
   showDialog() {
-    this.visible = true;
-  }
-
-  // delete address
-  showDeleteDialog() {
-    this.visibleDelete = true;
-  }
-
-  deleteAddress(id: string) {
-    this._addressService.deleteAddress(id).subscribe({
-      next: (res: IResponseAddress) => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
-        this.visibleDelete = false;
-        this.visible = false;
-        this.getAllAddresses();
-      }, error: (err) => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
-      }
-    })
-  }
-
-  // add address
-  showAddAddress() {
-    const ref = this.dialogService.open(AddAddressComponent, {
-      header: 'Add a New Address',
+    const ref = this.dialogService.open(AllAddressComponent, {
+      header: 'All Address',
       width: '50vw',
       maximizable: true,
       closable: true,
@@ -101,39 +76,12 @@ export class AddressesComponent {
         '960px': '75vw',
         '640px': '90vw'
       },
-      data: { mode: 'add' }
     });
 
     ref.onClose.subscribe(success => {
-      if (success) {
-        this.visible = false;
-        this.getAllAddresses()
-      }
-    });
-  }
-  // edit address
-  showEditAddress(address: IAddress) {
-    const ref = this.dialogService.open(AddAddressComponent, {
-      header: 'Update Address Info',
-      style: {
-
-      },
-      width: '50vw',
-      maximizable: true,
-      closable: true,
-      modal: true,
-      breakpoints: {
-        '960px': '75vw',
-        '640px': '90vw'
-      },
-      data: { mode: 'edit', address }
-    });
-
-    ref.onClose.subscribe(success => {
-      if (success) {
-        this.visible = false;
-        this.getAllAddresses()
-      }
+      // if (success) {
+      this.getAllAddresses()
+      // }
     });
   }
 
@@ -144,7 +92,6 @@ export class AddressesComponent {
       },
       error: (err) => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
-
       }
     });
   }
@@ -181,6 +128,5 @@ export class AddressesComponent {
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
   }
-
 
 }
