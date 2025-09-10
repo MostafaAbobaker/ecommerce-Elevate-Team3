@@ -1,1 +1,40 @@
-<app-auth-btn [title]="title"></app-auth-btn>
+<section class="mt-[40%] -translate-y-1/2">
+  <app-auth-header [title]="'Welcome Back!'"></app-auth-header>
+  <!-- Content -->
+  <div class="card flex justify-center">
+    <p-toast [showTransitionOptions]="'250ms'" [showTransformOptions]="'translateX(100%)'" [hideTransitionOptions]="'150ms'" [hideTransformOptions]="'translateX(100%)'" />
+  </div>
+  <div class="md:max-w-sm lg:max-w-md max-w-md mx-auto text-zinc-800 dark:text-white">
+    <form [formGroup]="signInFormGroup" (ngSubmit)="signIn()">
+      <!-- Email -->
+      <div class="flex flex-col mt-5">
+        <label> {{ 'auth.sign-in.email' | translate }} </label>
+        @let emailControl = signInFormGroup.get('email');
+        <input type="email" id="email" formControlName="email" [ngClass]="{ 'border-red-400' : emailControl?.touched && emailControl!.invalid }" class="border rounded-lg p-3 outline-[#741C21] bg-white dark:bg-[#3F3F46] dark:border-[#52525B]" placeholder="example@gmail.com">
+        @if(emailControl){
+          <app-validation-messages [controls]="emailControl"></app-validation-messages>
+        }
+      </div>
+      <!-- Password -->
+      <div class="flex flex-col mt-5 relative">
+        <label> {{ 'auth.sign-in.password' | translate }} </label>
+        @let passwordControl = signInFormGroup.get('password');
+        <input [type]="isShowPassword ? 'text' : 'password'" id="password" formControlName="password" [ngClass]="{'border-red-400' : passwordControl?.touched && passwordControl!.invalid }" class="border rounded-lg p-3 outline-[#741C21] bg-white dark:bg-[#3F3F46] dark:border-[#52525B]" placeholder="">
+        <button type="button" class="absolute top-11 ltr:right-3 cursor-pointer rtl:left-3" (click)="showPassword()"><i class="fa-solid fa-eye text-gray-400"></i></button>
+        @if(passwordControl){
+          <app-validation-messages [controls]="passwordControl"></app-validation-messages>
+        }
+      </div>
+      <!-- Forgot Password -->
+      <div class="mt-4">
+        <a routerLink="/secure-access" (click)="goToForgetPassword()" class="text-[#741C21] font-semibold dark:text-[#FFA3B9]">{{'auth.sign-in.forgot-password' | translate}}</a>
+      </div>
+      <!-- Button Sign In -->
+      <app-auth-btn [title]="title"></app-auth-btn>
+    </form>
+    <div class="m-auto text-center my-9 border-t-2 pt-4">
+      <h3>{{'auth.sign-in.helper.don’t-have-account' | translate}} <a routerLink="/signup" class="text-[#741C21] font-semibold dark:text-[#FFA3B9]">{{'auth.sign-in.helper.create' | translate}}</a></h3>
+    </div>
+    <app-auth-footer></app-auth-footer>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+<section class="mt-[45%] -translate-y-1/2">
+  <app-auth-header [title]="''"></app-auth-header>
+  <div class="card flex justify-center">
+    <p-toast [showTransitionOptions]="'250ms'" [showTransformOptions]="'translateX(100%)'" [hideTransitionOptions]="'150ms'" [hideTransformOptions]="'translateX(100%)'" />
+  </div>
+  <div class="max-w-md mx-auto mb-10 text-zinc-800 dark:text-white">
+    <h1 class="text-3xl font-semibold"> {{'auth.otp-verification.title' | translate}}</h1>
+    <p class="text-xl font-light">
+      {{'auth.otp-verification.subtitle' | translate}}
+      <a routerLink="/forget-password" class="text-blue-600 font-semibold dark:text-[#FFA3B9]">{{'auth.otp-verification.edit' | translate}}</a>
+    </p>
+  </div>
+  <!-- Content -->
+  <div class="card flex justify-center">
+    <p-toast [showTransitionOptions]="'250ms'" [showTransformOptions]="'translateX(100%)'" [hideTransitionOptions]="'150ms'" [hideTransformOptions]="'translateX(100%)'" />
+  </div>
+  <div class="md:max-w-sm lg:max-w-md max-w-md mx-auto text-zinc-800 dark:text-white">
+    <form [formGroup]="otpFormGroup" (ngSubmit)="verifyOtp()">
+      <!-- OTP Inputs -->
+      <div class="flex space-x-4 justify-center mt-5">
+
+        @let otp1Control = otpFormGroup.get('otp1');
+        <input type="text" maxlength="1" formControlName="otp1" [ngClass]="{ 'border-red-400' : otp1Control?.touched && otp1Control!.invalid }" class="ltr:direction-ltr rtl:direction-ltr w-12 h-12 text-center text-xl bg-white border border-gray-300 rounded-md outline-none ml-4" />
+
+        @let otp2Control = otpFormGroup.get('otp2');
+        <input type="text" maxlength="1" formControlName="otp2" [ngClass]="{ 'border-red-400' : otp2Control?.touched && otp1Control!.invalid }" class="ltr:direction-ltr rtl:direction-ltr w-12 h-12 text-center text-xl bg-white border border-gray-300 rounded-md outline-none" />
+
+        @let otp3Control = otpFormGroup.get('otp3');
+        <input type="text" maxlength="1" formControlName="otp3" [ngClass]="{ 'border-red-400' : otp3Control?.touched && otp1Control!.invalid }" class="ltr:direction-ltr rtl:direction-ltr w-12 h-12 text-center text-xl bg-white border border-gray-300 rounded-md outline-none" />
+
+        @let otp4Control = otpFormGroup.get('otp4');
+        <input type="text" maxlength="1" formControlName="otp4" [ngClass]="{ 'border-red-400' : otp4Control?.touched && otp1Control!.invalid }" class="ltr:direction-ltr rtl:direction-ltr w-12 h-12 text-center text-xl bg-white border border-gray-300 rounded-md outline-none" />
+
+        @let otp5Control = otpFormGroup.get('otp5');
+        <input type="text" maxlength="1" formControlName="otp5" [ngClass]="{ 'border-red-400' : otp5Control?.touched && otp1Control!.invalid }" class="ltr:direction-ltr rtl:direction-ltr w-12 h-12 text-center text-xl bg-white border border-gray-300 rounded-md outline-none" />
+
+        @let otp6Control = otpFormGroup.get('otp6');
+        <input type="text" maxlength="1" formControlName="otp6" [ngClass]="{ 'border-red-400' : otp6Control?.touched && otp1Control!.invalid }" class="ltr:direction-ltr rtl:direction-ltr w-12 h-12 text-center text-xl bg-white border border-gray-300 rounded-md outline-none" />
+
+      </div>
+
+      <!-- Forgot Password -->
+      <div class="mt-4">
+        <a (click)="reSendOtp()" class="text-[#741C21] font-semibold dark:text-[#FFA3B9] cursor-pointer">{{'auth.otp-verification.send-code' | translate}}</a>
+      </div>
+
+      <!-- Button OTP -->
+      <app-auth-btn [title]="title"></app-auth-btn>
+    </form>
+    <div class="m-auto text-center my-9 border-t-2 pt-4">
+      <h3>{{'auth.otp-verification.helper.help' | translate}} <a routerLink="/signup" class="text-[#741C21] font-semibold dark:text-[#FFA3B9]">{{'auth.otp-verification.helper.contact' | translate}}</a></h3>
+    </div>
+    <app-auth-footer></app-auth-footer>
+  </div>
+</section>
