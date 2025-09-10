@@ -1,6 +1,7 @@
 import {Component, inject, Input, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IItemProduct } from './model/iitem-product';
+import { RouterLink } from '@angular/router';
 import {LocalStorageService} from '../../../services/localStorage/local-storage.service';
 import {Router} from '@angular/router';
 import {CartService} from '../../../../features/pages/cart/service/cart.service';
@@ -9,7 +10,7 @@ import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-item-product',
-  imports: [CommonModule, Toast],
+  imports: [CommonModule, Toast, RouterLink],
   templateUrl: './item-product.component.html',
   styleUrl: './item-product.component.css',
   providers: [MessageService]

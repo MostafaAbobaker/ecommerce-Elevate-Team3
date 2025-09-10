@@ -3,7 +3,8 @@ import { HomeLayoutComponent } from './core/layout/home-layout/home-layout.compo
 import {loggedGuard} from './core/Guard/logged.guard';
 
 export const routes: Routes = [
-  {path:'', component:HomeLayoutComponent , children:[
+  {
+    path: '', component: HomeLayoutComponent, children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', loadComponent: ()=> import('./features/pages/homePage/home-page/home-page.component').then (c => c.HomePageComponent) },
       { path: 'all-Products', loadComponent: ()=> import('./features/pages/all-products/all-products.component').then(c => c.AllProductsComponent) },
@@ -13,9 +14,9 @@ export const routes: Routes = [
           import('./features/pages/homePage/home-page/home-page.component').then(m => m.HomePageComponent) },
       { path: 'all-Products',  loadChildren: () =>
           import('./features/pages/all-products/all-products.component').then(m => m.AllProductsComponent) }, */
-
-    ]},
-
+      { path: 'address', loadComponent: () => import('./features/pages/addresses/components/addresses/addresses.component').then(c => c.AddressesComponent) },
+    ]
+  },
   { path: '', loadComponent: () => import('./core/layout/auth-layout/auth-layout.component').then(c => c.AuthLayoutComponent),
     children:[
       { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -28,3 +29,4 @@ export const routes: Routes = [
     ]
   }
 ]
+

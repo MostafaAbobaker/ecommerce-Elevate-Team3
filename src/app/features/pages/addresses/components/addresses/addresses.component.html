@@ -1,0 +1,111 @@
+<section class="container mx-auto my-3">
+    <div class="lg:grid grid-cols-3">
+        <div class="col-span-2">
+            <div class="card">
+                <p-steps [model]="[
+  {label: 'Shipping Address'},
+  {label: 'Payment Method'}
+]" [activeIndex]="stepIndex"></p-steps>
+
+                <!-- Step 1 -->
+                <div *ngIf="stepIndex === 0" class="p-4">
+                    <h2 class="text-3xl font-bold">Shipping Address</h2>
+                    @if (addressesList.length > 0) {
+                    <div class="flex flex-col">
+                        @for (address of addressesList; track address?._id) {
+                        <div class="card shadow p-3 border rounded-2xl my-3 cursor-pointer"
+                            (click)="selectAddress(address._id)" [ngClass]="selectedAddressId === address._id ?
+                             'bg-red-700 text-white' : 'bg-white text-black border-gray-300'">
+                            <div class="flex justify-between items-center">
+                                <h3>{{address?.city}}</h3>
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="rounded-full grid place-items-center w-[30px] dark:bg-dark-shopping h-[30px] dark:hover:bg-primary-dark  hover:bg-primary-dark hover:shadow-lg"
+                                        [ngClass]="selectedAddressId === address._id ?
+                                        'bg-white text-primary' : 'bg-primary text-white'">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </span>
+                                    {{address?.phone}}
+                                </div>
+                            </div>
+                            <p class="border-gray-300 py-1 px-2 rounded-xl shadow w-fit" [ngClass]="selectedAddressId === address._id ?
+                             'bg-black text-checkout' : 'bg-checkout'">
+                                {{address?.street}}</p>
+                        </div>
+                        }
+                    </div>
+                    }
+                    @else {
+                    <div class="flex justify-center items-center">
+                        <h3>No Available Address</h3>
+                    </div>
+                    }
+                    <div class="flex items-center justify-between my-10">
+                        <hr class="flex-grow border-gray-300 mr-2">
+                        <p class="text-sm">OR</p>
+                        <hr class="flex-grow border-gray-300 ml-2">
+                    </div>
+                    <button (click)="showDialog()"
+                        class="bg-primary-light w-full text-primary rounded-[10px] py-2.5 px-3 hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary">
+                        Add a New Address
+                    </button>
+                    <div class="flex pt-6 justify-end">
+                        <button (click)="nextStep()"
+                            class="bg-primary text-white w-1/4 rounded-[10px] py-2.5 px-3 hover:bg-red-600 hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary">
+                            Next
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div *ngIf="stepIndex === 1" class="p-4">
+                    <div>
+                        <div class="flex items-center">
+                            <button (click)="backStep()"
+                                class="bg-checkout text-black rounded-[10px] py-2.5 px-3 hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <h3 class="text-2xl mx-2">Payment Method</h3>
+                        </div>
+                        <a href="#" class="flex gap-3 my-3">
+                            <div
+                                class="flex flex-col justify-center items-center w-1/2 gap-3 text-center rounded-md border border-gray-300 p-4 shadow-sm sm:p-6">
+                                <img src="../../../../assets/imgs/address/cash.png" alt="cash" class="w-1/2">
+                                <p class="font-medium text-2xl">Cash on Delivery</p>
+                                <p class="text-secondary-dark">You’ll pay in cash when your order is delivered.</p>
+                            </div>
+                            <div
+                                class="flex flex-col justify-center items-center w-1/2 gap-3 text-center rounded-md border border-gray-300 p-4 shadow-sm sm:p-6">
+                                <img src="../../../../assets/imgs/address/credit.png" alt="credit" class="w-1/2">
+                                <p class="font-medium text-2xl text-primary">Credit Card</p>
+                                <p class="text-secondary-dark">You’ll be securely redirected to Stripe to complete your
+                                    payment.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="flex pt-6 justify-end">
+                        <button
+                            class="bg-primary text-white w-1/4 rounded-[10px] py-2.5 px-3 hover:bg-red-600 hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary">
+                            Checkout
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <app-summary></app-summary>
+        </div>
+    </div>
+</section>
+
+<!-- Products You May Like -->
+<p-carousel [value]="productsList" [numVisible]="3" [numScroll]="1" [circular]="false"
+    [responsiveOptions]="responsiveOptions">
+    <ng-template let-product #item>
+        <app-item-product [popularItem]="product"></app-item-product>
+    </ng-template>
+</p-carousel>

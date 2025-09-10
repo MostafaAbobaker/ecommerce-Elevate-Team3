@@ -46,7 +46,7 @@
     </div>
     }
     <app-product-reviews #related></app-product-reviews>
-    @defer (on viewport(related); on timer(20s)) {
+    @defer (on viewport(related)) {
     <app-related-products [productDetails]="productList"></app-related-products>
     }
 </section>

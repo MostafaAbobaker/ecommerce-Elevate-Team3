@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+@import "primeicons/primeicons.css";
 
 @tailwind base;
 @tailwind components;
@@ -89,7 +90,7 @@ body {
   width: 30px;
 }
 
-html[dir="rtl"]  .fa-arrow-right-long {
+html[dir="rtl"] .fa-arrow-right-long {
   transform: scale(-1);
 }
 
@@ -194,15 +195,29 @@ html[dir="rtl"]  .fa-arrow-right-long {
 /*  */
 
 .p-slider .p-slider-range {
-      background-color: var(--primary);
+  background-color: var(--primary);
 }
 
 
 .p-paginator-pages .p-paginator-page.p-paginator-page-selected {
-      background: color-mix(in srgb, var(--primary), white 90%);;
-    color: var(--primary);
+  background: color-mix(in srgb, var(--primary), white 90%);
+  ;
+  color: var(--primary);
 }
 
+/* Address */
+.p-steps-item-active .p-steps-item-number {
+  color: #A6252A !important;
+}
+
+.p-steps-item-label {
+  visibility: hidden;
+}
+
+.p-steps-item .p-steps-item-active .ng-star-inserted {
+  border: 1px solid red;
+}
+=======
 
 .aside-filer .p-checkbox-checked .p-checkbox-box {
     border-color: var(--primary);

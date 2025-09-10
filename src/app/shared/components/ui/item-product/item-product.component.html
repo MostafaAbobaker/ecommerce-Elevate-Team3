@@ -1,8 +1,17 @@
+
+<div [routerLink]="[`/product-details`,popularItem.id]">
+  <div class="card-product rounded-[20px] transition-all hover:shadow-lg group cursor-pointer">
+    <div class="image bg-red-50 rounded-[20px] grid place-items-center relative">
+      <img [src]="popularItem.imgCover" alt="" class="rounded-[20px] h-[270px] w-full object-cover" />
+      <!-- Badge New, Out Of Stock ,Hot-->
+      <!-- @if(popularItem.slug == 'New'){
+
 <div class="card-product rounded-[20px] transition-all hover:shadow-lg group cursor-pointer">
   <div class="image bg-red-50 rounded-[20px] grid place-items-center relative">
     <img [src]="popularItem.imgCover" alt="" class="rounded-[20px] h-[270px] w-full object-cover" />
     <!-- Badge New, Out Of Stock ,Hot-->
     <!-- @if(popularItem.slug == 'New'){
+
     <span
       class="bg-primary text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
       >New</span>
@@ -65,6 +74,8 @@
       </div>
     </div>
   </div>
+</div>
+
 </div>
 <div class="card flex justify-center">
   <p-toast [showTransitionOptions]="'250ms'" [showTransformOptions]="'translateX(100%)'" [hideTransitionOptions]="'150ms'" [hideTransformOptions]="'translateX(100%)'" />
