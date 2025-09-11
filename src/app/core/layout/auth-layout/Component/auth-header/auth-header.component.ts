@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {TranslatePipe} from '@ngx-translate/core';
 import {TranslationService} from '../../../../Services/translation.service';
 import {FormHeaderTitleComponent} from '../form-header-title/form-header-title.component';
@@ -16,6 +16,6 @@ import {FormHeaderTitleComponent} from '../form-header-title/form-header-title.c
 export class AuthHeaderComponent {
 
   private readonly translationService: TranslationService = inject(TranslationService);
-  title: string = "";
+  @Input() title: string = "";
 
 }

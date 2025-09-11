@@ -9,8 +9,9 @@ export const loggedGuard: CanActivateFn = (route, state): boolean => {
   const router: Router = inject(Router);
 
   if(localStorage.getItem('token')){
-    router.navigateByUrl('/home');
-    return  false;
+    return true;
   }
-  return true;
+
+  router.navigateByUrl('/signin');
+  return  false;
 };

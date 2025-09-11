@@ -7,7 +7,6 @@ import {AuthHeaderComponent} from '../../../layout/auth-layout/Component/auth-he
 import {AuthFooterComponent} from '../../../layout/auth-layout/Component/auth-footer/auth-footer.component';
 import {AuthLibService} from '../../../../../../projects/auth-lib/src/lib/auth-lib.service';
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -17,11 +16,10 @@ import {
 } from '@angular/forms';
 import {Toast} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {
   AuthDataResponded
 } from '../../../../../../projects/auth-lib/src/lib/interface/auth/data-responded/auth-data-responded';
-import {ThemeService} from '../../../../shared/services/theme/theme.service';
 import {passwordMatchValidator} from '../../Service/validators/PasswordIsMatch.utility';
 import {ValidationMessagesComponent} from '../validation-messages/validation-messages.component';
 
@@ -37,6 +35,7 @@ import {ValidationMessagesComponent} from '../validation-messages/validation-mes
     NgClass,
     Toast,
     ValidationMessagesComponent,
+    RouterLink,
   ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
@@ -91,14 +90,16 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authLibService.SIGN_UP(this.signUpFormGroup.value).subscribe({
       next: (data: AuthDataResponded): void => {
         this.show("Success");
+        this.goToSignin()
+        console.log(data);
       },
-      error: (data: any): void => {
+      error: (error: any): void => {
         this.show("Error");
+        console.log(error);
       }
     })
-    console.log(this.signUpFormGroup.value);
+
     this.signUpFormGroup.reset();
-    this.goToSignin();
   }
 
   show(statusForm: string): void {

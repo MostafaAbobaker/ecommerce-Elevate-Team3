@@ -5,10 +5,12 @@
       "title": "Login",
       "email": "Email",
       "password": "Password",
-      "remember-me": "Remember Me",
-      "forgot-password": "Forgot Password?",
+      "forgot-password": "Forgot Password ?",
       "login-button": "Login",
-      "register-link": "Don't have an account? Register here"
+      "helper": {
+        "don’t-have-account": "Don’t have an account yet ?",
+        "create": "Create one now!"
+      }
     },
     "sign-up": {
       "firstName": "First Name",
@@ -26,6 +28,21 @@
       "helper": {
         "have-account": "Already have an account..?",
         "login": "Login"
+      }
+    },
+    "forgot-password": {
+      "title": "Forgot Password?",
+      "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
+      "email": "Email"
+    },
+    "otp-verification": {
+      "title": "Enter the OTP Code",
+      "subtitle": "We have sent a 6-digit code to user@example.com",
+      "edit": "Edit",
+      "send-code": "Send a new code",
+      "helper": {
+        "help": "Need help?",
+        "contact": "Contact us"
       }
     }
   },
@@ -129,14 +146,21 @@
         "category": "Category"
       },
       "occasion-section": {
-        "occasion": "Brands"
+        "occasion": "Occasion"
       },
       "ratings-section": {
         "ratings": "Ratings"
       },
       "price-section": {
-        "price-rating": "Price Rating"
+        "price-rating": "Price"
       }
+    }
+  },
+  "cart":{
+    "header": {
+      "title": "Cart",
+      "products": "Products",
+      "btn-clear": "Clear Cart"
     }
   }
 }

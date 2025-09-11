@@ -15,57 +15,60 @@
           </li>
           <li>
             <button class=" py-2 px-2 relative dark:text-white text-slate-700"><i
-                class="fa-regular fa-heart text-xl fa-fw"></i>
+              class="fa-regular fa-heart text-xl fa-fw"></i>
               <span
                 class="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">2</span>
             </button>
           </li>
-          <li><button class=" py-2 px-2 relative dark:text-white text-slate-700"><i
-                class="fa-solid fa-bag-shopping text-xl fa-fw"></i>
-              <span
-                class="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">5</span>
-            </button></li>
+          <li>
+            <a routerLink="/cart" class=" py-2 px-2 relative dark:text-white text-slate-700 cursor-pointer">
+              <!-- Icon -->
+              <i class="fa-solid fa-bag-shopping text-xl fa-fw"></i>
+              <!-- Number Of Product  -->
+              <span class="absolute -top-2 right-0.5 bg-red-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">{{numberOfProductCart()}}</span>
+            </a>
+          </li>
           <li><button class=" py-2 px-2  relative dark:text-white  text-slate-700"><i
-                class="fa-regular fa-bell text-xl fa-fw"></i>
-              <span
-                class="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">5</span>
+            class="fa-regular fa-bell text-xl fa-fw"></i>
+            <span
+              class="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-[18px] h-[18px] grid place-items-center">5</span>
 
-            </button></li>
+          </button></li>
           <li>
             @if(darkMode) {
-            <button class=" py-2 px-2.5  relative dark:text-white  text-slate-700" (click)="setTheme('light')"><i
+              <button class=" py-2 px-2.5  relative dark:text-white  text-slate-700" (click)="setTheme('light')"><i
                 class="fa-solid fa-sun fa-fw"></i></button>
 
             } @else {
 
-                  <button class=" py-2 px-2.5  relative dark:text-white  text-slate-700" (click)="setTheme('dark')"><i class="fa-solid fa-moon fa-fw"></i></button>
-                }
-              </li>
-            <li>
-              <!-- Drop Down List Of Language -->
-              <div class="relative inline-block text-left">
-                <button (click)="dropDownLang()" type="button" class="inline-flex justify-center items-center gap-2 w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-white border-s dark:border-zinc-600">
-                  {{ 'header.language' | translate }}
-                  <i class="fa-solid fa-angle-down"></i>
-                </button>
-                @if (isOpen) {
-                  <div class="origin-top-right absolute right-0 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
-                    <div class="py-1">
-                      <a (click)="changeLanguage('en')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">English</a>
-                      <a (click)="changeLanguage('ar')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">العربية</a>
-                    </div>
+              <button class=" py-2 px-2.5  relative dark:text-white  text-slate-700" (click)="setTheme('dark')"><i class="fa-solid fa-moon fa-fw"></i></button>
+            }
+          </li>
+          <li>
+            <!-- Drop Down List Of Language -->
+            <div class="relative inline-block text-left">
+              <button (click)="dropDownLang()" type="button" class="inline-flex justify-center items-center gap-2 w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-white border-s dark:border-zinc-600">
+                {{ 'header.language' | translate }}
+                <i class="fa-solid fa-angle-down"></i>
+              </button>
+              @if (isOpen) {
+                <div class="origin-top-right absolute right-0 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+                  <div class="py-1">
+                    <a (click)="changeLanguage('en')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">English</a>
+                    <a (click)="changeLanguage('ar')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">العربية</a>
                   </div>
-                }
-              </div>
-              <!--
-                <li>
-                  <button class="py-2 px-4  text-slate-700 dark:text-white text-base border-s dark:border-zinc-600 py-3.5 ms-2.5 font-fontAr"
-                          (click)="changeLang(currentLang === 'en' ? 'ar' : 'en')">
-                    {{ currentLang === 'en' ? 'العربية' : 'English' }}
-                  </button>
-                </li>
-              -->
-            </li>
+                </div>
+              }
+            </div>
+            <!--
+              <li>
+                <button class="py-2 px-4  text-slate-700 dark:text-white text-base border-s dark:border-zinc-600 py-3.5 ms-2.5 font-fontAr"
+                        (click)="changeLang(currentLang === 'en' ? 'ar' : 'en')">
+                  {{ currentLang === 'en' ? 'العربية' : 'English' }}
+                </button>
+              </li>
+            -->
+          </li>
         </ul>
 
       </div>

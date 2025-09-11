@@ -5,11 +5,12 @@
       "title": "تسجيل الدخول",
       "email": "البريد الإلكتروني",
       "password": "كلمة المرور",
-      "remember-me": "تذكرني",
-      "forgot-password": "نسيت كلمة المرور؟",
+      "forgot-password": "نسيت كلمة المرور ؟",
       "login-button": "تسجيل الدخول",
-      "no-account": "ليس لديك حساب؟",
-      "register-here": "سجل هنا"
+      "helper": {
+        "don’t-have-account": "ليس لديك حساب بعد ؟",
+        "create": " أنشئ حسابًا الآن!"
+      }
     },
     "sign-up": {
       "firstName": "الاسم الأول",
@@ -27,6 +28,21 @@
       "helper": {
         "have-account": "هل لديك حساب...؟",
         "login": "تسجيل دخول"
+      }
+    },
+    "forgot-password": {
+      "title": "نسيت كلمة المرور؟",
+      "subtitle": "لا داعي للقلق، سنرسل لك تعليمات لمساعدتك في إعادة تعيينها.",
+      "email": "البريد الإلكتروني"
+    },
+    "otp-verification": {
+      "title": "أدخل رمز OTP",
+      "subtitle": "لقد أرسلنا رمزًا مكونًا من 6 أرقام إلى user@example.com",
+      "edit": "تعديل",
+      "send-code": "إرسال رمز جديد",
+      "helper": {
+        "help": "تحتاج مساعدة؟",
+        "contact": "اتصل بنا"
       }
     }
   },
@@ -132,12 +148,19 @@
       "occasion-section": {
         "occasion": "العلامة التجارية"
       },
-       "ratings-section": {
+      "ratings-section": {
         "ratings": "التقييمات"
       },
       "price-section": {
         "price-rating": "تقييم السعر"
       }
+    }
+  },
+  "cart": {
+    "header": {
+      "title": "عربة التسوق",
+      "products": "المنتجات",
+      "btn-clear": "إفراغ العربة"
     }
   }
 }
