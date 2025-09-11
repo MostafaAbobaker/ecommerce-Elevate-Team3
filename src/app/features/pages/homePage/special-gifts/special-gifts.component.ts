@@ -11,8 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class SpecialGiftsComponent {
 
-  constructor(){}
-
+  constructor() { }
 
   // Special Gift
   customOptions: OwlOptions = {
