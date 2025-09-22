@@ -8,12 +8,12 @@ import {Toast} from 'primeng/toast';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ValidationMessagesComponent} from '../validation-messages/validation-messages.component';
 import {MessageService} from 'primeng/api';
-import {AuthLibService} from 'Auth-Lib';
 import {Subscription} from 'rxjs';
 import {NgClass} from '@angular/common';
-import { ForgetPasswordDataResponses } from '../../../../../../dist/auth-lib/lib/interface/forget-password/forget-password-data-responded';
 import {StoreEmailService} from '../../Service/storeEmail/store-email.service';
 import {SecureAccessService} from '../../Service/secure-access/secure-access.service';
+import { AuthLibService } from '../../../../../../projects/auth-lib/src/lib/auth-lib.service';
+import { ForgetPasswordDataResponses } from '../../../../../../projects/auth-lib/src/lib/interface/forget-password/forget-password-data-responded';
 
 @Component({
   selector: 'app-forget-password',
