@@ -1,28 +1,34 @@
 import { HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import {LocalStorageService} from '../../shared/services/localStorage/local-storage.service';
 
 export const generalInterceptor: HttpInterceptorFn = (req, next) => {
-  // Call Environment base URL
   const baseUrl: string = environment.apiUrl;
-  const token= localStorage.getItem('token');
 
-  if(req.url.includes('/i18n/')){
+  // سيب الـ i18n requests زي ما هي
+  if (req.url.includes('/i18n/')) {
     return next(req);
   }
 
-  // Inject base URL In Request
-  const modifiedReq: HttpRequest <unknown> = req.clone({
-    url: `${baseUrl}${req.url}`,
-    setHeaders: {
-      Authorization: `Bearer ${token}`
+  // default headers
+  let headers: Record<string, string> = {};
+
+  // Inject token بس لو احنا في المتصفح
+  if (typeof window !== 'undefined' && localStorage) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
     }
-    /** *
-      setHeaders:{
-        // Set the language header from localStorage or default to 'en'
-        // language: localStorage.getItem('lng') || 'en',
-      }
-    * **/
+
+    // لو عايز كمان language header
+    const lang: string = localStorage.getItem('lng') || 'en';
+    headers['language'] = lang;
+  }
+
+  // Inject baseUrl + headers
+  const modifiedReq: HttpRequest<unknown> = req.clone({
+    url: `${baseUrl}${req.url}`,
+    setHeaders: headers
   });
+
   return next(modifiedReq);
 };

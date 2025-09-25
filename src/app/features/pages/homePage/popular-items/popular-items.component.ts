@@ -67,7 +67,11 @@ export class TestPopularItemsComponent implements  OnDestroy {
       });
   }
   ngOnDestroy(): void {
-    this.getAllCategoriesService.unsubscribe();
-    this.getPopularItemsService.unsubscribe();
+    if(this.getAllCategoriesService){
+      this.getAllCategoriesService.unsubscribe();
+    }
+    if(this.getPopularItemsService){
+      this.getPopularItemsService.unsubscribe();
+    }
   }
 }
