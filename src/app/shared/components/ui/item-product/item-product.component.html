@@ -3,29 +3,6 @@
   <div class="card-product rounded-[20px] transition-all hover:shadow-lg group cursor-pointer">
     <div class="image bg-red-50 rounded-[20px] grid place-items-center relative">
       <img [src]="popularItem.imgCover" alt="" class="rounded-[20px] h-[270px] w-full object-cover" />
-      <!-- Badge New, Out Of Stock ,Hot-->
-      <!-- @if(popularItem.slug == 'New'){
-
-<div class="card-product rounded-[20px] transition-all hover:shadow-lg group cursor-pointer">
-  <div class="image bg-red-50 rounded-[20px] grid place-items-center relative">
-    <img [src]="popularItem.imgCover" alt="" class="rounded-[20px] h-[270px] w-full object-cover" />
-    <!-- Badge New, Out Of Stock ,Hot-->
-    <!-- @if(popularItem.slug == 'New'){
-
-    <span
-      class="bg-primary text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
-      >New</span>
-    } @else if (popularItem.slug == 'Out Of Stock') {
-    <span
-      class="bg-red-500 text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
-      >Out Of Stock</span
-    >
-    } @else if (popularItem.slug == 'Hot') {
-    <span
-      class="bg-cyan-500 text-white py-0.5 px-2.5 text-[11px] font-medium rounded-full absolute top-[8px] end-[8px] uppercase"
-      >Hot</span
-    >
-    }  -->
 
     <!-- Over Lay -->
     <div class="overlay absolute inset-0 bg-primary/60 dark:bg-secondary-light/60 flex justify-center items-center gap-4 rounded-[20px] z-10 opacity-0 group-hover:opacity-100 transition-all">
