@@ -217,7 +217,6 @@ html[dir="rtl"] .fa-arrow-right-long {
 .p-steps-item .p-steps-item-active .ng-star-inserted {
   border: 1px solid red;
 }
-=======
 
 .aside-filer .p-checkbox-checked .p-checkbox-box {
     border-color: var(--primary);
