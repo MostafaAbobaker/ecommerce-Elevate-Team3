@@ -7,7 +7,7 @@ import {Router, RouterLink} from "@angular/router";
 import {Toast} from "primeng/toast";
 import {TranslatePipe} from "@ngx-translate/core";
 import {ValidationMessagesComponent} from "../validation-messages/validation-messages.component";
-import {AuthLibService} from 'Auth-Lib';
+
 import {MessageService} from 'primeng/api';
 import {Subscription} from 'rxjs';
 import {NgClass} from '@angular/common';
@@ -16,6 +16,7 @@ import {StoreEmailService} from '../../Service/storeEmail/store-email.service';
 import {
   ResetDataRequested
 } from '../../../../../../projects/auth-lib/src/lib/interface/reset-password/reset-data-requested';
+import { AuthLibService } from '../../../../../../projects/auth-lib/src/lib/auth-lib.service';
 
 @Component({
   selector: 'app-reset-password',

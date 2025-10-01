@@ -1,23 +1,35 @@
 import { HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 export const generalInterceptor: HttpInterceptorFn = (req, next) => {
-  // Call Environment base URL
-  const baseUrl: string = environment.apiUrl;
+  const platformId = inject(PLATFORM_ID);
+  const isBrowser = isPlatformBrowser(platformId);
 
-  if(req.url.includes('/i18n/')){
+  // تخطي طلبات الترجمة
+  if (req.url.includes('/i18n/')) {
     return next(req);
   }
+  debugger
+  const baseUrl: string = environment.apiUrl;
+  let headers: Record<string, string> = {};
 
-  // Inject base URL In Request
-  const modifiedReq: HttpRequest <unknown> = req.clone({
+  if (isBrowser) {
+    const token = localStorage.getItem('Rose_token');
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    const language = localStorage.getItem('lng') || 'en';
+    headers['language'] = language;
+  }
+
+  const modifiedReq: HttpRequest<unknown> = req.clone({
     url: `${baseUrl}${req.url}`,
-    /** *
-      setHeaders:{
-        // Set the language header from localStorage or default to 'en'
-        // language: localStorage.getItem('lng') || 'en',
-      }
-    * **/
+    setHeaders: headers
   });
+
   return next(modifiedReq);
+
 };

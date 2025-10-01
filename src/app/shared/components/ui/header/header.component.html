@@ -10,18 +10,29 @@
       </div>
       <div class="hidden md:block">
         <ul class="flex items-center">
-          <li>
-            <a  class="px-4  text-base dark:text-white border-e dark:border-zinc-600 py-3.5 me-2.5 text-slate-700">
-              <i class="fa-regular fa-user fa-fw"></i> {{'header.login' | translate }}</a>
-          </li>
-          <!-- <li>
-            <button  class="px-4  text-base dark:text-white border-e dark:border-zinc-600 py-3.5 me-2.5 text-slate-700 relative" (click)="menu.toggle($event)">
-              <span class="absolute text-sm top-0">Hello</span>
-              <span class="name text-primary">Jonathan</span>
-            </button>
-            <p-tieredmenu #menu [model]="items" [popup]="true" />
+          @if(!isLogin) {
+            <li>
+              <a  class="px-4  text-base dark:text-white border-e dark:border-zinc-600 py-3.5 me-2.5 text-slate-700" routerLink="signin">
+                <i class="fa-regular fa-user fa-fw"></i> {{'header.login' | translate }}</a>
+            </li>
 
-          </li> -->
+          } @else {
+            <li>
+              <button  class="px-4  text-base dark:text-white border-e dark:border-zinc-600 py-3.5 me-2.5 text-slate-700 relative flex" (click)="menu.toggle($event)">
+                                <img [src]="image" alt="" class="w-8 h-8 rounded-full object-cover">
+
+                <div class="relative">
+
+                  <div class="text-start  text-sm ">Hello</div>
+                  <div class="name leading-3 text-primary">{{firstName}} {{lastName}}</div>
+                </div>
+
+              </button>
+              <p-tieredmenu #menu [model]="items" [popup]="true" />
+
+            </li>
+
+          }
 
           <li>
             <button class=" py-2 px-2 relative dark:text-white text-slate-700"><i

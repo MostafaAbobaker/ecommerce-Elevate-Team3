@@ -12,6 +12,7 @@ import {Toast} from 'primeng/toast';
 import {AuthHeaderComponent} from '../../../layout/auth-layout/Component/auth-header/auth-header.component';
 import {AuthFooterComponent} from '../../../layout/auth-layout/Component/auth-footer/auth-footer.component';
 import {
+  AuthAllDataResponded,
   AuthDataResponded
 } from '../../../../../../projects/auth-lib/src/lib/interface/auth/data-responded/auth-data-responded';
 import {SecureAccessService} from '../../Service/secure-access/secure-access.service';
@@ -70,10 +71,16 @@ export class SignInComponent implements OnInit , OnDestroy {
       return;
     }
 
-    this.authSubscription = this.authLibService.SIGN_IN(this.signInFormGroup.value).subscribe({
-      next: (data: AuthDataResponded) => {
+    this.authSubscription = this.authLibService.SIGN_INAllData(this.signInFormGroup.value).subscribe({
+      next: (data: AuthAllDataResponded) => {
         this.show("Success");
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('Rose_token', data.token);
+        localStorage.setItem('Rose_FirstName', data.user.firstName);
+        localStorage.setItem('Rose_LastName', data.user.lastName);
+        localStorage.setItem('Rose_Email', data.user.email);
+        localStorage.setItem('Rose_Phone', data.user.phone);
+        localStorage.setItem('Rose_image', data.user.photo);
+
         this.goToHome(); //.file => Guard
       },
       error: error => {

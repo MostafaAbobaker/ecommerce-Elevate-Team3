@@ -6,8 +6,14 @@
 
   <div class="image-card flex items-center gap-4 mb-4">
     <div class="image relative rounded-full">
-      <input type="file" class="hidden" (change)="onFileSelected($event)" #inputFile
-      accept="image/png, image/jpeg , image/jpg , image/gif">
+      <input
+      type="file"
+      class="hidden"
+      (change)="onFileSelected($event)"
+      #inputFile
+      accept="image/png, image/jpeg, image/jpg, image/gif"
+    />
+
 
       @if(!imageSrc) {
       <div class="defult-image rounded-full border border-zinc-100">

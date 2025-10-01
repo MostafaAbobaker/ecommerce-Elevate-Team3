@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CountryISO, NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { UploadPhotoService } from './service/upload-photo.service';
 
 
 @Component({
@@ -16,7 +17,13 @@ export class AccountComponent {
 
   CountryISO = CountryISO;
   accountForm : FormGroup ;
-  constructor(private fb:FormBuilder){
+  imageFormData = new FormData(); // ✅ إنشاء صحيح
+
+
+
+  constructor(private fb:FormBuilder,
+    private _uploadPhotoService:UploadPhotoService
+  ){
 
     this.accountForm = this.fb.group({
       firstName :['', [Validators.required]],
@@ -25,9 +32,22 @@ export class AccountComponent {
       phone :['', [Validators.required]],
       gender :['', [Validators.required]],
     })
+
   }
 
 
+  uploadPhoto() {
+    console.log('upload photo function called', this.imageFormData);
+debugger
+    this._uploadPhotoService.uploadPhoto(this.imageFormData).subscribe({
+      next: (response) => {
+        console.log('Photo uploaded successfully', response);
+      },
+      error: (error) => {
+        console.error('Error uploading photo', error);
+      }
+    })
+  }
 submitForm() {
     if (this.accountForm.valid) {
       console.log(this.accountForm.value);
@@ -65,5 +85,7 @@ submitForm() {
       };
       reader.readAsDataURL(file);
     }
+    this.imageFormData.append('photo', (event.target as HTMLInputElement).files?.[0] || '');
+    this.uploadPhoto();
   }
 }

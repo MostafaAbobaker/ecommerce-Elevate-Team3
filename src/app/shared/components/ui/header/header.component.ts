@@ -1,15 +1,17 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, PLATFORM_ID} from '@angular/core';
 import { ThemeService } from '../../../services/theme/theme.service';
 import {TranslationService} from '../../../../core/Services/translation.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import { TieredMenuModule } from 'primeng/tieredmenu';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   imports: [
     TranslatePipe,
-    TieredMenuModule
+    TieredMenuModule,
+    RouterLink
 
   ],
   templateUrl: './header.component.html',
@@ -17,16 +19,39 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit{
   private readonly translationService: TranslationService = inject(TranslationService);
+  private platformId = inject(PLATFORM_ID);
+
+  isLogin: boolean = false;
+
+
+  firstName: string | null = ''
+  lastName: string | null =''
+  email: string | null = ''
+  phone: string | null = ''
+  image: string | null = ''
 
   // Dark Mode Toggle
   darkMode!:boolean;
   isOpen: boolean = false;
-items: any[] | undefined;
+  items: any[] | undefined;
 
   constructor(private _themeService:ThemeService,
     private router: Router
   ){}
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+
+       let token = localStorage.getItem('Rose_token');
+       if(token){
+         this.isLogin = true;
+       }
+        this.firstName = localStorage.getItem('Rose_FirstName');
+        this.lastName = localStorage.getItem('Rose_LastName');
+        this.email = localStorage.getItem('Rose_Email');
+        this.phone = localStorage.getItem('Rose_Phone');
+        this.image = localStorage.getItem('Rose_image');
+    }
+
     if(this.getCurrentTheme() == 'light' ) {
       this.darkMode = false;
     } else {
@@ -68,6 +93,9 @@ items: any[] | undefined;
     {
       label: 'Log out',
       icon: 'fa-solid fa-arrow-right-from-bracket',
+      command:() => {
+        this.signOut();
+      }
     },
   ];
   }
@@ -87,5 +115,11 @@ items: any[] | undefined;
     this.translationService.changeLang(lang);
     this.isOpen = !this.isOpen;
     console.log(`Language changed to: ${lang}`);
+  }
+
+  signOut(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/signin']);
+    this.isLogin = false;
   }
 }

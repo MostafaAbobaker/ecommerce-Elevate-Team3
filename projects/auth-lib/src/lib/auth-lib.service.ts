@@ -9,7 +9,7 @@ import {ErrorDataResponse} from './interface/error/error-data-response';
 import {VerifyDataRequested} from './interface/verify-code/verify-data-requested';
 import {VerifyDataResponse} from './interface/verify-code/verify-data-responsed';
 import {ResetDataRequested} from './interface/reset-password/reset-data-requested';
-import {AuthDataResponded} from './interface/auth/data-responded/auth-data-responded';
+import {AuthAllDataResponded, AuthDataResponded} from './interface/auth/data-responded/auth-data-responded';
 import {SignupDataRequested} from './interface/auth/data-requested/signup-data-requested';
 import {SignInDataRequested} from './interface/auth/data-requested/signin-data-requested';
 import {ForgetPasswordDataRequested} from './interface/forget-password/forget-password-data-requested';
@@ -28,6 +28,16 @@ export class AuthLibService implements AuthApiAbstract {
     // this.API_BASE_URL + AuthApiEndpoint.SIGNIN
     return this.httpClient.post(AuthApiEndpoint.SIGN_IN, data).pipe(
       map((response: any): AuthDataResponded => this.authApiAdapter.AdaptResponse(response)),
+      catchError((error: ErrorApiResponse): Observable <never> => {
+        const adaptedError: ErrorDataResponse = this.authApiAdapter.AdaptError(error);
+        return throwError((): ErrorDataResponse => adaptedError);
+      })
+    );
+  }
+  SIGN_INAllData(data: SignInDataRequested): Observable<AuthAllDataResponded> {
+    // this.API_BASE_URL + AuthApiEndpoint.SIGNIN
+    return this.httpClient.post(AuthApiEndpoint.SIGN_IN, data).pipe(
+      map((response: any): AuthAllDataResponded => response),
       catchError((error: ErrorApiResponse): Observable <never> => {
         const adaptedError: ErrorDataResponse = this.authApiAdapter.AdaptError(error);
         return throwError((): ErrorDataResponse => adaptedError);

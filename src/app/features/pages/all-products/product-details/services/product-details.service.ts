@@ -19,13 +19,9 @@ export class ProductDetailsService {
   }
 
   addReviewsProduct(data: any): Observable<any> {
-    return this._http.post(`reviews`, data, {
-      headers: { token: localStorage.getItem('userToken')! }
-    });
+    return this._http.post(`reviews`, data);
   }
   getReviewsProduct(id: string): Observable<any> {
-    return this._http.get(`products/${id}/reviews`, {
-      headers:{token:localStorage.getItem('userToken')!}
-    });
+    return this._http.get(`products/${id}/reviews`);
   }
 }
