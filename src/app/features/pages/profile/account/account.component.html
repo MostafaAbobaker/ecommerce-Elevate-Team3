@@ -89,13 +89,17 @@
       </div>
     <div class="form-group mb-4">
         <label for="Gender">Gender</label>
-        <select name="Gender" id="Gender" formControlName="gender" class="disabled:bg-zinc-100 text-zinc-400 border border-slate-300 bg-white rounded-[10px] p-3 pe-4 w-full dark:bg-zinc-700 dark:border-zinc-600 focus:outline-none focus:border-secondary focus:shadow-[0_0_0_.25rem_rgba(255,102,139,.25)]">
+        <p-select [options]="gender"  formControlName="gender"  optionLabel="name"  optionValue="value"  placeholder="Select a Gender"
+
+          class="disabled:bg-zinc-100  border border-slate-300 bg-white rounded-[10px]  pe-4 w-full dark:bg-zinc-700 dark:border-zinc-600 focus:outline-none focus:border-secondary focus:shadow-[0_0_0_.25rem_rgba(255,102,139,.25)]"/>
+
+        <!-- <select name="Gender" id="Gender" formControlName="gender" class="disabled:bg-zinc-100 text-zinc-400 border border-slate-300 bg-white rounded-[10px] p-3 pe-4 w-full dark:bg-zinc-700 dark:border-zinc-600 focus:outline-none focus:border-secondary focus:shadow-[0_0_0_.25rem_rgba(255,102,139,.25)]">
           <option value="Male" selected>Male</option>
           <option value="female">female</option>
-        </select>
+        </select> -->
       </div>
       <div class="flex justify-between items-center mt-[60px]">
-        <button class="text-primary">Delete My Account</button>
+        <button class="text-primary" (click)="deleteAccount()">Delete My Account</button>
         <button class="bg-primary text-white rounded-[10px] py-2.5 px-5 hover:bg-primary-dark hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary">Save Changes</button>
       </div>
   </form>

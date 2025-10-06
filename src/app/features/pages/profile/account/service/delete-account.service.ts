@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ChangePasswordService {
+export class DeleteAccountService {
 
   constructor(private _http:HttpClient) { }
 
-  changePassword(data:any): Observable<any>{
-    return this._http.patch('auth/change-password',data);
+  deleteACcount():Observable<any>{
+    return this._http.delete('auth/deleteMe');
   }
 }

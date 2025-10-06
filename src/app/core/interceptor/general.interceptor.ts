@@ -11,7 +11,6 @@ export const generalInterceptor: HttpInterceptorFn = (req, next) => {
   if (req.url.includes('/i18n/')) {
     return next(req);
   }
-  debugger
   const baseUrl: string = environment.apiUrl;
   let headers: Record<string, string> = {};
 
