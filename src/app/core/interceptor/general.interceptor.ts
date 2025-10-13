@@ -8,14 +8,19 @@ export const generalInterceptor: HttpInterceptorFn = (req, next) => {
   const isBrowser = isPlatformBrowser(platformId);
 
   // تخطي طلبات الترجمة
+  const baseUrl: string = environment.apiUrl;
+
   if (req.url.includes('/i18n/')) {
     return next(req);
   }
-  const baseUrl: string = environment.apiUrl;
   let headers: Record<string, string> = {};
 
   if (isBrowser) {
     const token = localStorage.getItem('Rose_token');
+  let headers: Record<string, string> = {};
+
+  if (typeof window !== 'undefined' && localStorage) {
+    const token = localStorage.getItem('token');
     if (token) {
       headers['Authorization'] = `Bearer ${token}`;
     }
@@ -24,6 +29,11 @@ export const generalInterceptor: HttpInterceptorFn = (req, next) => {
     headers['language'] = language;
   }
 
+    const lang: string = localStorage.getItem('lng') || 'en';
+    headers['language'] = lang;
+  }
+
+  // Inject baseUrl + headers
   const modifiedReq: HttpRequest<unknown> = req.clone({
     url: `${baseUrl}${req.url}`,
     setHeaders: headers

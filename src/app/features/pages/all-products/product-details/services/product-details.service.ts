@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IResponseProductDetails, IResponseRelatedProduct } from '../models/product-details';
 
@@ -8,7 +8,9 @@ import { IResponseProductDetails, IResponseRelatedProduct } from '../models/prod
 })
 export class ProductDetailsService {
 
-  constructor(private _http: HttpClient) { }
+  private _http = inject(HttpClient);
+
+  constructor() { }
 
   getSpecificProducts(id: string): Observable<IResponseProductDetails> {
     return this._http.get<IResponseProductDetails>(`products/${id}`);

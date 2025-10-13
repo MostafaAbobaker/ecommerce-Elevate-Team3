@@ -161,5 +161,12 @@
   },
   "profile":{
     "title":"Update Profile"
+  },
+  "cart":{
+    "header": {
+      "title": "Cart",
+      "products": "Products",
+      "btn-clear": "Clear Cart"
+    }
   }
 }

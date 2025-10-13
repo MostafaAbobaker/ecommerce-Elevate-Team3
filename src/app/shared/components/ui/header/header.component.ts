@@ -1,10 +1,11 @@
-import {Component, inject, OnInit, PLATFORM_ID} from '@angular/core';
-import { ThemeService } from '../../../services/theme/theme.service';
-import {TranslationService} from '../../../../core/Services/translation.service';
-import {TranslatePipe} from '@ngx-translate/core';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { Router, RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import {Component, computed, effect, inject, OnInit, Signal, PLATFORM_ID} from '@angular/core';
+import { ThemeService } from '../../../services/theme/theme.service';
+import {TranslationService} from '../../../../core/Services/translation.service';
+import {TranslatePipe} from '@ngx-translate/core';
+import {CartService} from '../../../../features/pages/cart/service/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +13,12 @@ import { isPlatformBrowser } from '@angular/common';
     TranslatePipe,
     TieredMenuModule,
     RouterLink
-
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit{
+
   private readonly translationService: TranslationService = inject(TranslationService);
   private platformId = inject(PLATFORM_ID);
 
@@ -29,6 +30,8 @@ export class HeaderComponent implements OnInit{
   email: string | null = ''
   phone: string | null = ''
   image: string | null = ''
+  private readonly cartService: CartService = inject(CartService);
+  numberOfProductCart: Signal<number> = computed((): number => this.cartService.numberOfProductCart());
 
   // Dark Mode Toggle
   darkMode!:boolean;
@@ -51,6 +54,10 @@ export class HeaderComponent implements OnInit{
         this.phone = localStorage.getItem('Rose_Phone');
         this.image = localStorage.getItem('Rose_image');
     }
+
+
+
+    this.goToCart();
 
     if(this.getCurrentTheme() == 'light' ) {
       this.darkMode = false;
@@ -121,5 +128,8 @@ export class HeaderComponent implements OnInit{
     localStorage.removeItem('token');
     this.router.navigate(['/signin']);
     this.isLogin = false;
+  }
+  goToCart(): void {
+    this.cartService.getLoggedUserCart();
   }
 }

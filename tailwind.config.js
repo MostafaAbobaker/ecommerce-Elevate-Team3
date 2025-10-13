@@ -27,6 +27,9 @@ module.exports = {
         'price-color': '#D4D4D8',
         'textGray': '#E4E4E7',
         'textDesc': '#52525B',
+        'checkout':'#F4F4F5',
+        'black-second':'#27272A',
+        'location':'#00BC7D'
       },
     },
   },

@@ -19,8 +19,8 @@ export class ProductReviewsComponent implements OnInit, OnDestroy {
   productId!: string
   reviewsForm!: FormGroup
   subscription: Subscription = new Subscription
-  productList!: IReviewProduct[]
-  reviewsList!: IResponseReview[]
+  productList: IReviewProduct[] = []
+  reviewsList: IResponseReview[] = []
   productRatie!: number
 
   private _productDetailsService = inject(ProductDetailsService)

@@ -1,0 +1,86 @@
+<section class=" my-14 grid grid-cols-1 md:grid-cols-12 max-w-screen-xl mx-auto gap-2 px-4">
+  <!-- Summary Section -->
+  <div class="col-span-1 md:col-span-5 lg:col-span-4 h-fit m-auto">
+    <app-summary></app-summary>
+  </div>
+  <div class="col-span-1 md:col-span-7 lg:col-span-8 h-fit">
+    <!-- Header -->
+    <div class="flex justify-between">
+      <div class="flex items-center relative">
+        <!-- Title -->
+        <h1 class="text-4xl font-semibold">{{ 'cart.header.title' | translate }}</h1>
+        <!-- Sub Title -->
+        <p class="text-gray-500 text-sm absolute ltr:-right-[72px] rtl:-left-[60px] bottom-0 "> {{ 'cart.header.products' | translate }} {{ cartService.numberOfProductCart() }}</p>
+      </div>
+      <div>
+        <button (click)="clearUserCart()" class="bg-red-50 text-[var(--primary)] px-9 py-2 text-center cursor-pointer rounded-xl">{{ 'cart.header.btn-clear' | translate }}<i class="fa solid fa-brush rotate-180 rtl:pl-4 ltr:pr-4"></i></button>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="mt-8 border shadow-sm p-3 rounded-lg ">
+        @if (cartList().cart.cartItems){
+          @for (item of cartList().cart.cartItems; track $index) {
+            <!-- Card -->
+            <div class="flex flex-row gap-1 items-center border-b py-4">
+
+              <!-- Image -->
+              <div class=" w-28 ">
+                <img [src]="item.product.imgCover" [alt]="item.product.slug" class="w-28 h-3/4 rounded-xl">
+              </div>
+
+              <!-- Content -->
+              <div class="flex flex-col w-full gap-1">
+                <!-- Top -->
+                <div class="flex justify-between items-start">
+
+                  <!-- Information -->
+                  <div>
+                    <h3 class="text-primary">{{ item.product.title }}</h3>
+                    <div class="flex items-center ">
+                      <i class="fa-solid fa-star text-yellow-400"></i>
+                      <p class="m-1">Rating: {{ item.product.rateCount }}/{{ item.product.rateAvg }}</p>
+                      <span class="text-blue-600">({{ item.product.rateCount}} rating)</span>
+                    </div>
+                  </div>
+
+                  <!-- Action -->
+                  <div class="text-sm">
+                    <button (click)="removeSpecificProduct(item.product._id)" class="bg-dark-shopping text-white rounded-xl w-full py-2 px-2.5 hover:bg-primary-dark hover:shadow-lg transition-all dark:bg-darkMode-secondary dark:hover:bg-secondary">Remove <i class="fa-solid fa-trash-can"></i></button>
+                  </div>
+
+                </div>
+
+                <!-- Bottom -->
+                <div class="flex justify-between items-end" >
+
+                  <!-- Information -->
+                  <div class="flex gap-1 items-end " dir="ltr">
+                    <span class="font-semibold text-xl">EGP</span>
+                    <p class="font-semibold text-xl">{{ item.product.price }} </p>
+                    <span class="text-[12px] text-primary">(x{{ item.product.sold }})</span>
+                  </div>
+
+                  <!-- Action -->
+                  <div class="text-sm">
+                    <!-- item.quantity -> My Quantity - item.product.quantity -> Available Quantity-->
+                    <button (click)="decrementMyQuantity(item.product._id, item.quantity - 1)" class="py-2 px-2.5 bg-red-100 rounded-lg w-9 text-primary"><i class="fa-solid fa-minus"></i></button>
+                    <input disabled type="number" [value]="item.quantity" class="border w-12 h-9 rounded-lg rtl:pr-2 ltr:pl-2 text-gray-500 mx-2">
+                    <button (click)="incrementMyQuantity(item.product._id, item.quantity + 1, item.product.quantity)" class="py-2 px-2.5 bg-red-100 rounded-lg w-9 text-primary"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          }
+        }
+      </div>
+    </div>
+</section>
+<article>
+  <div class="card flex justify-center">
+    <p-toast [showTransitionOptions]="'250ms'" [showTransformOptions]="'translateX(100%)'" [hideTransitionOptions]="'150ms'" [hideTransformOptions]="'translateX(100%)'" />
+  </div>
+</article>
+
